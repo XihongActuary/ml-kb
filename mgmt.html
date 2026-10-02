@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>给管理层看的机器学习｜机器学习知识库 · 西红精算</title>
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<aside class="side">
+  <div class="brand"><b>机器学习知识库</b><span>从零基础到能上手 · 西红精算</span></div>
+  <nav>
+    <a href="index.html">首页 · 怎么读这套库</a>
+    <div class="grp">第一层 · 零基础</div>
+    <a href="overview.html">① 机器学习到底在干什么</a>
+    <a href="mgmt.html" class="on">② 给管理层看的通俗版</a>
+    <div class="grp">第二层 · 系统学</div>
+    <a href="onepage.html">③ 一文读懂机器学习</a>
+    <a href="core.html">④ 核心三要素与 AI 全景</a>
+    <a href="oneday.html">⑤ 一小时精读</a>
+    <div class="grp">第三层 · 深钻</div>
+    <a href="notes.html">⑥ 西瓜书十七章 + 拓展</a>
+    <div class="grp">关于</div>
+    <a href="resources.html">外部资源 · 素材来源</a>
+    <a href="amkb.html">姊妹库 · 精算模型与数据分析</a>
+    <a href="xihong.html">关于 · 西红精算</a>
+  </nav>
+  <div class="prog-mini">学习进度 <b>0 / 7</b></div>
+</aside>
+
+<main class="main">
+  <div class="ch-head">
+    <div class="no">读物 ②</div>
+    <h1>给管理层看的机器学习</h1>
+    <div class="sub">四个业务场景，两个成了、一个走偏、一个翻车——只讲钱、时间、责任</div>
+    <div class="meta"><span>零基础 · 零公式</span><span>3 100 字 · 以案促学</span><span>含"必盯五个数"</span></div>
+  </div>
+
+  <button class="done-btn" data-id="mgmt">○ 标记本页已完成</button>
+
+  <div class="tip" style="max-width:780px"><b>这一篇讲决策，不讲技术。</b>四个案例来自同一家公司两年走过的路，每个案例后跟一张小结卡「这个故事说了什么」。</div>
+
+  <p style="max-width:780px;font-size:13px;color:#888780;margin:-6px 0 18px"><span class="src src-gui">管</span>公司名与数据均已匿名化处理。</p>
+
+  <div class="art-wrap">
+
+
+<!-- ============ HERO + 作者行 + 目录条 ============ -->
+<table style="width:100%;background:#2b2a26;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:56px 32px 30px;text-align:center;">
+      <span style="display:inline-block;padding:6px 18px;border:1px solid #5c5a52;border-radius:100px;font-size:12px;letter-spacing:3px;color:#c9c3b4;">西 红 精 算 · 管 理 层 版</span>
+      <h1 style="font-size:30px;font-weight:800;letter-spacing:1px;color:#ffffff;line-height:1.45;margin:20px 0 10px;">机器学习，管理者只需要懂这些</h1>
+      <p style="font-size:15.5px;color:#a9a294;max-width:660px;margin:0 auto;line-height:1.75;">不想写代码，但必须为它签字的人——看这四个场景就够了</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding:2px 32px 16px;font-size:0;text-align:center;">
+      <span style="display:inline-block;width:49%;font-size:13.5px;font-weight:600;letter-spacing:1px;color:#9aa292;text-align:left;">✍ 西红精算师</span><span style="display:inline-block;width:49%;font-size:13.5px;font-weight:600;letter-spacing:1px;color:#9aa292;text-align:right;white-space:nowrap;">📅 2026年10月</span>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding:12px 12px 20px;text-align:center;border-top:1px solid #3d3b35;font-size:0;letter-spacing:0;">
+      <span style="display:inline-block;padding:4px 8px;font-size:11px;font-weight:600;background:#2f6b5a;color:#ffffff;margin-right:3px;">①例会</span><span style="display:inline-block;padding:4px 8px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;margin-right:3px;">②定价</span><span style="display:inline-block;padding:4px 8px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;margin-right:3px;">③理赔</span><span style="display:inline-block;padding:4px 8px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;margin-right:3px;">④客户</span><span style="display:inline-block;padding:4px 8px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;margin-right:3px;">⑤翻车</span><span style="display:inline-block;padding:4px 8px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;margin-right:3px;">⑥投入</span><span style="display:inline-block;padding:4px 8px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;margin-right:3px;">⑦五个数</span><span style="display:inline-block;padding:4px 8px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;">⑧三步走</span>
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 核心论点 ============ -->
+<table style="max-width:860px;margin:18px auto;background:#ffffff;border:1px solid #e5dfd0;border-left:4px solid #2f6b5a;border-radius:12px;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:22px 28px;font-size:15px;color:#4a5560;line-height:1.85;">
+      <strong style="color:#2f6b5a;">核心论点：</strong>对管理层来说，机器学习从来不是一道技术题，而是三道<strong style="color:#2b2a26;">判断题</strong>——这件事值不值得做（投入产出）、做好了算不算成功（看什么指标）、做砸了谁来兜底（风险怎么管）。<strong style="color:#2b2a26;">技术细节交给专业的人，判断力留在你自己手上。</strong>
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 正文容器 ============ -->
+<table style="max-width:900px;margin:0 auto;padding:0 24px;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:32px 0 80px;">
+
+      <!-- ===== 一、开场 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:40px 0 8px 0;padding-left:16px;border-left:4px solid #2f6b5a;">一、开场：一场经营例会上的十分钟</p>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;padding-left:20px;">所有关于机器学习的争论，最后都会落到会议室里这三句话。</p>
+
+      <p style="font-size:15px;line-height:1.95;color:#4a5560;margin:0 0 18px 0;">
+        一家中型财险公司，车险年保费 24 亿，综合成本率 103.8%——连续三年承保亏损。经营班子上，有人在 PPT 里写下四个字：「智能风控」。于是争论开始了。
+      </p>
+      <p style="font-size:15px;line-height:1.95;color:#4a5560;margin:0 0 18px 0;">
+        管理赔的说，能不能让机器先看一遍？管销售的问，能不能别再给好司机报高价？管 IT 的说，要先买一套平台。财务问了一句最实在的：<strong style="color:#2b2a26;">这事儿投多少钱，多久能回来？</strong>
+      </p>
+      <p style="font-size:15px;line-height:1.95;color:#4a5560;margin:0 0 20px 0;">
+        这些问题都没错。缺的是一段能把「机器学习」翻译成「业务账」的共同语言。下面四个场景，是这家公司接下来两年真实走过的路——两个成了，一个走偏了，一个翻了车。<strong style="color:#2f6b5a;">成与不成，差别从来不在算法。</strong>
+      </p>
+
+      <table style="width:100%;background:#fdf6e3;border-left:4px solid #bb8a1f;border-radius:12px;margin-bottom:8px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 24px;">
+            <p style="font-size:13.5px;color:#7a5210;line-height:1.8;margin:0;">
+              📌 说明：下文公司为匿名，所有数字<strong style="color:#7a5210;">仅为讲清楚数量级与逻辑关系而设</strong>，不代表任何一家机构的实际披露数据。
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 二、定价 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:48px 0 8px 0;padding-left:16px;border-left:4px solid #2f6b5a;">二、场景一 · 定价：找出被错杀的好司机</p>
+
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-left:4px solid #2f6b5a;border-radius:12px;margin-bottom:16px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:26px 28px;">
+            <p style="font-size:16.5px;font-weight:800;color:#2f6b5a;margin:0 0 10px 0;">发生了什么</p>
+            <p style="font-size:14.5px;color:#4a5560;line-height:1.95;margin:0 0 14px 0;">
+              公司是按下述方式定价的：从人（年龄、性别、驾龄）、车（车型、车龄）、地区几个维度，把客户切成若干个格子，每个格子一个费率。这套做法用了十几年，业内都这么干，问题在于——<strong style="color:#2b2a26;">它只能同时考虑有限的几个维度，再多就没人手做得动了。</strong>
+            </p>
+            <p style="font-size:14.5px;color:#4a5560;line-height:1.95;margin:0 0 14px 0;">
+              团队拿 5 年、38 万条历史保单训练了一个预测模型，给每位客户打一个「风险分」。按分排队后，第一件事是去看队列的最尾端：风险最低的那 20% 客户，实际赔付率只有 <strong style="color:#2f6b5a;">41%</strong>——而公司现行费率对他们平均上浮了 <strong style="color:#b53d2e;">12%</strong>。
+            </p>
+            <p style="font-size:14.5px;color:#4a5560;line-height:1.95;margin:0 0 14px 0;">
+              这批人既便宜又好，可续保率只有 61%——价格一动，他们最先走。
+            </p>
+            <p style="font-size:14.5px;color:#4a5560;line-height:1.95;margin:0;">
+              把这批人的费率往下调到位之后：续保率回到 78%，该细分保费规模增加 1.2 亿，赔付率 43%，全盘看，贡献了约 <strong style="color:#2f6b5a;">3400 万</strong>的承保利润改善。
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <table style="width:100%;background:#f5f9f2;border-left:4px solid #2f6b5a;border-radius:12px;margin-bottom:20px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:22px 26px;">
+            <p style="font-size:15.5px;font-weight:800;color:#2f6b5a;margin:0 0 8px 0;">📌 这个故事说了什么</p>
+            <p style="font-size:14px;color:#4a5560;line-height:1.9;margin:0;">
+              <strong>① 机器学习最擅长的是「找交叉」。</strong>人工定价一次最多同时看三四个维度；机器可以同时看几十个，而且能自动发现「新能源车 × 年里程低于五千 × 四十岁以上女性」这类你想不到的组合。<br>
+              <strong>② 它赚的不是「预测准」的钱，是「少被同业抢走」的钱。</strong>定价错误有两种：收少了赔钱，收多了丢客户。以前只看前者，后者是隐形的。<br>
+              <strong>③ 数据比算法贵。</strong>这个项目前 8 个月几乎没建模型，全在做一件事——把车型、维修记录、渠道数据统一口径。<strong>这一步偷工，后面全是空转。</strong>
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 三、理赔 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:48px 0 8px 0;padding-left:16px;border-left:4px solid #2f6b5a;">三、场景二 · 理赔：把专家的时间花在最可疑的几件案子上</p>
+
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-left:4px solid #2f6b5a;border-radius:12px;margin-bottom:16px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:26px 28px;">
+            <p style="font-size:16.5px;font-weight:800;color:#2f6b5a;margin:0 0 10px 0;">发生了什么</p>
+            <p style="font-size:14.5px;color:#4a5560;line-height:1.95;margin:0 0 14px 0;">
+              260 人的理赔队伍，按制度要抽查 8% 的案子做深度核查。抽查基本靠<strong>随机 + 师傅的经验</strong>，一年下来投入巨大，命中率却只有 <strong style="color:#b53d2e;">1.1%</strong>——一百件深挖，一件有问题。
+            </p>
+            <p style="font-size:14.5px;color:#4a5560;line-height:1.95;margin:0 0 14px 0;">
+              改造没有动人，只动了一件事：<strong>把「抽哪 8%」的决定权交给模型。</strong>模型给每件案子打可疑度，专家从分数最高的往下查，人数没变，件数没变。
+            </p>
+            <p style="font-size:14.5px;color:#4a5560;line-height:1.95;margin:0;">
+              命中率从 1.1% 升到 <strong style="color:#2f6b5a;">5.4%</strong>，年度止损约 <strong style="color:#2f6b5a;">1600 万</strong>，项目总投入 110 万，八个多月回本。
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <table style="width:100%;background:#f5f9f2;border-left:4px solid #2f6b5a;border-radius:12px;margin-bottom:20px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:22px 26px;">
+            <p style="font-size:15.5px;font-weight:800;color:#2f6b5a;margin:0 0 8px 0;">📌 这个故事说了什么</p>
+            <p style="font-size:14px;color:#4a5560;line-height:1.9;margin:0;">
+              <strong>① 这个项目里，机器不决策，人决策。</strong>它只做排序——把有限的专家注意力放对位置。收益的来源不是「替代了谁」，而是「同样的工资买到了不一样的产出」。<br>
+              <strong>② 别问「模型准不准」，问「跟随机比强多少」。</strong>欺诈件占比不到千分之五，一个什么都不做、全判正常的模型，准确率也有 99.5%。所以这个项目汇报时用的是<strong>命中率与止损金额</strong>，不用准确率。<br>
+              <strong>③ 见效最快的往往是这类「重排业务员时间」的项目。</strong>不用改系统、不用等承保周期，三五个月就能看见钱。
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 四、客户 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:48px 0 8px 0;padding-left:16px;border-left:4px solid #b53d2e;">四、场景三 · 客户：给根本不会走的人打了一通电话</p>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;padding-left:20px;">这是最贵的一课，也是最容易被做成「成功幺例」的一课。</p>
+
+      <table style="width:100%;background:#fdf3f1;border-left:4px solid #b53d2e;border-radius:12px;margin-bottom:16px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:26px 28px;">
+            <p style="font-size:16.5px;font-weight:800;color:#b53d2e;margin:0 0 10px 0;">发生了什么</p>
+            <p style="font-size:14.5px;color:#4a5560;line-height:1.95;margin:0 0 14px 0;">
+              客服部上了流失预警模型，能提前预判谁可能不再续保，区分度高，内部测评一致说好。于是顺势推出挽留动作：<strong>给预测要流失的客户打电话，并提供折扣。</strong>一年预算 900 万。
+            </p>
+            <p style="font-size:14.5px;color:#4a5560;line-height:1.95;margin:0;">
+              年终复盘泼了一盆冷水：这 900 万里，大约<strong style="color:#b53d2e;">六成</strong>打给了本来就不会走的人——折扣送出去，什么都没多买回来。真正因为这一通电话、因为这个折扣才留下来的，只占接触人数的 <strong style="color:#b53d2e;">12%</strong>。
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <table style="width:100%;background:#fdf6e3;border-left:4px solid #bb8a1f;border-radius:12px;margin-bottom:20px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:22px 26px;">
+            <p style="font-size:15.5px;font-weight:800;color:#92400e;margin:0 0 8px 0;">📌 这个故事说了什么（最重要的一条）</p>
+            <p style="font-size:14px;color:#78350f;line-height:1.9;margin:0;">
+              <strong style="color:#92400e;">「会发生什么」和「我们能改变什么」，是两件完全不同的事。</strong><br>
+              预测会流失的人，回答的是第一件事；判断干预谁能改变结果，是第二件事——业内叫增量模型。<strong style="color:#92400e;">绝大多数吹嘘的模型价值，错就错在把这两件事当成了一件。</strong><br>
+              改法也不神秘：做「小流量对照实验」。随机留出 10% 的同质客户不打扰，比较干预组与对照组的差异——那个差值，才是这一通电话真正的价值。修正之后，同样 900 万，留住的续保保费多出 2.6 倍。
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 五、翻车 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:48px 0 8px 0;padding-left:16px;border-left:4px solid #b53d2e;">五、场景四 · 翻车：测试成绩 0.89，上线亏了十一个点</p>
+
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-left:4px solid #b53d2e;border-radius:12px;margin-bottom:16px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:26px 28px;">
+            <p style="font-size:16.5px;font-weight:800;color:#b53d2e;margin:0 0 10px 0;">发生了什么</p>
+            <p style="font-size:14.5px;color:#4a5560;line-height:1.95;margin:0 0 14px 0;">
+              另一条业务线做的是自动核保：模型打分，低风险件直接放行。内部测试成绩漂亮，区分能力达到 0.89（满分 1）。于是全量上线。
+            </p>
+            <p style="font-size:14.5px;color:#4a5560;line-height:1.95;margin:0;">
+              三个月后，这条线的实际赔付率比模型预测<strong style="color:#b53d2e;">高出 11 个百分点</strong>，直接损失约 2100 万。复盘挖出两个原因：<strong>一是训练时不小心用了一个「只有案子结了才知道」的字段</strong>——模型等于提前偷看了答案；<strong>二是数据横跨三年却随机切分</strong>，等于用明年的经验预测今年的事。
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <table style="width:100%;background:#fdf6e3;border-left:4px solid #bb8a1f;border-radius:12px;margin-bottom:20px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:22px 26px;">
+            <p style="font-size:15.5px;font-weight:800;color:#92400e;margin:0 0 8px 0;">📌 这个故事说了什么</p>
+            <p style="font-size:14px;color:#78350f;line-height:1.9;margin:0;">
+              <strong style="color:#92400e;">① 离线成绩和线上效果之间，隔着一个真实世界。</strong>任何一个没有经过小范围试点的模型，都不该被允许全量上线。<br>
+              <strong style="color:#92400e;">② 留出对照组，是整个项目里最便宜的保险。</strong>花 10% 的流量，买「这个模型到底有没有用」的确定回答。<br>
+              <strong style="color:#92400e;">③ 模型上线不是终点，是起点。</strong>客户在变、对手在变、数据在漂。所有模型都会失效，只是早晚——所以监控比开发更该有预算。
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 六、投入 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:48px 0 8px 0;padding-left:16px;border-left:4px solid #2f6b5a;">六、算账：四类项目的投入与周期</p>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;padding-left:20px;">管理层问得最多的三个词：多少钱、多久、谁来做。</p>
+
+      <table style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;overflow:hidden;" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:13px;font-weight:700;padding:11px 14px;text-align:left;">场景</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:13px;font-weight:700;padding:11px 14px;text-align:left;">见效周期</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:13px;font-weight:700;padding:11px 14px;text-align:left;">钱主要花在哪</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-size:13.5px;padding:10px 14px;color:#2b2a26;border-bottom:1px solid #efe9db;font-weight:600;">理赔反欺诈</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:1px solid #efe9db;">3–4 个月</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:1px solid #efe9db;">十万元级。外部顾问 + 现有数据，见效最快</td>
+          </tr>
+          <tr>
+            <td style="font-size:13.5px;padding:10px 14px;color:#2b2a26;border-bottom:1px solid #efe9db;font-weight:600;">客户经营</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:1px solid #efe9db;">4–6 个月</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:1px solid #efe9db;">十到百万元级。<strong>预算大头是折扣，不是模型</strong></td>
+          </tr>
+          <tr>
+            <td style="font-size:13.5px;padding:10px 14px;color:#2b2a26;border-bottom:1px solid #efe9db;font-weight:600;">定价精细化</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:1px solid #efe9db;">6–12 个月</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:1px solid #efe9db;">百万元级 + 内部人力。<strong>必须跨过一个完整承保周期才算验证过</strong></td>
+          </tr>
+          <tr>
+            <td style="font-size:13.5px;padding:10px 14px;color:#2b2a26;border-bottom:none;font-weight:600;background:#faf7ef;">图像 / 文本 / 大模型</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:none;background:#faf7ef;">12 个月以上</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:none;background:#faf7ef;">百万到千万元级。除非有明确产能瓶颈，否则不建议起步就做</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:15px;line-height:1.95;color:#4a5560;margin:0 0 16px 0;">
+        <strong style="color:#2b2a26;">关于人。</strong>最容易被高估的是算法专家，最容易被低估的是数据治理。一家中型公司起步，真正需要的是三类角色：<strong>一个懂业务又会写代码的桥接人</strong>（最稀缺）、<strong>一个能把业务口径统一的精算或业务负责人</strong>、<strong>一个能把模型变成线上服务的工程侧接口</strong>。这三个人凑齐了，比买任何平台都管用。
+      </p>
+
+      <table style="width:100%;background:#fdf3f1;border-left:4px solid #b53d2e;border-radius:12px;margin-bottom:20px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:22px 26px;">
+            <p style="font-size:16px;font-weight:800;color:#b53d2e;margin:0 0 8px 0;">⚠ 三个常见的错误决定</p>
+            <p style="font-size:14px;color:#4a5560;line-height:1.9;margin:0;">
+              <strong style="color:#b53d2e;">① 先买平台，再想问题。</strong>数据没治理、业务问题没界定，平台就是一个昂贵的空壳。<br>
+              <strong style="color:#b53d2e;">② 起步就追大模型。</strong>通用大模型回答不了「这款车该收多少钱」，它不知道你的历史赔款长什么样。先用好你自己的那张表。<br>
+              <strong style="color:#b53d2e;">③ 把项目整个交给信息部门。</strong>没有业务方共担 KPI，最后一定交付一个技术上合格、业务上没用的东西。
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 七、五个数 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:48px 0 8px 0;padding-left:16px;border-left:4px solid #2f6b5a;">七、你只需要盯住这五个数</p>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;padding-left:20px;">汇报会上，问这五个问题就够了。问到这里，没人能用技术名词糊弄你。</p>
+
+      <table style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;overflow:hidden;" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:13px;font-weight:700;padding:11px 14px;text-align:left;">要盯的数</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:13px;font-weight:700;padding:11px 14px;text-align:left;">为什么要问</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:13px;font-weight:700;padding:11px 14px;text-align:left;">听不懂人话的回答</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-size:13.5px;padding:10px 14px;color:#2b2a26;border-bottom:1px solid #efe9db;font-weight:600;">业务指标</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:1px solid #efe9db;">赔付率、续保率、人均产能、止损金额</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:1px solid #efe9db;">「我们的准确率 92%」（行业基准可能就有 99%）</td>
+          </tr>
+          <tr>
+            <td style="font-size:13.5px;padding:10px 14px;color:#2b2a26;border-bottom:1px solid #efe9db;font-weight:600;">增量，不是绝对值</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:1px solid #efe9db;">相比不做的对照，到底多赚了多少</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:1px solid #efe9db;">「这块业务很好」（也可能本来就好）</td>
+          </tr>
+          <tr>
+            <td style="font-size:13.5px;padding:10px 14px;color:#2b2a26;border-bottom:1px solid #efe9db;font-weight:600;">稳定性</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:1px solid #efe9db;">客户结构在漂，模型会慢慢失效。分布指标超过 0.25 就该重训</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:1px solid #efe9db;">「上线就不用管了」</td>
+          </tr>
+          <tr>
+            <td style="font-size:13.5px;padding:10px 14px;color:#2b2a26;border-bottom:1px solid #efe9db;font-weight:600;">例外率</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:1px solid #efe9db;">多少件能自动处理，多少要转人工。这是成本核算的依据</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:1px solid #efe9db;">只报自动通过率，不报转人工的成本</td>
+          </tr>
+          <tr>
+            <td style="font-size:13.5px;padding:10px 14px;color:#2b2a26;border-bottom:none;font-weight:600;background:#faf7ef;">可回溯性</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:none;background:#faf7ef;">监管或客户问「为什么给他这个价」，能不能答上来</td>
+            <td style="font-size:13.5px;padding:10px 14px;color:#4a5560;border-bottom:none;background:#faf7ef;">「这是模型算出来的」（不是答案）</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ===== 八、三步走 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:48px 0 8px 0;padding-left:16px;border-left:4px solid #2f6b5a;">八、如果今年只能做一件事：三步走</p>
+
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:26px 28px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:22px;vertical-align:top;padding:11px 12px 11px 0;"><div style="width:18px;height:18px;border:2px solid #2f6b5a;border-radius:5px;"></div></td>
+                <td style="vertical-align:top;padding:11px 0;font-size:14.3px;color:#4a5560;line-height:1.85;border-bottom:1px solid #efe9db;"><span style="font-weight:700;color:#2f6b5a;">第一步（1–3 个月）挑一个又痛又小的口子。</span>标准有三条：痛点清楚能用钱衡量、数据现成不用等系统改造、做砸了损失可控。<strong>反欺诈与客户挽留通常是最合适的起手式。</strong></td>
+              </tr>
+              <tr>
+                <td style="width:22px;vertical-align:top;padding:11px 12px 11px 0;"><div style="width:18px;height:18px;border:2px solid #2f6b5a;border-radius:5px;"></div></td>
+                <td style="vertical-align:top;padding:11px 0;font-size:14.3px;color:#4a5560;line-height:1.85;border-bottom:1px solid #efe9db;"><span style="font-weight:700;color:#2f6b5a;">第二步（4–9 个月）做一个带对照组的诚实实验。</span>先做基准——沿用最笨的那条老做法现在是多少分？然后随机留 10% 不打扰，让数据说话。<strong>这一步最难的不是技术，是忍住不上线。</strong></td>
+              </tr>
+              <tr>
+                <td style="width:22px;vertical-align:top;padding:11px 12px 11px 0;"><div style="width:18px;height:18px;border:2px solid #2f6b5a;border-radius:5px;"></div></td>
+                <td style="vertical-align:top;padding:11px 0;font-size:14.3px;color:#4a5560;line-height:1.85;"><span style="font-weight:700;color:#2f6b5a;">第三步（10 个月起）把一次偶然变成一套制度。</span>建立模型台账（每个模型的数据口径、假设、局限、责任人）、定期验证、分布监控、年度复检。<strong>到这一步，机器学习才算真正装进了公司的体系里。</strong></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 结尾 ===== -->
+      <table style="width:100%;background:#f7f5f0;border-left:4px solid #bb8a1f;border-radius:12px;margin:34px 0 0 0;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:30px 28px;">
+            <p style="font-size:17px;font-weight:800;color:#92400e;margin:0 0 12px 0;">写在最后</p>
+            <p style="font-size:15px;color:#5c5340;line-height:2;margin:0 0 14px 0;">
+              回到开头那间会议室。回头看，那家公司做对的不是买对了什么，而是<strong style="color:#92400e;">先问清楚了：这笔钱是为了省多少钱、由哪个部门负责、失败了谁承担。</strong>
+            </p>
+            <p style="font-size:15px;color:#5c5340;line-height:2;margin:0 0 14px 0;">
+              机器学习不会替管理做决定。它只是把原本藏在经验里、散在几万个变量之间的规律，翻到了桌面上。<strong style="color:#92400e;">看见之后怎么选，是人的事。</strong>
+            </p>
+            <p style="font-size:15px;color:#5c5340;line-height:2;margin:0;">
+              精算师这个职业存在了一百多年，说到底只干一件事：<strong>用过去的经验，估算未来的不确定。</strong>工具换了好多轮，这件事从来没有变过。
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 品牌卡 ===== -->
+      <table style="width:100%;background:#2b2a26;border-radius:12px;margin-top:28px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:30px 28px;text-align:center;">
+            <p style="font-size:16px;font-weight:800;color:#ffffff;margin:0 0 10px 0;letter-spacing:1px;">西红精算 · 用数据讲保险</p>
+            <p style="font-size:14px;color:#a9a294;line-height:1.9;margin:0 0 14px 0;">
+              不卖焦虑，不推销，不讲术语。<br>把看不见、算不清的风险，变成可执行、可承受的安排。
+            </p>
+            <p style="font-size:14.5px;color:#c9a227;font-weight:700;line-height:1.8;margin:0;">
+              风险可以被理解，安全感可以被计算。
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin-top:14px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:22px 26px;text-align:center;">
+            <p style="font-size:14px;color:#4a5560;line-height:1.85;margin:0;">
+              本文是「机器学习」系列的管理层版，姊妹篇《一文读懂机器学习》讲技术与模型。<br>
+              想看得更深，可以在知识星球置顶区找到入口：https://wx.zsxq.com/
+            </p>
+          </td>
+        </tr>
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 页脚 ============ -->
+<table style="max-width:860px;margin:0 auto 32px;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:16px 24px;text-align:center;font-size:13px;color:#8a8578;line-height:1.7;">
+      ※ 本文仅为专业交流。文中公司为匿名，所有数字仅为讲清楚数量级与逻辑关系而设，不代表任何机构的实际经营数据，不构成管理决策建议。
+    </td>
+  </tr>
+</table>
+
+
+  </div>
+
+  <div class="pager">
+    <a href="overview.html">← ① 到底在干什么</a>
+    <a href="onepage.html">③ 一文读懂 →</a>
+  </div>
+</main>
+
+<script src="js/kb.js"></script>
+</body>
+</html>

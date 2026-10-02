@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>机器学习到底在干什么｜机器学习知识库 · 西红精算</title>
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<aside class="side">
+  <div class="brand"><b>机器学习知识库</b><span>从零基础到能上手 · 西红精算</span></div>
+  <nav>
+    <a href="index.html">首页 · 怎么读这套库</a>
+    <div class="grp">第一层 · 零基础</div>
+    <a href="overview.html" class="on">① 机器学习到底在干什么</a>
+    <a href="mgmt.html">② 给管理层看的通俗版</a>
+    <div class="grp">第二层 · 系统学</div>
+    <a href="onepage.html">③ 一文读懂机器学习</a>
+    <a href="core.html">④ 核心三要素与 AI 全景</a>
+    <a href="oneday.html">⑤ 一小时精读</a>
+    <div class="grp">第三层 · 深钻</div>
+    <a href="notes.html">⑥ 西瓜书十七章 + 拓展</a>
+    <div class="grp">关于</div>
+    <a href="resources.html">外部资源 · 素材来源</a>
+    <a href="amkb.html">姊妹库 · 精算模型与数据分析</a>
+    <a href="xihong.html">关于 · 西红精算</a>
+  </nav>
+  <div class="prog-mini">学习进度 <b>0 / 7</b></div>
+</aside>
+
+<main class="main">
+  <div class="ch-head">
+    <div class="no">读物 ①</div>
+    <h1>机器学习到底在干什么</h1>
+    <div class="sub">不背术语、不写公式，只回答一个问题：它究竟能替我们做什么，又做不到什么</div>
+    <div class="meta"><span>零基础可读 · 不需要任何数学</span><span>3 400 字 · 5 图</span><span>约 12 分钟</span></div>
+  </div>
+
+  <button class="done-btn" data-id="overview">○ 标记本页已完成</button>
+
+  <div class="tip" style="max-width:780px"><b>这一篇是整套库的入口。</b>如果你此前对机器学习的印象停留在"很厉害但听不懂"，从这里开始——全篇不出现术语，直到第九节才一次性把名词对上。</div>
+
+  <p style="max-width:780px;font-size:13px;color:#888780;margin:-6px 0 18px"><span class="src src-gui">入</span>适合转发给家人、同事、不做技术的朋友。</p>
+
+  <div class="art-wrap">
+
+
+<!-- ============ HERO ============ -->
+<table style="width:100%;background:#2b2a26;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:56px 32px 30px;text-align:center;">
+      <span style="display:inline-block;padding:6px 18px;border:1px solid #5c5a52;border-radius:100px;font-size:12px;letter-spacing:3px;color:#c9c3b4;">西 红 精 算 · 用 数 据 讲 保 险</span>
+      <h1 style="font-size:31px;font-weight:800;letter-spacing:1px;color:#ffffff;line-height:1.45;margin:20px 0 10px;">机器学习到底在干什么</h1>
+      <p style="font-size:15.5px;color:#a9a294;max-width:660px;margin:0 auto;line-height:1.75;">不背术语、不写公式，只回答一个问题：<br>它究竟能替我们做什么，又做不到什么</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding:2px 32px 16px;font-size:0;text-align:center;">
+      <span style="display:inline-block;width:49%;font-size:13.5px;font-weight:600;letter-spacing:1px;color:#9aa292;text-align:left;">✍ 西红精算师</span><span style="display:inline-block;width:49%;font-size:13.5px;font-weight:600;letter-spacing:1px;color:#9aa292;text-align:right;white-space:nowrap;">📅 2026年10月</span>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding:0 32px 26px;text-align:center;">
+      <table style="width:100%;border-top:1px solid #45443f;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:14px 4px 0;font-size:12.5px;color:#8d8a7e;line-height:1.7;">本文是「机器学习知识库」的第一篇 · 读完约需 12 分钟 · 全篇不要求任何数学基础</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 一句话答案 ============ -->
+<table style="width:100%;background:#f7f5f0;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:26px 24px 4px;">
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-left:5px solid #b53d2e;border-radius:12px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:24px 26px;">
+            <p style="font-size:13px;letter-spacing:2px;color:#b53d2e;font-weight:700;margin:0 0 12px;">如 果 全 篇 只 记 一 句</p>
+            <p style="font-size:19px;line-height:1.75;color:#2b2a26;font-weight:700;margin:0 0 14px;">机器学习，就是让电脑<strong style="color:#b53d2e;">从一堆过去的例子里自己总结规律</strong>，<br>再拿这个规律去<strong style="color:#b53d2e;">对付没见过的新情况</strong>。</p>
+            <p style="font-size:14px;line-height:1.8;color:#6b6558;margin:0;">人一辈子都在这么干：吃过几次亏，就知道什么人不能信；看过几十套房，就能大致估出下一套值多少钱。机器学习只是把这件事交给电脑——它能看完几百万个例子还不喊累。</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 一、先说它不是什么 ============ -->
+<table style="width:100%;background:#f7f5f0;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:34px 24px 0;">
+      <h2 style="font-size:21px;font-weight:800;color:#2b2a26;margin:0 0 6px;line-height:1.5;"><span style="color:#b53d2e;">一、</span>先把四个误会拆掉</h2>
+      <p style="font-size:13px;color:#8a8578;margin:0 0 18px;">很多人听不懂机器学习，不是因为难，是因为脑子里先装了一个错的形象。</p>
+
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:8px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:38%;padding:12px 14px;background:#f3ede0;font-size:13px;font-weight:700;color:#2b2a26;border-bottom:1px solid #e5dfd0;">❌ 常见想象</td>
+                <td style="width:62%;padding:12px 14px;background:#f3ede0;font-size:13px;font-weight:700;color:#2f6b5a;border-bottom:1px solid #e5dfd0;">✅ 实际是什么</td>
+              </tr>
+              <tr>
+                <td style="padding:13px 14px;font-size:14px;color:#4a5560;border-bottom:1px solid #efe9dc;vertical-align:top;">一个会思考的机器人</td>
+                <td style="padding:13px 14px;font-size:14px;color:#4a5560;border-bottom:1px solid #efe9dc;vertical-align:top;">一段<strong style="color:#2b2a26;">程序</strong>。没有意识、没有情绪、不知道自己在干什么。它做的事情，本质上是<strong style="color:#2b2a26;">算数</strong>——大量的、有方向的算数。</td>
+              </tr>
+              <tr>
+                <td style="padding:13px 14px;font-size:14px;color:#4a5560;border-bottom:1px solid #efe9dc;vertical-align:top;">一种更聪明的编程</td>
+                <td style="padding:13px 14px;font-size:14px;color:#4a5560;border-bottom:1px solid #efe9dc;vertical-align:top;">传统编程是<strong style="color:#2b2a26;">人把规则写清楚，电脑照着做</strong>；机器学习是<strong style="color:#2b2a26;">人把例子给足，让电脑自己把规则找出来</strong>。规则在哪儿？在数字里，人看不懂，但它能用。</td>
+              </tr>
+              <tr>
+                <td style="padding:13px 14px;font-size:14px;color:#4a5560;border-bottom:1px solid #efe9dc;vertical-align:top;">能预测未来的水晶球</td>
+                <td style="padding:13px 14px;font-size:14px;color:#4a5560;border-bottom:1px solid #efe9dc;vertical-align:top;">它<strong style="color:#b53d2e;">只在"将来和过去差不多"的时候管用</strong>。一旦环境变了（新政策、新产品、新骗术），它就失灵——这一点后面还会反复讲。</td>
+              </tr>
+              <tr>
+                <td style="padding:13px 14px;font-size:14px;color:#4a5560;vertical-align:top;">一定比人准</td>
+                <td style="padding:13px 14px;font-size:14px;color:#4a5560;vertical-align:top;">它在<strong style="color:#2b2a26;">见得多</strong>的事情上常常比人强；在<strong style="color:#2b2a26;">见得少</strong>的事情上，还不如一个有经验的老手。它俩的关系是<strong style="color:#2b2a26;">搭伙</strong>，不是替代。</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 二、人是怎么学会的 ============ -->
+<table style="width:100%;background:#f7f5f0;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:34px 24px 0;">
+      <h2 style="font-size:21px;font-weight:800;color:#2b2a26;margin:0 0 6px;line-height:1.5;"><span style="color:#b53d2e;">二、</span>你自己，就是一台"学习机器"</h2>
+      <p style="font-size:13px;color:#8a8578;margin:0 0 18px;">先别看电脑。看看你自己是怎么"学会"一件事的——机器只是照抄了这套办法。</p>
+
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 16px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:20px 22px;">
+            <p style="font-size:15px;color:#2b2a26;font-weight:700;margin:0 0 10px;">例子一 · 中介小陈怎么看房</p>
+            <p style="font-size:14.5px;color:#4a5560;margin:0 0 10px;">小陈入行第一年，跟着师傅看了 200 套房。每看一套，师傅都告诉他成交价。慢慢地，他走进一间屋子，扫一眼<strong style="color:#2b2a26;">地段、楼层、朝向、房龄、装修</strong>，心里就冒出一个数。</p>
+            <p style="font-size:14.5px;color:#4a5560;margin:0;">没有人给过他一张"房价公式"。<strong style="color:#b53d2e;">那 200 套房，就是他的教材；他心里的那个"数"，就是他的模型。</strong></p>
+          </td>
+        </tr>
+      </table>
+
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 16px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:20px 22px;">
+            <p style="font-size:15px;color:#2b2a26;font-weight:700;margin:0 0 10px;">例子二 · 妈妈怎么挑西瓜</p>
+            <p style="font-size:14.5px;color:#4a5560;margin:0 0 10px;">她不会告诉你标准，但她敲一敲、看一看纹路、掂一掂分量，就知道这个瓜生还是熟。这个本事是<strong style="color:#2b2a26;">几十个夏天、几百个瓜</strong>喂出来的。</p>
+            <p style="font-size:14.5px;color:#4a5560;margin:0;">有意思的是——<strong style="color:#b53d2e;">她说不出来自己靠的是什么</strong>。这一点非常关键，后面讲"机器不会解释"时，你会再见到它。</p>
+          </td>
+        </tr>
+      </table>
+
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:20px 22px;">
+            <p style="font-size:15px;color:#2b2a26;font-weight:700;margin:0 0 10px;">例子三 · 老理赔员怎么看案子</p>
+            <p style="font-size:14.5px;color:#4a5560;margin:0 0 10px;">一份车险报案递上来，老李翻两页就说"这笔要查"。问他为什么，他说"感觉不对"——其实是<strong style="color:#2b2a26;">出险时间、修理厂、伤情描述、报案口吻</strong>这几处，和他印象里那些骗赔案的模样对上了。</p>
+            <p style="font-size:14.5px;color:#4a5560;margin:0;">他脑子里存着<strong style="color:#b53d2e;">几千个案子的模样</strong>。这就是数据。</p>
+          </td>
+        </tr>
+      </table>
+
+      <table style="width:100%;background:#fbf6e9;border:1px solid #e8d9a8;border-left:5px solid #bb8a1f;border-radius:10px;margin:18px 0 0;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:16px 20px;">
+            <p style="font-size:14.5px;line-height:1.85;color:#5c4a15;margin:0;"><strong style="color:#bb8a1f;">说人话：</strong>人学本事，靠的是<strong>例子 + 反馈 + 反复</strong>。机器学习一模一样，只不过把"例子"换成了数据库里的几百万行，把"反复"换成了电脑几秒钟跑完的几万轮调整。<strong>方法没变，量变了。</strong></p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 三、拆开看，就三步 ============ -->
+<table style="width:100%;background:#f7f5f0;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:34px 24px 0;">
+      <h2 style="font-size:21px;font-weight:800;color:#2b2a26;margin:0 0 6px;line-height:1.5;"><span style="color:#b53d2e;">三、</span>拆开看，它只做三步</h2>
+      <p style="font-size:13px;color:#8a8578;margin:0 0 18px;">不管外面吹得多神，任何一次机器学习，骨子里都是这三步。</p>
+
+      <!-- 图1 三步 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 4px;font-size:13px;font-weight:700;color:#2f6b5a;text-align:center;">图 1 · 机器学习的全部流程，就这么三步</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 20px 20px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:30%;padding:4px;">
+                  <table style="width:100%;background:#e3efe9;border:1px solid #c3ded2;border-radius:10px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:14px 10px;text-align:center;font-size:12px;color:#2f6b5a;font-weight:700;">第 一 步</td></tr>
+                    <tr><td style="padding:0 10px 6px;text-align:center;font-size:17px;font-weight:800;color:#2b2a26;">给它看例子</td></tr>
+                    <tr><td style="padding:0 12px 14px;text-align:center;font-size:12.5px;color:#5a6b64;line-height:1.7;">过去的 100 万笔保单，<br>每一笔都标好了"赔了 / 没赔"</td></tr>
+                  </table>
+                </td>
+                <td style="width:5%;text-align:center;font-size:20px;color:#bb8a1f;font-weight:700;">→</td>
+                <td style="width:30%;padding:4px;">
+                  <table style="width:100%;background:#fbf1e4;border:1px solid #ecd6ae;border-radius:10px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:14px 10px;text-align:center;font-size:12px;color:#bb8a1f;font-weight:700;">第 二 步</td></tr>
+                    <tr><td style="padding:0 10px 6px;text-align:center;font-size:17px;font-weight:800;color:#2b2a26;">让它找规律</td></tr>
+                    <tr><td style="padding:0 12px 14px;text-align:center;font-size:12.5px;color:#6b5f45;line-height:1.7;">哪些特征一出现，<br>赔付就容易高？反复试、反复改</td></tr>
+                  </table>
+                </td>
+                <td style="width:5%;text-align:center;font-size:20px;color:#bb8a1f;font-weight:700;">→</td>
+                <td style="width:30%;padding:4px;">
+                  <table style="width:100%;background:#f6e8e6;border:1px solid #e6c9c4;border-radius:10px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:14px 10px;text-align:center;font-size:12px;color:#b53d2e;font-weight:700;">第 三 步</td></tr>
+                    <tr><td style="padding:0 10px 6px;text-align:center;font-size:17px;font-weight:800;color:#2b2a26;">拿去对付新的</td></tr>
+                    <tr><td style="padding:0 12px 14px;text-align:center;font-size:12.5px;color:#6b4f4b;line-height:1.7;">来一个新客户，<br>它给个数：这笔风险高不高</td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <p style="font-size:12.5px;color:#8a8578;text-align:center;margin:0 0 18px;">括号里的行话：第一步叫<strong style="color:#6b6558;">训练</strong>，第二步找出来的东西叫<strong style="color:#6b6558;">模型</strong>，第三步叫<strong style="color:#6b6558;">预测</strong>。词都是纸老虎。</p>
+
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:20px 22px;">
+            <p style="font-size:15px;color:#2b2a26;font-weight:700;margin:0 0 12px;">第二步"找规律"，到底怎么找？</p>
+            <p style="font-size:14.5px;color:#4a5560;margin:0 0 12px;">答案是——<strong style="color:#b53d2e;">猜，然后改，再猜，再改</strong>。一点不神秘：</p>
+            <p style="font-size:14.5px;color:#4a5560;margin:0 0 8px;">① 先<strong style="color:#2b2a26;">随便猜一个</strong>：比如"所有人风险一样高"。</p>
+            <p style="font-size:14.5px;color:#4a5560;margin:0 0 8px;">② 拿它去对答案，<strong style="color:#2b2a26;">数一数错了多少</strong>。</p>
+            <p style="font-size:14.5px;color:#4a5560;margin:0 0 8px;">③ 看一眼<strong style="color:#2b2a26;">往哪个方向改</strong>，错得能少一点，就往那儿挪一小步。</p>
+            <p style="font-size:14.5px;color:#4a5560;margin:0;">④ 重复几万次，错得越来越少。</p>
+            <p style="font-size:14.5px;color:#4a5560;margin:14px 0 0;padding-top:14px;border-top:1px dashed #ddd6c6;">这跟人在黑暗里摸着下楼梯是一个动作：脚探一探，低就往下踩。只不过电脑每秒能"探"几万次。</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 四、它能干的四种活 ============ -->
+<table style="width:100%;background:#f7f5f0;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:34px 24px 0;">
+      <h2 style="font-size:21px;font-weight:800;color:#2b2a26;margin:0 0 6px;line-height:1.5;"><span style="color:#b53d2e;">四、</span>它能干的活，其实只有四种</h2>
+      <p style="font-size:13px;color:#8a8578;margin:0 0 18px;">听到再多花哨的名字，落到业务上，就这四类。认准是哪一类，事情就清楚一半。</p>
+
+      <!-- 图2 四种活 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 4px;font-size:13px;font-weight:700;color:#2f6b5a;text-align:center;">图 2 · 机器能干的四种活（四宫格）</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 16px 18px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:50%;padding:5px;">
+                  <table style="width:100%;background:#e3efe9;border:1px solid #c3ded2;border-radius:10px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:13px 12px 0;font-size:11.5px;color:#2f6b5a;font-weight:700;">① 判 断 是 或 否</td></tr>
+                    <tr><td style="padding:2px 12px 0;font-size:16px;font-weight:800;color:#2b2a26;">这封是垃圾邮件吗</td></tr>
+                    <tr><td style="padding:6px 12px 13px;font-size:12.5px;color:#5a6b64;line-height:1.7;">这笔理赔可疑吗<br>这个客户会退保吗<br>这张片子有问题吗</td></tr>
+                  </table>
+                </td>
+                <td style="width:50%;padding:5px;">
+                  <table style="width:100%;background:#fbf1e4;border:1px solid #ecd6ae;border-radius:10px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:13px 12px 0;font-size:11.5px;color:#bb8a1f;font-weight:700;">② 算 一 个 数</td></tr>
+                    <tr><td style="padding:2px 12px 0;font-size:16px;font-weight:800;color:#2b2a26;">这套房值多少钱</td></tr>
+                    <tr><td style="padding:6px 12px 13px;font-size:12.5px;color:#6b5f45;line-height:1.7;">这位客户明年赔多少<br>下个月能卖多少件<br>这台车残值还剩多少</td></tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="width:50%;padding:5px;">
+                  <table style="width:100%;background:#f0edf9;border:1px solid #d5cfea;border-radius:10px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:13px 12px 0;font-size:11.5px;color:#534ab7;font-weight:700;">③ 自 动 分 堆</td></tr>
+                    <tr><td style="padding:2px 12px 0;font-size:16px;font-weight:800;color:#2b2a26;">这些客户分几类</td></tr>
+                    <tr><td style="padding:6px 12px 13px;font-size:12.5px;color:#5b5478;line-height:1.7;">没有人告诉他有几类<br>也没有人告诉他哪类是哪类<br><strong style="color:#2b2a26;">它自己看着办</strong></td></tr>
+                  </table>
+                </td>
+                <td style="width:50%;padding:5px;">
+                  <table style="width:100%;background:#f6e8e6;border:1px solid #e6c9c4;border-radius:10px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:13px 12px 0;font-size:11.5px;color:#b53d2e;font-weight:700;">④ 挑 出 不 一 样 的</td></tr>
+                    <tr><td style="padding:2px 12px 0;font-size:16px;font-weight:800;color:#2b2a26;">这笔跟大家都不一样</td></tr>
+                    <tr><td style="padding:6px 12px 13px;font-size:12.5px;color:#6b4f4b;line-height:1.7;">信用卡盗刷<br>设备要坏了<br>这批零件里有次品</td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <p style="font-size:12.5px;color:#8a8578;text-align:center;margin:0 0 18px;">行话分别是：分类 · 回归 · 聚类 · 异常检测。记住画面就行，名字不重要。</p>
+
+      <table style="width:100%;background:#fbf6e9;border:1px solid #e8d9a8;border-left:5px solid #bb8a1f;border-radius:10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:16px 20px;">
+            <p style="font-size:14.5px;line-height:1.85;color:#5c4a15;margin:0;"><strong style="color:#bb8a1f;">特别提醒：</strong>第 ③ 类最容易被高估。它分出来的堆，<strong>没有名字</strong>——它只会说"这几个人像一类"，说不出"这是价格敏感型客户"。<strong>给堆起名字、判断这堆有没有用，仍然是人干的活。</strong></p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 五、为什么偏偏是现在 ============ -->
+<table style="width:100%;background:#f7f5f0;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:34px 24px 0;">
+      <h2 style="font-size:21px;font-weight:800;color:#2b2a26;margin:0 0 6px;line-height:1.5;"><span style="color:#b53d2e;">五、</span>这法子五十年前就有，为什么现在才火</h2>
+      <p style="font-size:13px;color:#8a8578;margin:0 0 18px;">思路早就有了，一直卡在三个条件上。最近二十年，三个条件同时成熟。</p>
+
+      <!-- 图3 三个条件 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 16px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 4px;font-size:13px;font-weight:700;color:#2f6b5a;text-align:center;">图 3 · 三样东西凑齐了，事情才成</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 20px 20px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:33%;padding:5px;">
+                  <table style="width:100%;background:#e3efe9;border-radius:10px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:16px 10px;text-align:center;font-size:22px;">📚</td></tr>
+                    <tr><td style="padding:0 10px 4px;text-align:center;font-size:15px;font-weight:800;color:#2b2a26;">例子够多了</td></tr>
+                    <tr><td style="padding:0 12px 16px;text-align:center;font-size:12.5px;color:#5a6b64;line-height:1.7;">业务全线上网，<br>每一笔都留下了痕迹</td></tr>
+                  </table>
+                </td>
+                <td style="width:33%;padding:5px;">
+                  <table style="width:100%;background:#fbf1e4;border-radius:10px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:16px 10px;text-align:center;font-size:22px;">⚙️</td></tr>
+                    <tr><td style="padding:0 10px 4px;text-align:center;font-size:15px;font-weight:800;color:#2b2a26;">算得够便宜了</td></tr>
+                    <tr><td style="padding:0 12px 16px;text-align:center;font-size:12.5px;color:#6b5f45;line-height:1.7;">过去要跑一周的活，<br>现在一杯咖啡的时间</td></tr>
+                  </table>
+                </td>
+                <td style="width:33%;padding:5px;">
+                  <table style="width:100%;background:#f0edf9;border-radius:10px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:16px 10px;text-align:center;font-size:22px;">🧭</td></tr>
+                    <tr><td style="padding:0 10px 4px;text-align:center;font-size:15px;font-weight:800;color:#2b2a26;">方法够好用了</td></tr>
+                    <tr><td style="padding:0 12px 16px;text-align:center;font-size:12.5px;color:#5b5478;line-height:1.7;">怎么防止"背答案"、<br>怎么防止学歪，都有成套办法</td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <p style="font-size:14.5px;color:#4a5560;margin:0 0 10px;">这里要诚实一句：<strong style="color:#2b2a26;">不是所有问题都需要它。</strong>很多事，一张 Excel 表、一条经验规则，做得又快又稳，还不用养团队。</p>
+      <p style="font-size:14.5px;color:#4a5560;margin:0;">机器学习真正的用武之地是——<strong style="color:#b53d2e;">规律藏在很多因素的交叉里，人多半看不出来的时候</strong>。比如"新能源车 × 一年跑不到五千公里 × 四十岁以上女性"这类组合，人是想不到的，但它能从数据里刨出来。</p>
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 六、厉害在哪、笨在哪 ============ -->
+<table style="width:100%;background:#f7f5f0;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:34px 24px 0;">
+      <h2 style="font-size:21px;font-weight:800;color:#2b2a26;margin:0 0 6px;line-height:1.5;"><span style="color:#b53d2e;">六、</span>它厉害在哪，笨在哪</h2>
+      <p style="font-size:13px;color:#8a8578;margin:0 0 18px;">这两栏要对着看。只看左边会盲目迷信，只看右边会错失机会。</p>
+
+      <!-- 图4 对照 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 14px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 4px;font-size:13px;font-weight:700;color:#2f6b5a;text-align:center;">图 4 · 一张表看完它的本事与短板</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 16px 18px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:50%;padding:4px 5px 4px 4px;">
+                  <table style="width:100%;background:#e3efe9;border:1px solid #c3ded2;border-radius:10px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:12px 14px;font-size:13.5px;font-weight:800;color:#2f6b5a;border-bottom:1px solid #cfe3da;">👍 它比人强的地方</td></tr>
+                    <tr><td style="padding:11px 14px;font-size:13.5px;color:#3d544c;line-height:1.75;border-bottom:1px solid #eaf3ee;">看得完<strong style="color:#2b2a26;">几百万条</strong>，一条不落</td></tr>
+                    <tr><td style="padding:11px 14px;font-size:13.5px;color:#3d544c;line-height:1.75;border-bottom:1px solid #eaf3ee;">能同时端着<strong style="color:#2b2a26;">几百个因素</strong>不混乱</td></tr>
+                    <tr><td style="padding:11px 14px;font-size:13.5px;color:#3d544c;line-height:1.75;border-bottom:1px solid #eaf3ee;">不累、不烦、不偏心，<strong style="color:#2b2a26;">同一个标准到底</strong></td></tr>
+                    <tr><td style="padding:11px 14px;font-size:13.5px;color:#3d544c;line-height:1.75;">擅长找<strong style="color:#2b2a26;">交叉规律</strong>——人最容易漏的那种</td></tr>
+                  </table>
+                </td>
+                <td style="width:50%;padding:4px 4px 4px 5px;">
+                  <table style="width:100%;background:#f6e8e6;border:1px solid #e6c9c4;border-radius:10px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:12px 14px;font-size:13.5px;font-weight:800;color:#b53d2e;border-bottom:1px solid #eddcd8;">⚠️ 它做不到的事</td></tr>
+                    <tr><td style="padding:11px 14px;font-size:13.5px;color:#6b4f4b;line-height:1.75;border-bottom:1px solid #f6eeec;"><strong style="color:#b53d2e;">没见过的不会</strong>：环境一变就失灵</td></tr>
+                    <tr><td style="padding:11px 14px;font-size:13.5px;color:#6b4f4b;line-height:1.75;border-bottom:1px solid #f6eeec;"><strong style="color:#b53d2e;">不会解释</strong>：说不出为什么，监管与沟通都难</td></tr>
+                    <tr><td style="padding:11px 14px;font-size:13.5px;color:#6b4f4b;line-height:1.75;border-bottom:1px solid #f6eeec;"><strong style="color:#b53d2e;">学坏很容易</strong>：例子里有什么偏见，它全盘照收</td></tr>
+                    <tr><td style="padding:11px 14px;font-size:13.5px;color:#6b4f4b;line-height:1.75;">只知<strong style="color:#b53d2e;">相关不知因果</strong>：它会说下雨和伞卖得多一起出现，但不会说伞能唤雨</td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:20px 22px;">
+            <p style="font-size:15px;color:#2b2a26;font-weight:700;margin:0 0 10px;">"学坏很容易"这句话，值得多说两句</p>
+            <p style="font-size:14.5px;color:#4a5560;margin:0 0 10px;">喂给它的例子，是<strong style="color:#2b2a26;">过去</strong>的。过去是什么样，它就学成什么样——包括过去那些我们自己都不愿意承认的做法。</p>
+            <p style="font-size:14.5px;color:#4a5560;margin:0;">如果过去三年理赔员偏向于严查某个地区，数据里那个地区的"可疑件"就格外多。模型学完，会<strong style="color:#b53d2e;">变本加厉地继续严查那个地区</strong>。它不会觉得这不公平——<strong>它根本没有"公平"这个概念，它只有"过去的记录里，这么判错得最少"。</strong></p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 七、走一遍完整例子 ============ -->
+<table style="width:100%;background:#f7f5f0;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:34px 24px 0;">
+      <h2 style="font-size:21px;font-weight:800;color:#2b2a26;margin:0 0 6px;line-height:1.5;"><span style="color:#b53d2e;">七、</span>走一遍：一个理赔筛查是怎么做出来的</h2>
+      <p style="font-size:13px;color:#8a8578;margin:0 0 18px;">下面这六步，是所有机器学习项目共用的骨架。看懂这一遍，再看任何项目都能对上号。</p>
+
+      <!-- 图5 六步 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 4px;font-size:13px;font-weight:700;color:#2f6b5a;text-align:center;">图 5 · 一个真实项目的六步（红色是三个最容易翻车的地方）</td>
+        </tr>
+        <tr>
+          <td style="padding:10px 18px 18px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:16%;padding:3px;">
+                  <table style="width:100%;background:#e3efe9;border-radius:8px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:11px 4px;text-align:center;font-size:11.5px;color:#2f6b5a;font-weight:700;">1</td></tr>
+                    <tr><td style="padding:0 4px 11px;text-align:center;font-size:13px;font-weight:700;color:#2b2a26;line-height:1.4;">攒例子</td></tr>
+                  </table>
+                </td>
+                <td style="width:16%;padding:3px;">
+                  <table style="width:100%;background:#fbf1e4;border-radius:8px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:11px 4px;text-align:center;font-size:11.5px;color:#bb8a1f;font-weight:700;">2</td></tr>
+                    <tr><td style="padding:0 4px 11px;text-align:center;font-size:13px;font-weight:700;color:#2b2a26;line-height:1.4;">做标记</td></tr>
+                  </table>
+                </td>
+                <td style="width:16%;padding:3px;">
+                  <table style="width:100%;background:#f6e8e6;border-radius:8px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:11px 4px;text-align:center;font-size:11.5px;color:#b53d2e;font-weight:700;">3 ⚠</td></tr>
+                    <tr><td style="padding:0 4px 11px;text-align:center;font-size:13px;font-weight:700;color:#2b2a26;line-height:1.4;">切三份</td></tr>
+                  </table>
+                </td>
+                <td style="width:16%;padding:3px;">
+                  <table style="width:100%;background:#e3efe9;border-radius:8px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:11px 4px;text-align:center;font-size:11.5px;color:#2f6b5a;font-weight:700;">4</td></tr>
+                    <tr><td style="padding:0 4px 11px;text-align:center;font-size:13px;font-weight:700;color:#2b2a26;line-height:1.4;">练</td></tr>
+                  </table>
+                </td>
+                <td style="width:16%;padding:3px;">
+                  <table style="width:100%;background:#fbf1e4;border-radius:8px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:11px 4px;text-align:center;font-size:11.5px;color:#bb8a1f;font-weight:700;">5</td></tr>
+                    <tr><td style="padding:0 4px 11px;text-align:center;font-size:13px;font-weight:700;color:#2b2a26;line-height:1.4;">验</td></tr>
+                  </table>
+                </td>
+                <td style="width:16%;padding:3px;">
+                  <table style="width:100%;background:#f6e8e6;border-radius:8px;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:11px 4px;text-align:center;font-size:11.5px;color:#b53d2e;font-weight:700;">6 ⚠</td></tr>
+                    <tr><td style="padding:0 4px 11px;text-align:center;font-size:13px;font-weight:700;color:#2b2a26;line-height:1.4;">上线盯</td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:8px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:22%;padding:12px 14px;background:#f3ede0;font-size:13px;font-weight:700;color:#2b2a26;border-bottom:1px solid #e5dfd0;">步骤</td>
+                <td style="width:78%;padding:12px 14px;background:#f3ede0;font-size:13px;font-weight:700;color:#2b2a26;border-bottom:1px solid #e5dfd0;">在这个例子里具体干什么</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 14px;font-size:13.5px;color:#2f6b5a;font-weight:700;border-bottom:1px solid #efe9dc;vertical-align:top;">1 攒例子</td>
+                <td style="padding:12px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;vertical-align:top;">把过去五年 38 万笔车险报案搬出来，每笔几十个字段：出险时间、地点、车型、修理厂、金额、报案距出险天数……</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 14px;font-size:13.5px;color:#2f6b5a;font-weight:700;border-bottom:1px solid #efe9dc;vertical-align:top;">2 做标记</td>
+                <td style="padding:12px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;vertical-align:top;">给每一笔标上"后来查实是骗赔 / 不是"。<strong style="color:#b53d2e;">这一步最贵、最慢、最不能省</strong>——没有标记，机器学习无从下手。</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 14px;font-size:13.5px;color:#b53d2e;font-weight:700;border-bottom:1px solid #efe9dc;vertical-align:top;">3 切三份 ⚠</td>
+                <td style="padding:12px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;vertical-align:top;">分成三堆：练习册、模拟卷、正式考卷。模型只在练习册上练，用模拟卷调，直到最后才允许看正式考卷。<strong style="color:#b53d2e;">翻车点一：要是把"只有结案后才知道"的字段混进去（比如"调查耗时"），等于提前偷看答案，离线成绩漂亮、上线一塌糊涂。</strong></td>
+              </tr>
+              <tr>
+                <td style="padding:12px 14px;font-size:13.5px;color:#2f6b5a;font-weight:700;border-bottom:1px solid #efe9dc;vertical-align:top;">4 练</td>
+                <td style="padding:12px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;vertical-align:top;">让它反复猜、反复改，直到在练习册上错得够少。这一步电脑干，人等着。</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 14px;font-size:13.5px;color:#2f6b5a;font-weight:700;border-bottom:1px solid #efe9dc;vertical-align:top;">5 验</td>
+                <td style="padding:12px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;vertical-align:top;">拿模拟卷考它。这里要看的不是"对了几道"，而是<strong style="color:#2b2a26;">它挑出来的那一小堆里，真货占多少</strong>——因为人力只够查那么几十件。</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 14px;font-size:13.5px;color:#b53d2e;font-weight:700;vertical-align:top;">6 上线盯 ⚠</td>
+                <td style="padding:12px 14px;font-size:13.5px;color:#4a5560;vertical-align:top;">不是发布完就结束。<strong style="color:#b53d2e;">翻车点二：留出十分之一不走模型，作为对照组</strong>，三个月后才知道它到底带来了多少。<strong style="color:#b53d2e;">翻车点三：每个月盯着"它打的分"分布有没有漂移</strong>，一漂就得查。</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <table style="width:100%;background:#fbf6e9;border:1px solid #e8d9a8;border-left:5px solid #bb8a1f;border-radius:10px;margin:16px 0 0;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:16px 20px;">
+            <p style="font-size:14.5px;line-height:1.85;color:#5c4a15;margin:0;"><strong style="color:#bb8a1f;">管理启示：</strong>这六步里，<strong>真正花时间的是第 1、2、6 步</strong>——找数据、标答案、盯上线。中间"练"那一步，反而是最省事的。<strong>把预算和耐心押在这三头上，比换什么高级算法都管用。</strong></p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 八、什么时候该用 ============ -->
+<table style="width:100%;background:#f7f5f0;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:34px 24px 0;">
+      <h2 style="font-size:21px;font-weight:800;color:#2b2a26;margin:0 0 6px;line-height:1.5;"><span style="color:#b53d2e;">八、</span>什么时候该用，什么时候别用</h2>
+      <p style="font-size:13px;color:#8a8578;margin:0 0 18px;">最后给一张能直接拿去开会的判断表。</p>
+
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:8px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:50%;padding:12px 14px;background:#e3efe9;font-size:13px;font-weight:700;color:#2f6b5a;border-bottom:1px solid #e5dfd0;">✅ 适合上机器学习的情形</td>
+                <td style="width:50%;padding:12px 14px;background:#f3ede0;font-size:13px;font-weight:700;color:#8a6d3b;border-bottom:1px solid #e5dfd0;">⛔ 先别急着上的情形</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 14px;font-size:13.5px;color:#3d544c;line-height:1.75;border-bottom:1px solid #efe9dc;vertical-align:top;">这类事<strong style="color:#2b2a26;">天天发生、量很大</strong></td>
+                <td style="padding:12px 14px;font-size:13.5px;color:#6b6558;line-height:1.75;border-bottom:1px solid #efe9dc;vertical-align:top;">一年遇不上几次，样本不够</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 14px;font-size:13.5px;color:#3d544c;line-height:1.75;border-bottom:1px solid #efe9dc;vertical-align:top;">过去的例子<strong style="color:#2b2a26;">已经攒够了，而且标好了</strong></td>
+                <td style="padding:12px 14px;font-size:13.5px;color:#6b6558;line-height:1.75;border-bottom:1px solid #efe9dc;vertical-align:top;">数据还没攒，或者答案要几年后才揭晓</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 14px;font-size:13.5px;color:#3d544c;line-height:1.75;border-bottom:1px solid #efe9dc;vertical-align:top;">规律<strong style="color:#2b2a26;">藏在因素的交叉里</strong>，人说不清</td>
+                <td style="padding:12px 14px;font-size:13.5px;color:#6b6558;line-height:1.75;border-bottom:1px solid #efe9dc;vertical-align:top;">规则本来就清清楚楚，写几条判断就够了</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 14px;font-size:13.5px;color:#3d544c;line-height:1.75;border-bottom:1px solid #efe9dc;vertical-align:top;">判错了<strong style="color:#2b2a26;">后果可以承受</strong>，能补救</td>
+                <td style="padding:12px 14px;font-size:13.5px;color:#6b6558;line-height:1.75;border-bottom:1px solid #efe9dc;vertical-align:top;">判错一次就要命，且必须说出理由</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 14px;font-size:13.5px;color:#3d544c;line-height:1.75;border-bottom:1px solid #efe9dc;vertical-align:top;">环境和过去<strong style="color:#2b2a26;">大致差不多</strong></td>
+                <td style="padding:12px 14px;font-size:13.5px;color:#6b6558;line-height:1.75;border-bottom:1px solid #efe9dc;vertical-align:top;">正在经历大变：新政策、新产品、新市场</td>
+              </tr>
+              <tr>
+                <td style="padding:12px 14px;font-size:13.5px;color:#3d544c;line-height:1.75;vertical-align:top;">能<strong style="color:#2b2a26;">留出对照组</strong>，事后算清增量</td>
+                <td style="padding:12px 14px;font-size:13.5px;color:#6b6558;line-height:1.75;vertical-align:top;">必须全量上线、容不下对照实验</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 九、术语小抄 ============ -->
+<table style="width:100%;background:#f7f5f0;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:34px 24px 0;">
+      <h2 style="font-size:21px;font-weight:800;color:#2b2a26;margin:0 0 6px;line-height:1.5;"><span style="color:#b53d2e;">九、</span>最后：一份听得懂的术语小抄</h2>
+      <p style="font-size:13px;color:#8a8578;margin:0 0 18px;">前面都没提这些词，是怕它们挡住画面。现在画面有了，把名字对上，以后开会就听得懂了。</p>
+
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:8px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:26%;padding:12px 14px;background:#f3ede0;font-size:13px;font-weight:700;color:#2b2a26;border-bottom:1px solid #e5dfd0;">听到的词</td>
+                <td style="width:74%;padding:12px 14px;background:#f3ede0;font-size:13px;font-weight:700;color:#2b2a26;border-bottom:1px solid #e5dfd0;">其实说的是</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 14px;font-size:13.5px;color:#b53d2e;font-weight:700;border-bottom:1px solid #efe9dc;">训练</td>
+                <td style="padding:11px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;">给它看例子、让它猜、让它改，直到错得够少</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 14px;font-size:13.5px;color:#b53d2e;font-weight:700;border-bottom:1px solid #efe9dc;">模型</td>
+                <td style="padding:11px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;">练完之后留下来的那套"规律"，可以存起来反复用</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 14px;font-size:13.5px;color:#b53d2e;font-weight:700;border-bottom:1px solid #efe9dc;">预测 / 推理</td>
+                <td style="padding:11px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;">拿模型去对付没见过的新情况</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 14px;font-size:13.5px;color:#b53d2e;font-weight:700;border-bottom:1px solid #efe9dc;">特征</td>
+                <td style="padding:11px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;">描述一件事用的那些角度：年龄、车型、金额、天数……</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 14px;font-size:13.5px;color:#b53d2e;font-weight:700;border-bottom:1px solid #efe9dc;">标签</td>
+                <td style="padding:11px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;">那件已知的"答案"：这笔后来查实是骗赔</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 14px;font-size:13.5px;color:#b53d2e;font-weight:700;border-bottom:1px solid #efe9dc;">训练集 / 测试集</td>
+                <td style="padding:11px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;">练习册 / 正式考卷。考卷必须事先封起来</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 14px;font-size:13.5px;color:#b53d2e;font-weight:700;border-bottom:1px solid #efe9dc;">过拟合</td>
+                <td style="padding:11px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;">答案连同印刷瑕疵一起背下来了——练习册满分，正式考砸</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 14px;font-size:13.5px;color:#b53d2e;font-weight:700;border-bottom:1px solid #efe9dc;">泛化</td>
+                <td style="padding:11px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;">举一反三的能力。这才是真正要的东西</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 14px;font-size:13.5px;color:#b53d2e;font-weight:700;border-bottom:1px solid #efe9dc;">深度学习</td>
+                <td style="padding:11px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;">规律特别绕、要一层一层套着找的那一种机器学习</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 14px;font-size:13.5px;color:#b53d2e;font-weight:700;border-bottom:1px solid #efe9dc;">强化学习</td>
+                <td style="padding:11px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;">没有标准答案，只能靠"事后给了多少好处"来学着做决策</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 14px;font-size:13.5px;color:#b53d2e;font-weight:700;border-bottom:1px solid #efe9dc;">大模型</td>
+                <td style="padding:11px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;">用近乎全网的数据练出来的超大模型，所以什么都会一点</td>
+              </tr>
+              <tr>
+                <td style="padding:11px 14px;font-size:13.5px;color:#b53d2e;font-weight:700;">人工智能</td>
+                <td style="padding:11px 14px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #efe9dc;">最大的那个筐。机器学习只是筐里的一件，深度学习是机器学习里的一种</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <table style="width:100%;background:#fbf6e9;border:1px solid #e8d9a8;border-left:5px solid #bb8a1f;border-radius:10px;margin:18px 0 0;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:16px 20px;">
+            <p style="font-size:14.5px;line-height:1.85;color:#5c4a15;margin:0;"><strong style="color:#bb8a1f;">记住这个包含关系就不会乱：</strong><br>人工智能 ⊃ 机器学习 ⊃ 深度学习 ⊃ 大模型。<br>它们是<strong>一层套一层的大小关系，不是四个并列的新东西</strong>。听到新名词，先问一句"你属于哪一层"，含糊立刻现形。</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+
+<!-- ============ 页脚 ============ -->
+<table style="width:100%;background:#2b2a26;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:36px 30px 28px;text-align:center;">
+      <p style="font-size:15px;color:#c9c3b4;line-height:1.9;margin:0 0 8px;">风险可以被理解，安全感可以被计算。</p>
+      <p style="font-size:13.5px;color:#8d8a7e;line-height:1.8;margin:0 0 18px;">用确定的小钱，换不确定的大钱——<br>这既是保险的生意，也是机器学习这行当的全部道理：<br><strong style="color:#bb8a1f;">我们没有办法消灭不确定，但可以把它的模样看得更清楚一点。</strong></p>
+      <table style="width:100%;border-top:1px solid #45443f;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:16px 0 0;">
+            <p style="font-size:13px;color:#8d8a7e;margin:0 0 6px;">本文是「机器学习知识库」的第一篇。后续会讲：三要素、模型族怎么选、深度学习与强化学习、以及精算师真正用得上的场景。</p>
+            <p style="font-size:13px;color:#8d8a7e;margin:0;">更多资料与答疑，在知识星球：<strong style="color:#c9c3b4;">https://wx.zsxq.com/</strong></p>
+          </td>
+        </tr>
+      </table>
+      <p style="font-size:12px;color:#6b6862;margin:16px 0 0;">不卖焦虑 · 不推销 · 不讲术语 · 数据先行</p>
+    </td>
+  </tr>
+</table>
+
+
+  </div>
+
+  <div class="pager">
+    <a href="index.html">← 返回首页</a>
+    <a href="mgmt.html">② 管理层通俗版 →</a>
+  </div>
+</main>
+
+<script src="js/kb.js"></script>
+</body>
+</html>

@@ -1,0 +1,268 @@
+/* ============================================================
+   中国精算师考试知识库 · 设计系统（财经蓝 + 宣纸底）
+   用法：复制 assets/scaffold 整个目录，改色板变量即可适配新科目。
+   ============================================================ */
+:root{
+  /* 墨色 / 宣纸 */
+  --ink:#2b2a26;--ink-2:#5f5e5a;--ink-3:#888780;
+  --paper:#f7f5f0;--card:#ffffff;
+  /* 主色：数据青（精算模型与数据分析） */
+  --blue:#0E7490;--blue-2:#155E75;--blue-l:#E3F2F7;
+  /* 强调：琥珀（权重条 / 记忆口诀） */
+  --amber:#854F0B;--amber-l:#FAEEDA;--amber-s:#FAC775;
+  /* 朱砂（真题 / 警告 / 风险） */
+  --red:#A32D2D;--red-l:#FCEBEB;--cinnabar:#A32D2D;
+  /* 青绿（实务 / 正向 / 达标） */
+  --teal:#0F6E56;--teal-l:#E1F5EE;
+  /* 紫（提示 / 进阶） */
+  --purple:#534AB7;--purple-l:#EEEDFE;
+  --line:#ddd9cf;--line-2:#c9c4b6;
+  /* 深青导航底 */
+  --night:#0d242e;--night-2:#14586b;
+  --serif:"Noto Serif SC","Source Han Serif SC","Songti SC",STSong,"SimSun",serif;
+  --sans:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",Consolas,"Courier New",monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);font-size:15.5px;line-height:1.85}
+a{color:var(--blue);text-decoration:none}
+a:hover{text-decoration:underline}
+td a,.body a,li a{font-weight:600;border-bottom:1px dashed rgba(26,88,136,.45)}
+td a:hover,.body a:hover,li a:hover{color:var(--cinnabar);border-bottom-color:var(--cinnabar)}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:600;line-height:1.4;color:#1d1c19}
+.en{font-family:var(--sans);color:var(--ink-3);font-size:.82em;font-style:italic}
+.hl{font-weight:600;color:var(--blue-2)}
+
+/* ---------- 布局：固定侧栏 + 主区 ---------- */
+.side{position:fixed;top:0;left:0;bottom:0;width:224px;background:var(--night);color:#c8dde2;overflow-y:auto;padding:22px 0 40px;z-index:10}
+.side .brand{padding:0 20px 16px;border-bottom:1px solid rgba(255,255,255,.12)}
+.side .brand b{display:block;font-family:var(--serif);font-size:17px;color:#fff;letter-spacing:1px}
+.side .brand span{font-size:11.5px;color:#7ba5af}
+.side nav{padding:12px 10px}
+.side nav a{display:flex;align-items:baseline;gap:6px;padding:7px 12px;border-radius:7px;color:#b9d2da;font-size:13.5px}
+.side nav a:hover{background:rgba(255,255,255,.07);text-decoration:none;color:#fff}
+.side nav a.on{background:var(--blue);color:#fff}
+.side nav a .w{margin-left:auto;font-size:10.5px;color:#7ba5af}
+.side nav a.on .w{color:#cfeef7}
+.side nav .grp{margin:14px 12px 4px;font-size:11px;color:#6b9aa5;letter-spacing:2px}
+.side .prog-mini{margin:16px 16px 0;padding:10px 12px;border:1px dashed rgba(255,255,255,.2);border-radius:10px;font-size:11.5px;color:#9dc4ce}
+.side .prog-mini b{color:var(--amber-s);font-family:var(--mono)}
+.main{margin-left:224px;padding:40px 48px 80px;max-width:940px}
+@media(max-width:900px){.side{display:none}.main{margin:0;padding:24px 18px 60px}}
+
+/* ---------- 章头（含考纲权重条） ---------- */
+.ch-head{background:linear-gradient(135deg,var(--night) 0%,var(--night-2) 100%);color:#fff;border-radius:14px;padding:30px 34px;margin-bottom:28px;position:relative;overflow:hidden}
+.ch-head::after{content:"※";position:absolute;right:22px;top:14px;font-family:var(--serif);font-size:52px;color:rgba(255,255,255,.07)}
+.ch-head .no{font-family:var(--mono);font-size:12px;color:#8fc4dd;letter-spacing:3px}
+.ch-head h1{color:#fff;font-size:26px;margin:6px 0 4px}
+.ch-head .sub{color:#a9d2e0;font-size:13.5px}
+.ch-head .meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.ch-head .meta span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:3px 14px;font-size:12.5px;color:#dbedf5}
+.wbar{margin-top:14px}
+.wbar .lab{display:flex;justify-content:space-between;font-size:11.5px;color:#9dc4ce;margin-bottom:4px}
+.wbar .bar{height:8px;background:rgba(255,255,255,.15);border-radius:5px;overflow:hidden}
+.wbar .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--amber-s),var(--amber));border-radius:5px}
+
+/* ---------- 目录 ---------- */
+.toc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 24px;margin-bottom:34px}
+.toc b{font-size:13px;color:var(--ink-2);letter-spacing:2px}
+.toc ol{margin:8px 0 0 0;padding-left:22px;columns:2;column-gap:36px}
+.toc li{font-size:13.5px;margin:3px 0;break-inside:avoid}
+@media(max-width:700px){.toc ol{columns:1}}
+
+/* ---------- 章节 ---------- */
+section{margin-bottom:42px}
+section>h2{font-size:21px;border-left:5px solid var(--blue);padding-left:12px;margin-bottom:6px}
+section>h2 .sn{font-family:var(--mono);color:var(--blue);font-size:15px;margin-right:4px;vertical-align:2px}
+section>.lead{color:var(--ink-2);font-size:13.5px;margin-bottom:14px}
+h3{font-size:16.5px;margin:26px 0 10px;color:var(--blue-2)}
+h3::before{content:"◆";color:var(--amber-s);font-size:11px;margin-right:7px;vertical-align:2px}
+h4{font-size:15px;margin:16px 0 8px}
+/* 节内小标题：带琥珀竖线的三级细分，解决长段落「一坨」的问题 */
+h4.sub{font-family:var(--serif);font-size:14.5px;margin:22px 0 8px;padding:5px 12px;border-left:3px solid var(--amber-s);color:#4a3608;background:linear-gradient(90deg,#faf4e6 0%,rgba(250,244,230,0) 100%);border-radius:0 6px 6px 0}
+h4.sub::before{content:"▸";color:var(--amber);margin-right:6px;font-size:11px}
+p{margin:8px 0}
+ul,ol{padding-left:24px;margin:8px 0}
+li{margin:4px 0}
+
+/* ---------- 节号徽标（ML1 / ML2 …） ---------- */
+.sn{display:inline-block;font-family:var(--mono);color:var(--blue);background:var(--blue-l);border:1px solid #c6dfe9;border-radius:5px;padding:0 6px;font-size:12px;margin-right:6px;vertical-align:2px}
+
+/* ---------- 星级（重要度） ---------- */
+.star{display:inline-block;font-size:11px;border-radius:4px;padding:0 7px;margin-left:8px;vertical-align:2px;font-family:var(--sans);letter-spacing:1px;white-space:nowrap}
+.s3{background:var(--red-l);color:var(--red);border:1px solid #f0c9c9}
+.s2{background:var(--amber-l);color:var(--amber);border:1px solid var(--amber-s)}
+.s1{background:#eef0ec;color:var(--ink-2);border:1px solid var(--line)}
+
+/* ---------- 公式行 fx（单独使用时亦须有样式） ---------- */
+.fx{background:var(--blue-l);border:1px solid #c6dfe9;border-left:4px solid var(--blue);border-radius:8px;padding:10px 16px;margin:11px 0;font-size:14.2px;line-height:1.92;color:#14313b;overflow-x:auto}
+.fx b{color:var(--blue-2)}
+.fx+.fx{margin-top:-2px}
+
+/* ---------- 页面章节目录（带锚点跳转） ---------- */
+.toc-nav{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 24px 20px;margin-bottom:30px}
+.toc-nav .th{font-family:var(--serif);font-size:15px;color:var(--ink);margin-bottom:4px}
+.toc-nav .th span{font-size:12px;color:var(--ink-3);margin-left:8px;font-family:var(--sans)}
+.toc-nav .hint{font-size:12.5px;color:var(--ink-3);margin-bottom:14px}
+.toc-nav .part{margin-top:14px;font-size:12px;color:var(--blue-2);letter-spacing:2px;border-bottom:1px dashed var(--line);padding-bottom:4px}
+.toc-nav ul{list-style:none;padding:0;margin:8px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:2px 22px}
+.toc-nav li{margin:0}
+.toc-nav a{display:block;padding:4px 10px;border-radius:6px;font-size:13.4px;color:var(--ink-2);border:1px solid transparent}
+.toc-nav a:hover{background:var(--blue-l);color:var(--blue-2);text-decoration:none;border-color:#c6dfe9}
+.toc-nav a .k{display:inline-block;font-family:var(--mono);font-size:11px;color:var(--blue);min-width:40px}
+.toc-nav a .tag{float:right;font-size:10.5px;color:var(--purple);background:var(--purple-l);border-radius:4px;padding:0 6px;margin-left:6px}
+@media(max-width:700px){.toc-nav ul{grid-template-columns:1fr}}
+
+/* ---------- 拓展徽章（超出考纲的延伸内容） ---------- */
+.xtra{display:inline-block;font-size:10.5px;background:var(--purple-l);color:var(--purple);border:1px solid #d9d6f5;border-radius:4px;padding:0 7px;margin-left:6px;vertical-align:2px;font-weight:600;letter-spacing:.5px}
+.xcard{background:#fcfbff;border:1px solid #e0dcf7;border-left:4px solid var(--purple);border-radius:10px;padding:12px 18px;margin:14px 0;font-size:14px}
+.xcard b{color:var(--purple)}
+.xcard .xh{display:block;font-weight:600;color:var(--purple);font-family:var(--serif);font-size:14.5px;margin-bottom:4px}
+
+/* ---------- 内容组件卡 ---------- */
+.formula{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:14px 18px;margin:14px 0}
+.formula .fx{font-family:var(--mono);font-size:14.5px;color:var(--blue-2);background:var(--blue-l);border-radius:7px;padding:10px 16px;margin:6px 0;overflow-x:auto;line-height:2}
+.formula .fx b{color:var(--red);font-weight:600}
+.formula .note{font-size:12.8px;color:var(--ink-2)}
+.mnem{background:var(--amber-l);border:1px dashed var(--amber);border-radius:10px;padding:12px 18px;margin:14px 0;font-size:14px}
+.mnem b{color:var(--amber)}
+.mnem .verse{font-family:var(--serif);font-size:15.5px;color:#4a3608;display:block;margin:4px 0;letter-spacing:.5px}
+.exam{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:10px;padding:12px 18px;margin:14px 0;font-size:14px}
+.exam b{color:var(--red)}
+.exam .yr{display:inline-block;font-family:var(--mono);font-size:11px;background:var(--red-l);color:var(--red);border-radius:4px;padding:0 7px;margin-right:6px}
+.exam .yr.hot{background:var(--red);color:#fff}
+.prac{background:var(--teal-l);border:1px solid #bfe4d6;border-radius:10px;padding:12px 18px;margin:14px 0;font-size:14px}
+.prac b{color:var(--teal)}
+.warn{background:var(--red-l);border:1px solid #f0c9c9;border-radius:10px;padding:12px 18px;margin:14px 0;font-size:14px}
+.warn b{color:var(--red)}
+.tip{background:var(--purple-l);border:1px solid #d9d6f5;border-radius:10px;padding:12px 18px;margin:14px 0;font-size:14px}
+.tip b{color:var(--purple)}
+
+/* ---------- 来源徽章（教/规/题） ---------- */
+.src{display:inline-block;font-size:10.5px;font-family:var(--sans);border-radius:5px;padding:1px 8px;margin-right:6px;vertical-align:1px;font-weight:600;letter-spacing:.5px}
+.src-jiao{background:var(--blue-l);color:var(--blue-2);border:1px solid #bcd6ef}
+.src-gui{background:var(--teal-l);color:var(--teal);border:1px solid #bfe4d6}
+.src-ti{background:var(--red-l);color:var(--red);border:1px solid #f0c9c9}
+.src-note{font-size:12px;color:var(--ink-2);background:#fdf9ef;border:1px dashed var(--line-2);border-radius:8px;padding:8px 14px;margin:10px 0}
+
+/* ---------- 表格 ---------- */
+table{width:100%;border-collapse:collapse;margin:14px 0;background:var(--card);font-size:13.5px;border-radius:10px;overflow:hidden;box-shadow:0 0 0 1px var(--line)}
+th{background:#eef1e9;color:#3d3c37;font-weight:600;padding:9px 12px;text-align:left;border-bottom:2px solid var(--line-2);white-space:nowrap}
+td{padding:8px 12px;border-bottom:1px solid #eceade;vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#faf8f2}
+td .en{white-space:nowrap}
+.tbl-scroll{overflow-x:auto}
+.tbl-scroll table{min-width:620px}
+td.num,th.num{text-align:right;font-family:var(--mono);font-size:13px}
+td.ctr,th.ctr{text-align:center}
+.pos{color:#B03A2E;font-weight:600}
+.neg{color:#1E7A4F;font-weight:600}
+.note-td{background:#fdf9ef!important}
+
+/* ---------- 折叠（双层答案 / 详细展开） ---------- */
+details{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:10px 0;overflow:hidden}
+details summary{cursor:pointer;padding:11px 18px;font-weight:600;font-size:14px;background:#f2f0e9;list-style:none;display:flex;align-items:center;gap:8px;user-select:none}
+details summary::-webkit-details-marker{display:none}
+details summary::before{content:"▸";color:var(--blue);transition:transform .2s}
+details[open] summary::before{transform:rotate(90deg)}
+details .body{padding:14px 20px;border-top:1px solid var(--line)}
+
+/* ---------- 双层答案 ---------- */
+.ans-skel{background:var(--amber-l);border:1px solid var(--amber-s);border-radius:8px;padding:10px 16px;margin:8px 0;font-size:14px}
+.ans-skel b{color:var(--amber)}
+.ans-detail{border-left:3px solid var(--ink-3);padding-left:14px;margin:8px 0;font-size:13.5px;color:var(--ink-2)}
+
+/* ---------- 图谱 / 插图容器 ---------- */
+.fig{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:18px 0;overflow-x:auto}
+.fig svg{display:block;width:100%;max-width:760px;height:auto;margin:0 auto}
+@media(max-width:700px){.fig svg{min-width:660px}}
+.fig-cap{font-size:12px;color:var(--ink-3);text-align:center;margin:6px 0 0}
+
+/* ---------- 演算器 ---------- */
+.calc{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--amber);border-radius:12px;padding:18px 22px;margin:16px 0}
+.calc h4{margin:0 0 10px;color:var(--amber);font-family:var(--serif)}
+.calc .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:6px 0}
+.calc label{font-size:13px;color:var(--ink-2);min-width:120px}
+.calc input{width:120px;padding:6px 8px;border:1px solid var(--line-2);border-radius:6px;font-family:var(--mono);font-size:13.5px}
+.calc .out{font-family:var(--mono);font-weight:600;color:var(--blue-2)}
+.calc .calc-run{margin-top:8px;background:var(--blue);color:#fff;border:none;border-radius:8px;padding:7px 18px;cursor:pointer;font-size:13.5px}
+.calc .calc-run:hover{background:var(--blue-2)}
+.calc .verdict{margin-top:10px;font-size:13.5px;color:var(--ink-2)}
+
+/* ---------- 完成按钮 / 翻页 ---------- */
+.done-btn{display:inline-block;margin:6px 0 22px;padding:8px 18px;border:1px solid var(--blue);border-radius:20px;background:#fff;color:var(--blue);cursor:pointer;font-size:13.5px;font-family:var(--sans)}
+.done-btn.did{background:var(--teal);color:#fff;border-color:var(--teal)}
+.pager{display:flex;justify-content:space-between;margin-top:46px;padding-top:22px;border-top:1px solid var(--line)}
+.pager a{padding:9px 18px;border:1px solid var(--line-2);border-radius:9px;font-size:13.5px;color:var(--ink-2)}
+.pager a:hover{background:var(--blue-l);color:var(--blue-2);text-decoration:none}
+.js-toggle-answers{margin:10px 0;background:var(--paper);border:1px solid var(--line-2);border-radius:8px;padding:7px 16px;cursor:pointer;font-size:13.5px;color:var(--ink-2)}
+.back-top{position:fixed;right:24px;bottom:24px;width:42px;height:42px;border-radius:50%;background:var(--blue);color:#fff;border:none;font-size:20px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s;z-index:98;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.back-top.show{opacity:1;pointer-events:auto}
+
+/* ============================================================
+   机器学习知识库 · 专区补充组件
+   ============================================================ */
+
+/* ---------- 文章容器（承载公众号版全文，内联样式优先） ---------- */
+.art-wrap{max-width:780px;margin:0 auto;background:transparent}
+.art-wrap table{border-radius:0;box-shadow:none}
+
+/* ---------- 首页：读物卡片网格 ---------- */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:16px;margin:18px 0 8px}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:18px 20px;color:var(--ink);transition:box-shadow .15s,transform .15s}
+.card:hover{text-decoration:none;box-shadow:0 4px 16px rgba(13,36,46,.10);transform:translateY(-2px)}
+.card .lv{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:1px;border-radius:5px;padding:1px 8px;margin-bottom:8px}
+.card h4{margin:0 0 6px;font-family:var(--serif);font-size:16.5px;line-height:1.45}
+.card p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.75}
+.card .ft{margin-top:10px;font-size:11.5px;color:var(--ink-3);font-family:var(--mono)}
+.card.lv0{border-left-color:var(--teal)}
+.card.lv1{border-left-color:var(--blue)}
+.card.lv2{border-left-color:var(--amber)}
+.card.lv3{border-left-color:var(--purple)}
+.card.lv4{border-left-color:var(--red)}
+.lv0 .lv{background:var(--teal-l);color:var(--teal);border:1px solid #bfe4d6}
+.lv1 .lv{background:var(--blue-l);color:var(--blue-2);border:1px solid #c6dfe9}
+.lv2 .lv{background:var(--amber-l);color:var(--amber);border:1px solid var(--amber-s)}
+.lv3 .lv{background:var(--purple-l);color:var(--purple);border:1px solid #d9d6f5}
+.lv4 .lv{background:var(--red-l);color:var(--red);border:1px solid #f0c9c9}
+@media(max-width:640px){.cards{grid-template-columns:1fr}}
+
+/* ---------- 学习路线（四选一） ---------- */
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0}
+@media(max-width:760px){.paths{grid-template-columns:1fr}}
+.path{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px}
+.path .who{font-family:var(--serif);font-size:15px;color:var(--ink);margin-bottom:4px}
+.path .who span{font-size:11.5px;color:var(--ink-3);font-family:var(--sans);margin-left:6px}
+.path .flow{font-size:13px;color:var(--ink-2);line-height:2;margin:6px 0 0}
+.path .flow a{font-weight:600}
+.path .flow .ar{color:var(--amber);margin:0 5px}
+.path .t{display:inline-block;font-size:11.5px;color:var(--amber);background:var(--amber-l);border-radius:5px;padding:1px 9px;margin-top:10px}
+.path.p0{border-top:3px solid var(--teal)}
+.path.p1{border-top:3px solid var(--blue)}
+.path.p2{border-top:3px solid var(--amber)}
+.path.p3{border-top:3px solid var(--purple)}
+
+/* ---------- 资源条目（外部链接） ---------- */
+.res{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin:14px 0}
+.res .rt{font-family:var(--serif);font-size:15.5px;color:var(--ink)}
+.res .rt .badge{display:inline-block;font-size:10.5px;font-family:var(--sans);letter-spacing:1px;border-radius:5px;padding:1px 8px;margin-right:8px;vertical-align:2px}
+.res .rt .b-wx{background:var(--teal-l);color:var(--teal);border:1px solid #bfe4d6}
+.res .rt .b-gh{background:#eef0ec;color:var(--ink-2);border:1px solid var(--line-2)}
+.res .rt .b-book{background:var(--red-l);color:var(--red);border:1px solid #f0c9c9}
+.res .rt .b-note{background:var(--amber-l);color:var(--amber);border:1px solid var(--amber-s)}
+.res ul{margin:8px 0 0;padding-left:22px}
+.res li{font-size:13.5px;color:var(--ink-2);margin:4px 0}
+.res .why{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:13px;color:var(--ink-2)}
+.res .why b{color:var(--blue-2)}
+
+/* ---------- 一句话结论条 ---------- */
+.oneline{background:linear-gradient(135deg,var(--night) 0%,var(--night-2) 100%);color:#fff;border-radius:12px;padding:20px 26px;margin:18px 0}
+.oneline .q{font-size:12px;letter-spacing:2px;color:#8fc4dd;margin-bottom:8px}
+.oneline .a{font-family:var(--serif);font-size:17px;line-height:1.7;color:#fff}
+.oneline .a b{color:var(--amber-s)}
+
+/* ---------- 目录层级表 ---------- */
+.map-tbl td{font-size:13.2px}
+.map-tbl td:first-child{white-space:nowrap;font-family:var(--mono);color:var(--blue-2)}

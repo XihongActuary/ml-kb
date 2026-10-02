@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>外部资源 · 素材来源｜机器学习知识库 · 西红精算</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<aside class="side">
+  <div class="brand"><b>机器学习知识库</b><span>从零基础到能上手 · 西红精算</span></div>
+  <nav>
+    <a href="index.html">首页 · 怎么读这套库</a>
+    <div class="grp">第一层 · 零基础</div>
+    <a href="overview.html">① 机器学习到底在干什么</a>
+    <a href="mgmt.html">② 给管理层看的通俗版</a>
+    <div class="grp">第二层 · 系统学</div>
+    <a href="onepage.html">③ 一文读懂机器学习</a>
+    <a href="core.html">④ 核心三要素与 AI 全景</a>
+    <a href="oneday.html">⑤ 一小时精读</a>
+    <div class="grp">第三层 · 深钻</div>
+    <a href="notes.html">⑥ 西瓜书十七章 + 拓展</a>
+    <div class="grp">关于</div>
+    <a href="resources.html" class="on">外部资源 · 素材来源</a>
+    <a href="amkb.html">姊妹库 · 精算模型与数据分析</a>
+    <a href="xihong.html">关于 · 西红精算</a>
+  </nav>
+  <div class="prog-mini">学习进度 <b>0 / 7</b></div>
+</aside>
+
+<main class="main">
+  <div class="ch-head">
+    <div class="no">附录 · SOURCES</div>
+    <h1>外部资源与素材来源</h1>
+    <div class="sub">这套库读的是什么、从哪儿来的、以及读完之后还能往哪儿走</div>
+    <div class="meta"><span>4 类来源</span><span>17 章映射</span><span>延伸阅读 8 项</span></div>
+  </div>
+
+  <button class="done-btn" data-id="resources">○ 标记本页已完成</button>
+
+  <!-- ==================== 一、两处指定来源 ==================== -->
+  <section>
+    <h2><span class="sn">一</span>两处指定的外部来源</h2>
+    <p class="lead">这两处是本库立项时就明确要求吸收的材料，它们各自承担了不同的角色。</p>
+
+    <div class="res">
+      <div class="rt"><span class="badge b-wx">公众号</span>机器学习科普长文</div>
+      <ul>
+        <li>地址：<a href="https://mp.weixin.qq.com/s/2a182fMfdNuAyw1hfvn7jg" target="_blank" rel="noopener">mp.weixin.qq.com/s/2a182fMfdNuAyw1hfvn7jg</a></li>
+        <li>性质：面向大众的机器学习科普推文，图文混排、通俗取向</li>
+      </ul>
+      <div class="why">
+        <b>在本库中的角色 —— 参照，而非底稿。</b>它主要影响的是 <a href="overview.html">① 号读物</a> 的<b>比喻选择与章节节奏</b>：一篇能让完全的外行读下去的文章，开篇必须落在生活经验上，而不是术语上。本库其余五篇保持自己的体例与精算切口，没有照搬其结构。
+      </div>
+    </div>
+
+    <div class="res">
+      <div class="rt"><span class="badge b-gh">GITHUB</span>Vay-keen / Machine-learning-learning-notes</div>
+      <ul>
+        <li>地址：<a href="https://github.com/Vay-keen/Machine-learning-learning-notes" target="_blank" rel="noopener">github.com/Vay-keen/Machine-learning-learning-notes</a></li>
+        <li>性质：周志华《机器学习》（西瓜书）十七章的读书笔记，Markdown 格式，按章组织</li>
+        <li>内容：每章的概念梳理、公式推导、算法流程与关键结论</li>
+      </ul>
+      <div class="why">
+        <b>在本库中的角色 —— 已被完整吸收并重写。</b>十七章内容逐章落地为 <a href="notes.html">⑥ 号读物</a> 的 ML1–ML17，但<b>不是直接搬运</b>：本库做了三件事——① 按"概念 ⇒ 公式 ⇒ 算法 ⇒ 考点 ⇒ 实战"重排结构；② 补入 6 张自绘图与 5 台可交互演算器；③ 在十七章之外追加 ML18–ML24 共 7 节拓展（XGBoost、深度学习版图、优化器与正则化、可解释性与模型治理、定价 GLM 对 GBM、三个落地场景、上手路线）。
+      </div>
+    </div>
+
+    <div class="res">
+      <div class="rt"><span class="badge b-book">教 材</span>周志华《机器学习》· 西瓜书</div>
+      <ul>
+        <li>性质：中文机器学习的标准教材，十七章覆盖了本学科的经典骨架</li>
+        <li>在本库中的位置：<b>术语与公式的唯一口径来源</b>。凡有分歧，以该书为准</li>
+      </ul>
+      <div class="why">
+        本书的好处是体系完整、术语统一；代价是入门门槛偏高。本库的 ①⑤ 两篇，本质上是在给这本书<b>铺一段台阶</b>——先把画面装进脑子，再翻开书，每章都会变薄。
+      </div>
+    </div>
+
+    <div class="res">
+      <div class="rt"><span class="badge b-note">内 部</span>本库自建材料</div>
+      <ul>
+        <li>25 张自绘图：除标注外，全部为手工绘制（SVG 或 matplotlib 真实拟合）</li>
+        <li>5 台演算器：闵可夫斯基距离、PCA 方差解释率、代价敏感误分类代价、XGBoost 增益与叶子权重、PSI 群体稳定性指数</li>
+        <li>精算案例：定价、理赔、准备金、客户经营四个场景，公司名与数据均已匿名化</li>
+      </ul>
+      <div class="why">
+        <b>模型族那两张图不是示意图。</b>它们是把线性回归、岭回归、GLM、决策树、GBDT、核方法、MLP、KNN 八个算法，跑在同一批数据上画出来的真实拟合曲线——八种形状的差异，就是"假设空间"这个词的全部含义。
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 二、十七章映射 ==================== -->
+  <section>
+    <h2><span class="sn">二</span>西瓜书十七章 → 本库落点</h2>
+    <p class="lead">想查某一章，直接点进对应小节。前十七章对应教材，后七节为本库拓展。</p>
+
+    <table class="map-tbl">
+      <tr><th style="width:10%">编号</th><th style="width:40%">章节</th><th style="width:14%">在本库</th><th>一句话</th></tr>
+      <tr><td>ML1</td><td><a href="notes.html#ml1">绪论：术语一网打尽</a></td><td>高频</td><td>样本、特征、标签、假设空间——先把词对齐</td></tr>
+      <tr><td>ML2</td><td><a href="notes.html#ml2">模型的评估方法：三种划分</a></td><td>高频</td><td>留出法、k 折交叉验证、自助法各自的坑</td></tr>
+      <tr><td>ML3</td><td><a href="notes.html#ml3">性能度量：从准确率到 AUC</a></td><td>高频</td><td>P、R、F1、ROC-AUC、KS、Gini 怎么选</td></tr>
+      <tr><td>ML4</td><td><a href="notes.html#ml4">比较检验与偏差-方差</a></td><td>中频</td><td>为什么"更好"不能只看一个数</td></tr>
+      <tr><td>ML5</td><td><a href="notes.html#ml5">线性模型：回归 / Logistic / LDA</a></td><td>高频</td><td>广义线性模型的门口</td></tr>
+      <tr><td>ML6</td><td><a href="notes.html#ml6">决策树：ID3 / C4.5 / CART</a></td><td>高频</td><td>信息增益、增益率、基尼指数</td></tr>
+      <tr><td>ML7</td><td><a href="notes.html#ml7">神经网络：从 M-P 到 BP</a></td><td>中频</td><td>感知机、多层前馈、误差逆传播</td></tr>
+      <tr><td>ML8</td><td><a href="notes.html#ml8">支持向量机：间隔、对偶与核</a></td><td>中频</td><td>核技巧的直觉</td></tr>
+      <tr><td>ML9</td><td><a href="notes.html#ml9">贝叶斯分类器与 EM 算法</a></td><td>中频</td><td>先验、后验、隐变量</td></tr>
+      <tr><td>ML10</td><td><a href="notes.html#ml10">集成学习：好而不同</a></td><td>高频</td><td>Boosting 与 Bagging 的分野</td></tr>
+      <tr><td>ML11</td><td><a href="notes.html#ml11">聚类：距离、原型、密度、层次</a></td><td>高频</td><td>k 均值、DBSCAN、层次聚类</td></tr>
+      <tr><td>ML12</td><td><a href="notes.html#ml12">降维与度量学习</a></td><td>中频</td><td>PCA 的方差解释率</td></tr>
+      <tr><td>ML13</td><td><a href="notes.html#ml13">特征选择与稀疏学习</a></td><td>低频</td><td>过滤、包裹、嵌入</td></tr>
+      <tr><td>ML14</td><td><a href="notes.html#ml14">计算学习理论：PAC 与 VC 维</a></td><td>低频</td><td>为什么"能学到"这件事可以被证明</td></tr>
+      <tr><td>ML15</td><td><a href="notes.html#ml15">半监督与自监督学习</a></td><td>低频</td><td>标注太贵时怎么办</td></tr>
+      <tr><td>ML16</td><td><a href="notes.html#ml16">概率图模型</a></td><td>低频</td><td>用图表达变量关系</td></tr>
+      <tr><td>ML17</td><td><a href="notes.html#ml17">强化学习</a></td><td>低频</td><td>没有标准答案时怎么学</td></tr>
+      <tr><td class="note-td">ML18</td><td class="note-td"><a href="notes.html#ml18">梯度提升家族：GBDT → XGBoost <span class="xtra">拓展</span></a></td><td>拓展</td><td>目标函数、增益公式、叶子权重</td></tr>
+      <tr><td class="note-td">ML19</td><td class="note-td"><a href="notes.html#ml19">深度学习版图 <span class="xtra">拓展</span></a></td><td>拓展</td><td>MLP → CNN → RNN/LSTM → Transformer</td></tr>
+      <tr><td class="note-td">ML20</td><td class="note-td"><a href="notes.html#ml20">优化器与正则化工程手册 <span class="xtra">拓展</span></a></td><td>拓展</td><td>SGD / 动量 / Adam、Dropout、BatchNorm</td></tr>
+      <tr><td class="note-td">ML21</td><td class="note-td"><a href="notes.html#ml21">可解释性与模型风险治理 <span class="xtra">拓展</span></a></td><td>拓展</td><td>SHAP、LIME、PSI 监控、三道防线</td></tr>
+      <tr><td class="note-td">ML22</td><td class="note-td"><a href="notes.html#ml22">定价：GLM 与 GBM 的正面交锋 <span class="xtra">拓展</span></a></td><td>拓展</td><td>频率-强度双层模型、Tweedie</td></tr>
+      <tr><td class="note-td">ML23</td><td class="note-td"><a href="notes.html#ml23">理赔 · 准备金 · 客户经营 <span class="xtra">拓展</span></a></td><td>拓展</td><td>三个真正的落地场景</td></tr>
+      <tr><td class="note-td">ML24</td><td class="note-td"><a href="notes.html#ml24">精算师上手路线与常见坑 <span class="xtra">拓展</span></a></td><td>拓展</td><td>十二周路线图，以及第一个坑：数据泄漏</td></tr>
+    </table>
+  </section>
+
+  <!-- ==================== 三、延伸阅读 ==================== -->
+  <section>
+    <h2><span class="sn">三</span>读完之后，还能往哪儿走</h2>
+    <p class="lead">按"想达到什么目的"排列，而不是按难度。挑一条就够，别一次开太多头。</p>
+
+    <table>
+      <tr><th style="width:20%">目的</th><th style="width:30%">建议材料</th><th>为什么是它</th></tr>
+      <tr>
+        <td><b>补数学直觉</b></td>
+        <td>3Blue1Brown《神经网络的本质》系列视频</td>
+        <td>不推导，只给画面。看完"梯度下降为什么是下山"就再也忘不掉。</td>
+      </tr>
+      <tr>
+        <td><b>系统打底</b></td>
+        <td>周志华《机器学习》（西瓜书）</td>
+        <td>中文体系最完整。建议先读完本库 ①⑤ 再翻，会薄很多。</td>
+      </tr>
+      <tr>
+        <td><b>学会动手</b></td>
+        <td>scikit-learn 官方文档的"算法选择导览"</td>
+        <td>一张流程图讲清"你的数据该用哪个模型"，比任何教程都实用。</td>
+      </tr>
+      <tr>
+        <td><b>结构化数据实战</b></td>
+        <td>XGBoost / LightGBM 官方文档与调参指南</td>
+        <td>保险业绝大多数场景都在这两个库的射程内。</td>
+      </tr>
+      <tr>
+        <td><b>搞懂深度学习</b></td>
+        <td>《动手学深度学习》(D2L) 中文版</td>
+        <td>可运行的代码 + 中文讲解，从线性回归一路到 Transformer。</td>
+      </tr>
+      <tr>
+        <td><b>精算专属</b></td>
+        <td>关于 GLM 在费率厘定中的应用（CAS 相关文献）</td>
+        <td>机器学习不是要取代 GLM，而是和它分工——这个判断必须自己读过才立得住。</td>
+      </tr>
+      <tr>
+        <td><b>模型风险管理</b></td>
+        <td>SR 11-7 / 模型风险管理相关监管指引</td>
+        <td>模型上线不是终点。三道防线、验证、监控，这套语言要提前学会。</td>
+      </tr>
+      <tr>
+        <td><b>跟上前沿</b></td>
+        <td>arXiv 上与表格数据、可解释性相关的综述</td>
+        <td>别追大模型的热闹。表格数据上的进展，才是真正会影响精算工作的那部分。</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ==================== 四、六篇读物索引 ==================== -->
+  <section>
+    <h2><span class="sn">四</span>本库六篇读物索引</h2>
+    <table>
+      <tr><th style="width:6%">编号</th><th style="width:26%">篇名</th><th style="width:10%">字数</th><th style="width:14%">适合谁</th><th>一句话</th></tr>
+      <tr><td>①</td><td><a href="overview.html">机器学习到底在干什么</a></td><td class="num">3 400</td><td>零基础</td><td>不背术语、不写公式，只讲它是干什么的</td></tr>
+      <tr><td>②</td><td><a href="mgmt.html">给管理层看的通俗版</a></td><td class="num">3 100</td><td>做决策的人</td><td>四个案例，只讲钱、时间、责任</td></tr>
+      <tr><td>③</td><td><a href="onepage.html">一文读懂机器学习</a></td><td class="num">4 000</td><td>想系统了解</td><td>信度理论就是 1918 年的机器学习</td></tr>
+      <tr><td>④</td><td><a href="core.html">核心三要素与 AI 全景</a></td><td class="num">6 900</td><td>想搞硬</td><td>模型、策略、算法——只有三格</td></tr>
+      <tr><td>⑤</td><td><a href="oneday.html">一小时精读</a></td><td class="num">4 300</td><td>想自学</td><td>30 段问答，用"备考"贯穿全篇</td></tr>
+      <tr><td>⑥</td><td><a href="notes.html">西瓜书十七章 + 拓展</a></td><td class="num">长篇</td><td>随时查阅</td><td>24 节工具书，5 台演算器</td></tr>
+    </table>
+  </section>
+
+  <!-- ==================== 五、说明 ==================== -->
+  <section>
+    <h2><span class="sn">五</span>版权与使用说明</h2>
+    <div class="note">
+      <ul>
+        <li>本库六篇读物的<b>文字、结构、配图均为原创整理与改写</b>，可自由阅读、转发与内部分享。</li>
+        <li>术语与公式口径以周志华《机器学习》为准；开源笔记部分已按本库体例重写，非原文照搬。</li>
+        <li>文中案例的公司名、地区与数据均已匿名化或改写，<b>不指向任何具体机构</b>。</li>
+        <li>站点为纯静态页面，无登录、无追踪、无第三方脚本。学习进度保存在你自己的浏览器里。</li>
+        <li>如需转载或用于商业培训，请注明出处「西红精算」。</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="pager">
+    <a href="notes.html">← ⑥ 十七章笔记</a>
+    <a href="xihong.html">关于西红精算 →</a>
+  </div>
+</main>
+
+<script src="js/kb.js"></script>
+</body>
+</html>

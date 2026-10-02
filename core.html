@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>核心三要素与 AI 全景｜机器学习知识库 · 西红精算</title>
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+<aside class="side">
+  <div class="brand"><b>机器学习知识库</b><span>从零基础到能上手 · 西红精算</span></div>
+  <nav>
+    <a href="index.html">首页 · 怎么读这套库</a>
+    <div class="grp">第一层 · 零基础</div>
+    <a href="overview.html">① 机器学习到底在干什么</a>
+    <a href="mgmt.html">② 给管理层看的通俗版</a>
+    <div class="grp">第二层 · 系统学</div>
+    <a href="onepage.html">③ 一文读懂机器学习</a>
+    <a href="core.html" class="on">④ 核心三要素与 AI 全景</a>
+    <a href="oneday.html">⑤ 一小时精读</a>
+    <div class="grp">第三层 · 深钻</div>
+    <a href="notes.html">⑥ 西瓜书十七章 + 拓展</a>
+    <div class="grp">关于</div>
+    <a href="resources.html">外部资源 · 素材来源</a>
+    <a href="amkb.html">姊妹库 · 精算模型与数据分析</a>
+    <a href="xihong.html">关于 · 西红精算</a>
+  </nav>
+  <div class="prog-mini">学习进度 <b>0 / 7</b></div>
+</aside>
+
+<main class="main">
+  <div class="ch-head">
+    <div class="no">读物 ④</div>
+    <h1>核心三要素与 AI 全景</h1>
+    <div class="sub">模型 · 策略 · 算法——把这三格换一换，就得到深度学习、强化学习与大模型</div>
+    <div class="meta"><span>6 900 字 · 14 图</span><span>含 2 张真实拟合图</span><span>由浅入深 · 延伸到 AI</span></div>
+  </div>
+
+  <button class="done-btn" data-id="core">○ 标记本页已完成</button>
+
+  <div class="tip" style="max-width:780px"><b>这一篇是硬核版，也是"读过之后不再飘"的那一篇。</b>全篇围绕一句话展开：机器学习 = 找一个函数 f(x)→y，而这件事<b>只有三格</b>。后面所有的新名词，都只是这三格的某一次放大。</div>
+
+  <div class="art-wrap">
+
+
+<!-- ============ HERO + 作者行 + 目录条 ============ -->
+<table style="width:100%;background:#2b2a26;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:56px 32px 30px;text-align:center;">
+      <span style="display:inline-block;padding:6px 18px;border:1px solid #5c5a52;border-radius:100px;font-size:12px;letter-spacing:3px;color:#c9c3b4;">西 红 精 算 · 用 数 据 讲 保 险</span>
+      <h1 style="font-size:30px;font-weight:800;letter-spacing:1px;color:#ffffff;line-height:1.45;margin:20px 0 10px;">机器学习的核心，只有三件事</h1>
+      <p style="font-size:15.5px;color:#a9a294;max-width:660px;margin:0 auto;line-height:1.75;">模型、策略、算法——以及它们如何一路长成深度学习、强化学习和今天的人工智能</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding:2px 32px 16px;font-size:0;text-align:center;">
+      <span style="display:inline-block;width:49%;font-size:13.5px;font-weight:600;letter-spacing:1px;color:#9aa292;text-align:left;">✍ 西红精算师</span><span style="display:inline-block;width:49%;font-size:13.5px;font-weight:600;letter-spacing:1px;color:#9aa292;text-align:right;white-space:nowrap;">📅 2026年10月</span>
+    </td>
+  </tr>
+  <tr>
+    <td style="padding:12px 12px 20px;text-align:center;border-top:1px solid #3d3b35;font-size:0;letter-spacing:0;">
+      <span style="display:inline-block;padding:4px 7px;font-size:11px;font-weight:600;background:#2f6b5a;color:#ffffff;margin-right:3px;">①开场</span><span style="display:inline-block;padding:4px 7px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;margin-right:3px;">②模型</span><span style="display:inline-block;padding:4px 7px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;margin-right:3px;">③策略</span><span style="display:inline-block;padding:4px 7px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;margin-right:3px;">④算法</span><span style="display:inline-block;padding:4px 7px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;margin-right:3px;">⑤总图</span><span style="display:inline-block;padding:4px 7px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;margin-right:3px;">⑥深度学习</span><span style="display:inline-block;padding:4px 7px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;margin-right:3px;">⑦强化学习</span><span style="display:inline-block;padding:4px 7px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;margin-right:3px;">⑧AI全景</span><span style="display:inline-block;padding:4px 7px;font-size:11px;font-weight:600;background:#3a3831;color:#9aa292;">⑨上手</span>
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 核心论点 ============ -->
+<table style="max-width:860px;margin:18px auto;background:#ffffff;border:1px solid #e5dfd0;border-left:4px solid #2f6b5a;border-radius:12px;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:22px 28px;font-size:15px;color:#4a5560;line-height:1.85;">
+      <strong style="color:#2f6b5a;">核心论点：</strong>机器学习的教材有几百种算法，但骨架只有三根——<strong style="color:#2b2a26;">你在多大范围里找（模型）、凭什么说这个比那个好（策略）、怎么把它找出来（算法）</strong>。任何新算法冒出来，先问这三句，它就会被拆开、被归位。看懂这三件事，再往上看深度学习、强化学习、人工智能，会发现它们不是四个学科，而是<strong style="color:#2b2a26;">同一套骨架在不同尺度上的三次放大</strong>。
+    </td>
+  </tr>
+</table>
+
+<!-- ============ 正文容器 ============ -->
+<table style="max-width:900px;margin:0 auto;padding:0 24px;" cellpadding="0" cellspacing="0">
+  <tr>
+    <td style="padding:32px 0 80px;">
+
+      <!-- ===== 一、开场 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:40px 0 8px 0;padding-left:16px;border-left:4px solid #2f6b5a;">一、开场：所有机器学习，都在做同一件事</p>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;padding-left:20px;">先建立一个足够简单的心智模型，后面所有名词都挂得上去。</p>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        先说结论：<strong style="color:#2b2a26;">机器学习就是从数据里找一个函数。</strong>给一批已知的输入和结果，让机器自己凑出一个规则，下次来一个新输入，能给出一个像样的输出。
+      </p>
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        换成保险的例子：一位车主来投保，我们知道他的年龄、驾龄、车型、车龄、所在城市、去年是否出险——这些堆在一起叫 <strong style="color:#2f6b5a;">x</strong>；我们想知道他明年的预期赔付成本——这个叫 <strong style="color:#2f6b5a;">y</strong>。所谓建模，就是找一个 <strong style="color:#2b2a26;">f</strong>，使得 <strong style="color:#2b2a26;">y ≈ f(x)</strong>。
+      </p>
+
+      <!-- 图1：输入输出盒 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 6px;font-size:13px;font-weight:700;color:#2f6b5a;text-align:center;">图 1 · 机器学习的最小骨架：找一个函数</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 20px 20px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:26%;background:#f0ece0;border:1px solid #ddd6c4;border-radius:8px;padding:12px 10px;text-align:center;font-size:13px;color:#4a5560;">
+                  <strong style="color:#2b2a26;">输入 x</strong><br>年龄 32 · 驾龄 8<br>车型 A · 城市 B<br>去年出险 0 次
+                </td>
+                <td style="width:10%;text-align:center;font-size:22px;color:#2f6b5a;font-weight:700;">→</td>
+                <td style="width:28%;background:#2f6b5a;border-radius:8px;padding:12px 10px;text-align:center;font-size:13px;color:#ffffff;">
+                  <strong>函数 f</strong><br>我们要找的东西<br><span style="font-size:11.5px;color:#c9e0d6;">由「模型+策略+算法」<br>共同决定</span>
+                </td>
+                <td style="width:10%;text-align:center;font-size:22px;color:#2f6b5a;font-weight:700;">→</td>
+                <td style="width:26%;background:#f7f0e4;border:1px solid #e6d7b4;border-radius:8px;padding:12px 10px;text-align:center;font-size:13px;color:#4a5560;">
+                  <strong style="color:#b53d2e;">输出 ŷ</strong><br>预期赔付成本<br><strong style="font-size:16px;color:#b53d2e;">1,860 元</strong>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;text-align:center;">真正的难题从来不是「要不要找」，而是下面这三个问题。</p>
+
+      <table style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;overflow:hidden;" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:13px;font-weight:700;padding:11px 14px;text-align:left;width:16%;">三要素</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:13px;font-weight:700;padding:11px 14px;text-align:left;width:42%;">通俗地问</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:13px;font-weight:700;padding:11px 14px;text-align:left;width:42%;">书面上问</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:11px 14px;font-size:14px;font-weight:700;color:#2f6b5a;border-bottom:1px solid #f0ece0;">模型</td>
+            <td style="padding:11px 14px;font-size:14px;color:#4a5560;border-bottom:1px solid #f0ece0;">我允许它长成什么样？</td>
+            <td style="padding:11px 14px;font-size:14px;color:#4a5560;border-bottom:1px solid #f0ece0;">假设空间是什么？待定参数有哪些？</td>
+          </tr>
+          <tr>
+            <td style="padding:11px 14px;font-size:14px;font-weight:700;color:#b53d2e;">策略</td>
+            <td style="padding:11px 14px;font-size:14px;color:#4a5560;border-bottom:1px solid #f0ece0;">凭什么说这个比那个好？</td>
+            <td style="padding:11px 14px;font-size:14px;color:#4a5560;border-bottom:1px solid #f0ece0;">损失函数怎么定？最小化经验风险还是结构风险？</td>
+          </tr>
+          <tr>
+            <td style="padding:11px 14px;font-size:14px;font-weight:700;color:#bb8a1f;">算法</td>
+            <td style="padding:11px 14px;font-size:14px;color:#4a5560;">这么多可能，怎么把它搜出来？</td>
+            <td style="padding:11px 14px;font-size:14px;color:#4a5560;">闭式解、梯度下降、贪心搜索还是启发式？</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        这三句话是本文的全部提纲。接下来逐一拆开，每一步都配图。
+      </p>
+
+      <!-- ===== 二、模型 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:46px 0 8px 0;padding-left:16px;border-left:4px solid #2f6b5a;">二、模型：你在多大的范围里找</p>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;padding-left:20px;">模型不是一个具体函数，是一族函数的集合——先划范围，再谈挑选。</p>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        最简单的猜测：赔付成本随驾龄线性下降。写成 <strong style="color:#2b2a26;">ŷ = w₀ + w₁·驾龄</strong>。这里 w₀、w₁ 是待定的数，机器要做的就是试出最好的 w₀、w₁。
+      </p>
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        把变量加到 20 个，就变成 <strong style="color:#2b2a26;">ŷ = w₀ + w₁x₁ + w₂x₂ + … + w₂₀x₂₀</strong>；把变量先做分箱再组合，就变成一张评分卡；再放开，让规则自己长出分叉，就成了决策树；把几百棵树叠起来，就是梯度提升树。
+      </p>
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        <strong style="color:#2f6b5a;">关键认知：模型 = 假设空间。</strong>你选的不是一条曲线，是一片「所有可能曲线」的空间。选线性回归，等于宣布「我只信直线」；选深度神经网络，等于宣布「任意复杂的形状我都能接受」。范围越大，越可能装下真相，也越容易被数据里的噪声带跑。
+      </p>
+
+      <!-- 图2：假设空间三档 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 6px;font-size:13px;font-weight:700;color:#2f6b5a;text-align:center;">图 2 · 假设空间的三档宽度（每一列中被涂色的那一格，就是模型在该处的取值）</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 20px 18px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:33%;padding:5px;text-align:center;font-size:12px;font-weight:700;color:#2b2a26;">窄：只许画直线</td>
+                <td style="width:33%;padding:5px;text-align:center;font-size:12px;font-weight:700;color:#2f6b5a;">中：可以画折线</td>
+                <td style="width:33%;padding:5px;text-align:center;font-size:12px;font-weight:700;color:#b53d2e;">宽：任意曲线</td>
+              </tr>
+              <tr>
+                <td style="width:33%;padding:5px;vertical-align:top;"><table style="width:100%;background:#faf8f2;border:1px solid #e5dfd0;" cellpadding="0" cellspacing="0"><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#8aa89e;border:1px solid #ffffff;"></td></tr><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#8aa89e;border:1px solid #ffffff;"></td><td style="height:22px;background:#8aa89e;border:1px solid #ffffff;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#8aa89e;border:1px solid #ffffff;"></td><td style="height:22px;background:#8aa89e;border:1px solid #ffffff;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#8aa89e;border:1px solid #ffffff;"></td><td style="height:22px;background:#8aa89e;border:1px solid #ffffff;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:22px;background:#8aa89e;border:1px solid #ffffff;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr></table></td>
+                <td style="width:33%;padding:5px;vertical-align:top;"><table style="width:100%;background:#faf8f2;border:1px solid #e5dfd0;" cellpadding="0" cellspacing="0"><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#2f6b5a;border:1px solid #ffffff;"></td><td style="height:22px;background:#2f6b5a;border:1px solid #ffffff;"></td><td style="height:22px;background:#2f6b5a;border:1px solid #ffffff;"></td><td style="height:22px;background:#2f6b5a;border:1px solid #ffffff;"></td></tr><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#2f6b5a;border:1px solid #ffffff;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#2f6b5a;border:1px solid #ffffff;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:22px;background:#2f6b5a;border:1px solid #ffffff;"></td><td style="height:22px;background:#2f6b5a;border:1px solid #ffffff;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr></table></td>
+                <td style="width:33%;padding:5px;vertical-align:top;"><table style="width:100%;background:#faf8f2;border:1px solid #e5dfd0;" cellpadding="0" cellspacing="0"><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#b53d2e;border:1px solid #ffffff;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#b53d2e;border:1px solid #ffffff;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#b53d2e;border:1px solid #ffffff;"></td></tr><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#b53d2e;border:1px solid #ffffff;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#b53d2e;border:1px solid #ffffff;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#b53d2e;border:1px solid #ffffff;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#b53d2e;border:1px solid #ffffff;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:22px;background:#b53d2e;border:1px solid #ffffff;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:22px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr></table></td>
+              </tr>
+              <tr>
+                <td style="width:33%;padding:6px 8px;text-align:center;font-size:11.5px;color:#8a8578;">形状被锁死<br><strong style="color:#2b2a26;">学不会 → 欠拟合</strong></td>
+                <td style="width:33%;padding:6px 8px;text-align:center;font-size:11.5px;color:#8a8578;">能拐弯，大致贴合<br><strong style="color:#2f6b5a;">合适</strong></td>
+                <td style="width:33%;padding:6px 8px;text-align:center;font-size:11.5px;color:#8a8578;">连噪声一起绕过<br><strong style="color:#b53d2e;">过拟合</strong></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;text-align:center;">三档不是「越宽越好」，而是「够用就好」——这就是下一章要解决的取舍。</p>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        下面这张图，是八个模型族在<strong style="color:#2b2a26;">同一批数据</strong>上各自拟合的结果——每条线都是真实算出来的，不是示意图。看的时候注意：灰点是样本，彩线是模型允许自己长成的形状。
+      </p>
+
+      <!-- 图2A：模型族形状图谱 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:16px 12px 12px;text-align:center;">
+            <img src="img/模型族形状图谱.png" alt="模型族形状图谱" style="width:100%;border-radius:8px;">
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:2px 20px 16px;font-size:13px;font-weight:700;color:#2f6b5a;text-align:center;">图 2A · 模型族形状图谱：八种模型，八种被允许的形状</td>
+        </tr>
+      </table>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;text-align:center;">①②③ 只能画线和单调曲线；④⑤ 用台阶逼近；⑥⑦ 平滑贴合；⑧ 干脆跟着邻居走。形状差异，就是假设空间的差异。</p>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        再看它们在「<strong style="color:#2b2a26;">能不能讲清楚</strong>」和「<strong style="color:#2b2a26;">能拟合多复杂</strong>」这张地图上的位置——右上角是空的，这两个都想要的冲动，就是所有权衡的开始。
+      </p>
+
+      <!-- 图2B：模型族定位图 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:16px 12px 12px;text-align:center;">
+            <img src="img/模型族定位图.png" alt="模型族定位图" style="width:100%;border-radius:8px;">
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:2px 20px 16px;font-size:13px;font-weight:700;color:#2f6b5a;text-align:center;">图 2B · 模型族定位图：可解释性与预测表达力的权衡</td>
+        </tr>
+      </table>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;text-align:center;">左上「精度优先区」交给预测器，右下「报备友好区」留给要写进条款的模型——多数业务最终落在中间。</p>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        然后是常用模型族的一张速查表，把八种模型各自「假设世界长什么样」写全——那是模型的本质。
+      </p>
+
+      <table style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;overflow:hidden;" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:18%;">模型族</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:30%;">它假设世界长什么样</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:24%;">可解释性</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:28%;">保险里通常干什么</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">线性回归</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">效果是各因素的加权求和</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">★★★★★ 系数即答案</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">基准模型、趋势外推</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">广义线性模型</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">加权和经过一个连接函数影响均值</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">★★★★★ 可直接报备</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;"><strong style="color:#2f6b5a;">车险定价主力</strong>（泊松 / Gamma / Tweedie）</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">正则化线性</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">同上，但多数系数应该接近 0</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">★★★★☆</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">变量筛选、小样本定价</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">决策树</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">世界由一串「如果…那么…」切成方块</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">★★★★☆ 可画图</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">规则挖掘、客户分层</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">集成树（随机森林 / GBDT）</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">多个弱规则的投票或接力修正</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">★★☆☆☆ 需事后解释</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;"><strong style="color:#2f6b5a;">精算预测精度天花板</strong></td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">支持向量机 / 核方法</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">升维之后可以用一个平面分开</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">★★☆☆☆</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">小样本分类、异常检测</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">神经网络</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">任何复杂映射都能被层层复合逼近</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">★☆☆☆☆ 黑箱</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">图像定损、文本抽取、大模型</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;">最近邻</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;">相似的输入会有相似的输出</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;">★★★☆☆ 可举例子</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;">个案比价、冷启动兜底</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table style="width:100%;background:#fdf8ec;border:1px solid #e6d7b4;border-left:4px solid #bb8a1f;border-radius:10px;margin:0 0 22px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:16px 20px;font-size:14.5px;color:#4a5560;line-height:1.8;">
+            <strong style="color:#bb8a1f;">说人话：</strong>选模型就像给装修队划定施工范围——只允许贴瓷砖，最差也就是贴得难看；允许「随便发挥」，可能惊艳，也可能把承重墙砸了。<strong style="color:#2b2a26;">划定范围这一步，比后面所有调参都重要。</strong>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 三、策略 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:46px 0 8px 0;padding-left:16px;border-left:4px solid #b53d2e;">三、策略：凭什么说这个比那个好</p>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;padding-left:20px;">策略就是一把尺子。尺子怎么定，直接决定模型最后长什么样。</p>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        有了候选范围，接下来要给「好」下定义。分两层：<strong style="color:#2b2a26;">损失函数</strong>衡量单个样本错得多离谱，<strong style="color:#2b2a26;">风险</strong>则是把所有样本的损失平均起来。所谓学习，就是<strong style="color:#2f6b5a;">在所有候选里找风险最小的那个</strong>。
+      </p>
+
+      <!-- 图3：损失 vs 风险 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 6px;font-size:13px;font-weight:700;color:#b53d2e;text-align:center;">图 3 · 从「一个样本错多少」到「整体有多差」</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 20px 20px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:31%;background:#f0ece0;border:1px solid #ddd6c4;border-radius:8px;padding:12px;text-align:center;font-size:13px;color:#4a5560;">
+                  <strong style="color:#2b2a26;">① 损失函数</strong><br>第 i 个客户：<br>预测 1,860，实际 2,400<br><strong style="color:#b53d2e;">差 540</strong>
+                </td>
+                <td style="width:8%;text-align:center;font-size:20px;color:#b53d2e;font-weight:700;">→</td>
+                <td style="width:30%;background:#f7f0e4;border:1px solid #e6d7b4;border-radius:8px;padding:12px;text-align:center;font-size:13px;color:#4a5560;">
+                  <strong style="color:#bb8a1f;">② 遍历全部样本</strong><br>38 万条保单<br>逐条算损失 → 求平均
+                </td>
+                <td style="width:8%;text-align:center;font-size:20px;color:#b53d2e;font-weight:700;">→</td>
+                <td style="width:23%;background:#b53d2e;border-radius:8px;padding:12px;text-align:center;font-size:13px;color:#ffffff;">
+                  <strong>③ 风险</strong><br>整体有多差<br><strong style="font-size:15px;">0.213</strong>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;text-align:center;">学习的目标，就是让第③格里那个数尽可能小。</p>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        损失函数不是唯一的。用哪种，取决于你认为「什么错更不可原谅」——这一点精算师其实比程序员更敏感。
+      </p>
+
+      <table style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;overflow:hidden;" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="background:#b53d2e;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:20%;">损失函数</th>
+            <th style="background:#b53d2e;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:32%;">怎么算错</th>
+            <th style="background:#b53d2e;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:24%;">性格</th>
+            <th style="background:#b53d2e;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:24%;">用在哪</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">平方损失</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">差值的平方</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">对大偏差非常敏感</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">回归、最小二乘</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">绝对损失</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">差值的绝对值</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">不怕极端值</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">大额赔款、稳健估计</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">对数损失 / 交叉熵</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">对「把话说反」重罚</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">偏爱概率校准</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;"><strong style="color:#b53d2e;">分类、欺诈识别</strong></td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">0—1 损失</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">错就是 1，对就是 0</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">最贴近业务，但不好优化</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">错误率（常只做评估）</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">代价敏感损失</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">漏判和误判罚得不一样</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">把业务金额写进目标</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;"><strong style="color:#b53d2e;">反欺诈（漏掉一笔很贵）</strong></td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;">Tweedie 损失</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;">允许大量零赔款 + 长尾大额</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;">为保险赔付分布定制</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;"><strong style="color:#2f6b5a;">纯保费建模</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        有了尺子，就可以宣布第一条学习准则：<strong style="color:#2b2a26;">经验风险最小化</strong>——在训练数据上把平均损失压到最低。听起来天经地义，问题在于：训练数据上的最低，不等于新数据上的最低。
+      </p>
+
+      <!-- 图4：训练/验证 U 形曲线 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 6px;font-size:13px;font-weight:700;color:#b53d2e;text-align:center;">图 4 · 模型越来越复杂时，两条误差曲线怎么走</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 20px 18px;">
+            <table style="width:100%;font-size:12px;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:16%;padding:3px 6px;color:#4a5560;">误差高低</td>
+                <td style="width:14%;padding:3px 2px;text-align:center;color:#8a8578;">很简</td>
+                <td style="width:14%;padding:3px 2px;text-align:center;color:#8a8578;">简</td>
+                <td style="width:14%;padding:3px 2px;text-align:center;color:#2f6b5a;font-weight:700;">适中</td>
+                <td style="width:14%;padding:3px 2px;text-align:center;color:#8a8578;">繁</td>
+                <td style="width:14%;padding:3px 2px;text-align:center;color:#8a8578;">很繁</td>
+                <td style="width:14%;padding:3px 2px;text-align:center;color:#b53d2e;font-weight:700;">极繁</td>
+              </tr>
+              <tr>
+                <td style="padding:3px 6px;color:#b53d2e;font-weight:700;">训练误差</td>
+                <td style="padding:3px 2px;text-align:center;"><table style="width:100%;" cellpadding="0" cellspacing="0"><tr><td style="height:10px;background:#f0ece0;"></td></tr><tr><td style="height:52px;background:#b53d2e;"></td></tr></table></td>
+                <td style="padding:3px 2px;text-align:center;"><table style="width:100%;" cellpadding="0" cellspacing="0"><tr><td style="height:10px;background:#f0ece0;"></td></tr><tr><td style="height:41px;background:#b53d2e;"></td></tr></table></td>
+                <td style="padding:3px 2px;text-align:center;"><table style="width:100%;" cellpadding="0" cellspacing="0"><tr><td style="height:10px;background:#f0ece0;"></td></tr><tr><td style="height:30px;background:#b53d2e;"></td></tr></table></td>
+                <td style="padding:3px 2px;text-align:center;"><table style="width:100%;" cellpadding="0" cellspacing="0"><tr><td style="height:10px;background:#f0ece0;"></td></tr><tr><td style="height:20px;background:#b53d2e;"></td></tr></table></td>
+                <td style="padding:3px 2px;text-align:center;"><table style="width:100%;" cellpadding="0" cellspacing="0"><tr><td style="height:10px;background:#f0ece0;"></td></tr><tr><td style="height:12px;background:#b53d2e;"></td></tr></table></td>
+                <td style="padding:3px 2px;text-align:center;"><table style="width:100%;" cellpadding="0" cellspacing="0"><tr><td style="height:10px;background:#f0ece0;"></td></tr><tr><td style="height:5px;background:#b53d2e;"></td></tr></table></td>
+              </tr>
+              <tr>
+                <td style="padding:3px 6px;color:#2f6b5a;font-weight:700;">新数据误差</td>
+                <td style="padding:3px 2px;text-align:center;"><table style="width:100%;" cellpadding="0" cellspacing="0"><tr><td style="height:10px;background:#f0ece0;"></td></tr><tr><td style="height:50px;background:#2f6b5a;"></td></tr></table></td>
+                <td style="padding:3px 2px;text-align:center;"><table style="width:100%;" cellpadding="0" cellspacing="0"><tr><td style="height:10px;background:#f0ece0;"></td></tr><tr><td style="height:38px;background:#2f6b5a;"></td></tr></table></td>
+                <td style="padding:3px 2px;text-align:center;"><table style="width:100%;" cellpadding="0" cellspacing="0"><tr><td style="height:10px;background:#f0ece0;"></td></tr><tr><td style="height:25px;background:#2f6b5a;"></td></tr></table></td>
+                <td style="padding:3px 2px;text-align:center;"><table style="width:100%;" cellpadding="0" cellspacing="0"><tr><td style="height:10px;background:#f0ece0;"></td></tr><tr><td style="height:32px;background:#2f6b5a;"></td></tr></table></td>
+                <td style="padding:3px 2px;text-align:center;"><table style="width:100%;" cellpadding="0" cellspacing="0"><tr><td style="height:10px;background:#f0ece0;"></td></tr><tr><td style="height:46px;background:#2f6b5a;"></td></tr></table></td>
+                <td style="padding:3px 2px;text-align:center;"><table style="width:100%;" cellpadding="0" cellspacing="0"><tr><td style="height:10px;background:#f0ece0;"></td></tr><tr><td style="height:60px;background:#2f6b5a;"></td></tr></table></td>
+              </tr>
+              <tr>
+                <td style="padding:6px 6px 2px;"></td>
+                <td colspan="2" style="padding:6px 4px 2px;text-align:center;font-size:11.5px;color:#8a8578;">学不会<br>欠拟合</td>
+                <td style="padding:6px 4px 2px;text-align:center;font-size:11.5px;color:#bb8a1f;font-weight:700;">最优点</td>
+                <td colspan="3" style="padding:6px 4px 2px;text-align:center;font-size:11.5px;color:#b53d2e;font-weight:700;">背住了噪声<br>过拟合</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        图 4 右侧那个越拉越大的口子，就是全部麻烦的来源。于是有了第二条准则：<strong style="color:#2b2a26;">结构风险最小化</strong>——在「拟合得好」之外，再加一条「别太复杂」的罚款。
+      </p>
+
+      <!-- 公式卡 -->
+      <table style="width:100%;background:#faf8f2;border:1px solid #e5dfd0;border-left:4px solid #2f6b5a;border-radius:10px;margin:0 0 18px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:16px 20px;font-size:14.5px;color:#4a5560;line-height:1.9;text-align:center;">
+            <strong style="color:#2b2a26;font-size:16px;">结构风险　＝　经验风险　＋　λ × 复杂度惩罚</strong><br>
+            <span style="font-size:13px;color:#8a8578;">前项要「拟合得准」，后项要「别太拧巴」，λ 决定你更在意哪个</span>
+          </td>
+        </tr>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        这里有个精算师会心一笑的地方：<strong style="color:#2f6b5a;">λ 干的活，和信度公式里的 K 是同一个活。</strong>λ 越大，系数越被推向 0，模型越接近「什么都不信、只看整体均值」；λ 越小，越相信手上的个体数据。信度因子 Z = n/(n+K) 说的是同一件事——数据越多，越该信个体；数据越少，越该信先验。
+      </p>
+
+      <!-- 图5：偏差-方差靶心 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 6px;font-size:13px;font-weight:700;color:#b53d2e;text-align:center;">图 5 · 误差从哪来：偏差-方差窘境（靶心为真相，● 为每次建模的结果）</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 20px 18px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:50%;padding:5px;">
+                  <table style="width:100%;background:#faf8f2;border:1px solid #e5dfd0;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:8px;text-align:center;font-size:12px;font-weight:700;color:#2b2a26;">偏差大 · 方差小</td></tr>
+                    <tr><td style="padding:4px 8px 10px;text-align:center;font-size:18px;color:#4a5560;">● ●<br>● ●<br><span style="font-size:11px;color:#8a8578;">（◎ 靶心在别处）</span></td></tr>
+                    <tr><td style="padding:0 8px 8px;text-align:center;font-size:11.5px;color:#8a8578;">每次都打同一个地方，<br>但那个地方不是靶心</td></tr>
+                  </table>
+                </td>
+                <td style="width:50%;padding:5px;">
+                  <table style="width:100%;background:#faf8f2;border:1px solid #e5dfd0;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:8px;text-align:center;font-size:12px;font-weight:700;color:#2b2a26;">偏差小 · 方差大</td></tr>
+                    <tr><td style="padding:4px 8px 10px;text-align:center;font-size:18px;color:#4a5560;">●　　●<br>　◎<br>●　　●</td></tr>
+                    <tr><td style="padding:0 8px 8px;text-align:center;font-size:11.5px;color:#8a8578;">平均看围着靶心，<br>但每一次都不靠谱</td></tr>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td style="width:50%;padding:5px;">
+                  <table style="width:100%;background:#f2f7f3;border:1px solid #cfe0d6;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:8px;text-align:center;font-size:12px;font-weight:700;color:#2f6b5a;">理想状态</td></tr>
+                    <tr><td style="padding:4px 8px 10px;text-align:center;font-size:18px;color:#2f6b5a;">●<br>●◎●<br>●</td></tr>
+                    <tr><td style="padding:0 8px 8px;text-align:center;font-size:11.5px;color:#2f6b5a;">又准又稳——这才是要的</td></tr>
+                  </table>
+                </td>
+                <td style="width:50%;padding:5px;">
+                  <table style="width:100%;background:#fbf0ec;border:1px solid #eecfc5;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:8px;text-align:center;font-size:12px;font-weight:700;color:#b53d2e;">最糟状态</td></tr>
+                    <tr><td style="padding:4px 8px 10px;text-align:center;font-size:18px;color:#b53d2e;">●　●<br>●　●<br><span style="font-size:11px;color:#8a8578;">（◎ 在角落）</span></td></tr>
+                    <tr><td style="padding:0 8px 8px;text-align:center;font-size:11.5px;color:#b53d2e;">既不准也不稳</td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        <strong style="color:#2b2a26;">窘境在于：这两个误差此消彼长。</strong>模型放宽，偏差降、方差升；模型收紧，方差降、偏差升。中间有一个总和最低的点，那就是图 4 里标「最优点」的位置。<strong style="color:#2f6b5a;">正则化、集成、早停、交叉验证，本质上都是在找这个点。</strong>
+      </p>
+
+      <table style="width:100%;background:#fdf8ec;border:1px solid #e6d7b4;border-left:4px solid #bb8a1f;border-radius:10px;margin:0 0 22px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:16px 20px;font-size:14.5px;color:#4a5560;line-height:1.8;">
+            <strong style="color:#bb8a1f;">说人话：</strong>策略这把尺子如果只量「训练集上多准」，模型就会把答案连同印刷瑕疵一起背下来。<strong style="color:#2b2a26;">好的策略必须包含一句「不许你背太细」</strong>——信度理论管这叫向手册费率收缩，机器学习管这叫正则化。
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 四、算法 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:46px 0 8px 0;padding-left:16px;border-left:4px solid #bb8a1f;">四、算法：怎么把它找出来</p>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;padding-left:20px;">范围划好了、尺子定好了，最后一步是搜索。多数算法之所以存在，是因为搜索太贵。</p>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        搜索分两条路。第一条是<strong style="color:#2b2a26;">闭式解</strong>：数学上能直接写出答案，一步到位。线性回归就属于这一类——把导数令为零，解一个方程组，w 就出来了。快，但只对最简单的模型有效。
+      </p>
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        第二条路是<strong style="color:#2b2a26;">迭代搜索</strong>：先随便猜一个，然后一点点往好的方向挪，挪到差不多为止。绝大多数现代算法走这条路，因为模型一复杂，方程就没有解析解了。
+      </p>
+
+      <!-- 图6：梯度下降下山 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 6px;font-size:13px;font-weight:700;color:#bb8a1f;text-align:center;">图 6 · 梯度下降：每一步都往更低处挪（金色是走过的路，绿色是谷底）</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 20px 18px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:52%;padding:4px;vertical-align:top;"><table style="width:100%;background:#faf8f2;border:1px solid #e5dfd0;" cellpadding="0" cellspacing="0"><tr><td style="height:26px;background:#bb8a1f;border:1px solid #ffffff;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#bb8a1f;border:1px solid #ffffff;"></td><td style="height:26px;background:#bb8a1f;border:1px solid #ffffff;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#bb8a1f;border:1px solid #ffffff;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr><tr><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#bb8a1f;border:1px solid #ffffff;"></td><td style="height:26px;background:#2f6b5a;border:1px solid #ffffff;"></td></tr><tr><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td><td style="height:26px;background:#faf8f2;border:1px solid #efe9dc;"></td></tr></table></td>
+                <td style="width:48%;padding:4px 4px 4px 12px;vertical-align:top;font-size:13px;color:#4a5560;line-height:1.85;">
+                  <strong style="color:#2b2a26;">每一步只做三件事：</strong><br>
+                  ① 用脚感受哪边更低<br>
+                  <span style="color:#8a8578;">（算梯度）</span><br>
+                  ② 朝那个方向迈一步<br>
+                  <span style="color:#8a8578;">（更新参数）</span><br>
+                  ③ 迈多大？由<strong style="color:#bb8a1f;">学习率</strong>定<br><br>
+                  重复几百到几百万次，直到脚下不再变低。<strong style="color:#2f6b5a;">所谓「训练」，就是这一件事。</strong>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <!-- 图7：学习率三态 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 6px;font-size:13px;font-weight:700;color:#bb8a1f;text-align:center;">图 7 · 学习率（步长）的三种命运</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 20px 18px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:33%;padding:5px;">
+                  <table style="width:100%;background:#fbf0ec;border:1px solid #eecfc5;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:8px;text-align:center;font-size:12.5px;font-weight:700;color:#b53d2e;">太小</td></tr>
+                    <tr><td style="padding:6px 10px 10px;text-align:center;font-size:15px;color:#4a5560;">● ● ● ● ● ●</td></tr>
+                    <tr><td style="padding:0 10px 10px;text-align:center;font-size:11.5px;color:#8a8578;">挪了一万步<br>还没到山脚</td></tr>
+                  </table>
+                </td>
+                <td style="width:33%;padding:5px;">
+                  <table style="width:100%;background:#f2f7f3;border:1px solid #cfe0d6;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:8px;text-align:center;font-size:12.5px;font-weight:700;color:#2f6b5a;">合适</td></tr>
+                    <tr><td style="padding:6px 10px 10px;text-align:center;font-size:15px;color:#4a5560;">●　●　●　<span style="color:#2f6b5a;font-weight:700;">■</span></td></tr>
+                    <tr><td style="padding:0 10px 10px;text-align:center;font-size:11.5px;color:#2f6b5a;">稳步收敛到谷底</td></tr>
+                  </table>
+                </td>
+                <td style="width:33%;padding:5px;">
+                  <table style="width:100%;background:#fbf0ec;border:1px solid #eecfc5;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:8px;text-align:center;font-size:12.5px;font-weight:700;color:#b53d2e;">太大</td></tr>
+                    <tr><td style="padding:6px 10px 10px;text-align:center;font-size:15px;color:#4a5560;">●　　●<br>　●　　●<br>　　●</td></tr>
+                    <tr><td style="padding:0 10px 10px;text-align:center;font-size:11.5px;color:#8a8578;">在谷底两侧<br>来回震荡甚至飞出去</td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        除了梯度下降这一族，还有几类思路完全不同的搜索法：决策树用<strong style="color:#2b2a26;">贪心分裂</strong>（每一步只挑当下最划算的那个切法，不回头）；EM 算法用<strong style="color:#2b2a26;">交替求期望与最大化</strong>处理有缺失的信息；贝叶斯方法干脆不找「一个最优值」，而是给出「参数的整个分布」。
+      </p>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        下面这张表是<strong style="color:#2f6b5a;">全篇最该记住的一张</strong>——它把三要素重新缝回一个个具体的算法上。以后遇到任何新名字，照着这三列去拆。
+      </p>
+
+      <table style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;overflow:hidden;" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="background:#2b2a26;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:22%;">算法</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:26%;">模型（在哪找）</th>
+            <th style="background:#b53d2e;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:26%;">策略（什么叫好）</th>
+            <th style="background:#bb8a1f;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:26%;">算法（怎么找）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">线性回归</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">线性函数族</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">平方损失最小</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">正规方程（闭式解）</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">岭回归 / Lasso</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">线性函数族</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">平方损失 + L2 / L1 惩罚</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">闭式解 / 坐标下降</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">逻辑回归</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">线性 + S 形压缩</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">对数损失最小</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">梯度下降 / 牛顿法</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">GLM（泊松 / Tweedie）</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">线性 + 连接函数</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">对应指数的对数似然</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">迭代加权最小二乘</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">决策树</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">所有可能的「如果—那么」切法</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">纯度最高（信息增益 / 基尼）</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">贪心递归分裂</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">随机森林</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">多棵树的投票</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">各自纯度 + 降低相关性</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">自助抽样 + 随机选特征</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">GBDT / XGBoost</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">树的可加集成</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">任意可微损失 + 正则项</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">前向分步 + 二阶近似</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">支持向量机</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">核空间里的超平面</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">间隔最大 + 铰链损失</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">凸优化（SMO）</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;">神经网络</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;">多层复合非线性函数</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;">交叉熵 / 均方 + 正则</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;">反向传播 + 自适应优化器</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table style="width:100%;background:#fdf8ec;border:1px solid #e6d7b4;border-left:4px solid #bb8a1f;border-radius:10px;margin:0 0 22px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:16px 20px;font-size:14.5px;color:#4a5560;line-height:1.8;">
+            <strong style="color:#bb8a1f;">说人话：</strong>同一个模型换个策略就是新算法——线性回归把平方损失换成「分错就罚」，就成了 SVM 的亲戚；同一策略换个搜索方式也是新算法——梯度下降换成贪心分裂，就从逻辑回归走到了决策树。<strong style="color:#2b2a26;">所谓算法创新，八成是这三格里的某一格被换了。</strong>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 五、三要素总图 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:46px 0 8px 0;padding-left:16px;border-left:4px solid #2f6b5a;">五、三要素怎么咬在一起</p>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;padding-left:20px;">一张图看完：谁先谁后、谁约束谁。</p>
+
+      <!-- 图8：三要素总图 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 6px;font-size:13px;font-weight:700;color:#2f6b5a;text-align:center;">图 8 · 三要素的咬合关系（自上而下是执行顺序，自下而上是约束关系）</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 20px 18px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:30%;background:#2f6b5a;border-radius:8px;padding:12px;text-align:center;">
+                  <strong style="color:#ffffff;font-size:14px;">① 模型</strong><br>
+                  <span style="color:#c9e0d6;font-size:12px;">划定候选范围<br>假设空间有多大</span>
+                </td>
+                <td style="width:5%;text-align:center;color:#8a8578;font-size:16px;">↓</td>
+                <td style="width:30%;background:#b53d2e;border-radius:8px;padding:12px;text-align:center;">
+                  <strong style="color:#ffffff;font-size:14px;">② 策略</strong><br>
+                  <span style="color:#f0d3cc;font-size:12px;">定一把尺子<br>风险 = 损失 + 惩罚</span>
+                </td>
+                <td style="width:5%;text-align:center;color:#8a8578;font-size:16px;">↓</td>
+                <td style="width:30%;background:#bb8a1f;border-radius:8px;padding:12px;text-align:center;">
+                  <strong style="color:#ffffff;font-size:14px;">③ 算法</strong><br>
+                  <span style="color:#f7e9c8;font-size:12px;">在范围里搜<br>梯度 / 贪心 / 闭式</span>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="5" style="padding:10px 0 4px;text-align:center;color:#8a8578;font-size:12px;">↑ 反过来：算法搜不动，说明模型太宽；怎么调都过拟合，说明策略太松</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        放到一次完整的建模流程里看，三要素各在哪一步起作用：
+      </p>
+
+      <table style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;overflow:hidden;" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="background:#2b2a26;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:14%;">步骤</th>
+            <th style="background:#2b2a26;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:44%;">在做什么</th>
+            <th style="background:#2b2a26;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:42%;">哪一要素在主导</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">① 定问题</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">预测什么、用什么衡量成败</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#b53d2e;border-bottom:1px solid #f0ece0;"><strong>策略</strong>——先选对目标，其余都是白费</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">② 备数据</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">清洗、切分、做特征</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#8a8578;border-bottom:1px solid #f0ece0;">三要素之外，但决定上限</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">③ 选模型</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">线性、树、还是网络</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#2f6b5a;border-bottom:1px solid #f0ece0;"><strong>模型</strong>——划范围</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">④ 定目标</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">选损失、加正则、定代价权重</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#b53d2e;border-bottom:1px solid #f0ece0;"><strong>策略</strong>——定尺子</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">⑤ 训练</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">跑优化、调学习率、早停</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#bb8a1f;border-bottom:1px solid #f0ece0;"><strong>算法</strong>——动手搜</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">⑥ 验证</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">留出集 / 交叉验证 / 时间外样本</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#8a8578;">回头检验<strong>策略</strong>有没有定歪</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;">⑦ 上线与监控</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;">看稳定性、看漂移、留对照组</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#8a8578;">检验<strong>模型</strong>是否还适配当下</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        到这里，「机器学习」这四个字已经被拆完了。下面四章要做的，是把这套骨架往上放大：把模型这一格换成更有表达力的结构，就走到<strong style="color:#2b2a26;">深度学习</strong>；把策略这一格换成「延迟到来的奖励」，就走到<strong style="color:#2b2a26;">强化学习</strong>；把两者合起来、再加上规模，就是今天说的<strong style="color:#2b2a26;">人工智能</strong>。
+      </p>
+
+      <!-- ===== 六、深度学习 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:46px 0 8px 0;padding-left:16px;border-left:4px solid #2f6b5a;">六、从机器学习到深度学习：把「模型」这一格放大</p>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;padding-left:20px;">深度学习不是另一个学科，它只是把假设空间换成了「层层复合的函数」。</p>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        传统机器学习有个绕不开的瓶颈：<strong style="color:#2b2a26;">特征要人来做。</strong>「驾龄超过 10 年且近三年无出险」这种交叉，得靠人想出来、手工造出来。变量一多、交互一复杂，人力就跟不上了。
+      </p>
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        深度学习的答案是：<strong style="color:#2f6b5a;">让模型自己学特征</strong>。前面几层负责把原始输入变成有用的中间表示，最后一层才做预测——这叫<strong style="color:#2b2a26;">表示学习</strong>。放到三要素框架里看，变化的其实只有「模型」这一格：从「线性/树」换成了「多层复合函数」。
+      </p>
+
+      <!-- 图9：神经元 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 6px;font-size:13px;font-weight:700;color:#2f6b5a;text-align:center;">图 9 · 一个神经元在做两件事：加权求和，然后过一个非线性开关</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 20px 18px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:22%;background:#f0ece0;border:1px solid #ddd6c4;border-radius:8px;padding:10px;text-align:center;font-size:12.5px;color:#4a5560;">
+                  <strong style="color:#2b2a26;">输入</strong><br>年龄 · 驾龄<br>车型 · 地区
+                </td>
+                <td style="width:6%;text-align:center;color:#2f6b5a;font-size:18px;">→</td>
+                <td style="width:26%;background:#f7f0e4;border:1px solid #e6d7b4;border-radius:8px;padding:10px;text-align:center;font-size:12.5px;color:#4a5560;">
+                  <strong style="color:#bb8a1f;">① 加权求和</strong><br>z = Σ(wᵢxᵢ) + b<br><span style="font-size:11px;color:#8a8578;">每个输入给个权重</span>
+                </td>
+                <td style="width:6%;text-align:center;color:#2f6b5a;font-size:18px;">→</td>
+                <td style="width:28%;background:#2f6b5a;border-radius:8px;padding:10px;text-align:center;font-size:12.5px;color:#ffffff;">
+                  <strong>② 激活函数</strong><br>a = σ(z)<br><span style="font-size:11px;color:#c9e0d6;">把它压成非线性的</span>
+                </td>
+                <td style="width:6%;text-align:center;color:#2f6b5a;font-size:18px;">→</td>
+                <td style="width:16%;background:#f0ece0;border:1px solid #ddd6c4;border-radius:8px;padding:10px;text-align:center;font-size:12.5px;color:#4a5560;">
+                  <strong style="color:#2b2a26;">输出</strong><br>传给下一层
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;text-align:center;">② 那一步不能省。去掉它，一百层网络等价于一层——因为线性变换复合起来还是线性。</p>
+
+      <!-- 图10：MLP 分层 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 6px;font-size:13px;font-weight:700;color:#2f6b5a;text-align:center;">图 10 · 把神经元排成层，就是深度网络（● 为一个神经元）</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 20px 18px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:22%;padding:4px;text-align:center;">
+                  <table style="width:100%;background:#faf8f2;border:1px solid #e5dfd0;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:8px;text-align:center;font-size:12px;font-weight:700;color:#2b2a26;">输入层</td></tr>
+                    <tr><td style="padding:6px;text-align:center;font-size:14px;color:#4a5560;">●<br>●<br>●<br>●</td></tr>
+                    <tr><td style="padding:0 6px 8px;text-align:center;font-size:11px;color:#8a8578;">原始字段</td></tr>
+                  </table>
+                </td>
+                <td style="width:4%;text-align:center;font-size:16px;color:#2f6b5a;">→</td>
+                <td style="width:22%;padding:4px;text-align:center;">
+                  <table style="width:100%;background:#f2f7f3;border:1px solid #cfe0d6;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:8px;text-align:center;font-size:12px;font-weight:700;color:#2f6b5a;">隐藏层 1</td></tr>
+                    <tr><td style="padding:6px;text-align:center;font-size:14px;color:#2f6b5a;">●<br>●<br>●<br>●<br>●<br>●</td></tr>
+                    <tr><td style="padding:0 6px 8px;text-align:center;font-size:11px;color:#8a8578;">低级特征</td></tr>
+                  </table>
+                </td>
+                <td style="width:4%;text-align:center;font-size:16px;color:#2f6b5a;">→</td>
+                <td style="width:22%;padding:4px;text-align:center;">
+                  <table style="width:100%;background:#f2f7f3;border:1px solid #cfe0d6;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:8px;text-align:center;font-size:12px;font-weight:700;color:#2f6b5a;">隐藏层 2</td></tr>
+                    <tr><td style="padding:6px;text-align:center;font-size:14px;color:#2f6b5a;">●<br>●<br>●<br>●</td></tr>
+                    <tr><td style="padding:0 6px 8px;text-align:center;font-size:11px;color:#8a8578;">高级特征</td></tr>
+                  </table>
+                </td>
+                <td style="width:4%;text-align:center;font-size:16px;color:#2f6b5a;">→</td>
+                <td style="width:22%;padding:4px;text-align:center;">
+                  <table style="width:100%;background:#f7f0e4;border:1px solid #e6d7b4;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:8px;text-align:center;font-size:12px;font-weight:700;color:#bb8a1f;">输出层</td></tr>
+                    <tr><td style="padding:6px;text-align:center;font-size:14px;color:#4a5560;">●<br>●</td></tr>
+                    <tr><td style="padding:0 6px 8px;text-align:center;font-size:11px;color:#8a8578;">出险概率<br>预期成本</td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        同样的「层」换个连接方式，就长出了三种性格完全不同的架构。这也是深度学习这十年最主要的战场。
+      </p>
+
+      <table style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;overflow:hidden;" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:18%;">架构</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:30%;">核心机制</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:26%;">擅长什么数据</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:26%;">保险里的落点</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">全连接网络</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">每个神经元连到上一层全部</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">表格数据</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">结构化预测（但常被树模型打败）</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">卷积神经网络</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">局部连接 + 权重共享（同一个特征到处扫）</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">图像、有空间结构的东西</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;"><strong style="color:#2f6b5a;">车险图片定损、医疗影像</strong></td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">循环网络 / 长短期记忆</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">带记忆单元，用门控决定记什么、忘什么</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">序列、时间序列</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">赔付进展三角、退保率曲线</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;">Transformer</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;">注意力机制：任意两个位置直接建立联系</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;">文本、长序列、多模态</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;"><strong style="color:#2f6b5a;">病历文本抽取、智能核保、大模型</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        注意力机制值得单独说一句，因为今天所有大模型的地基就是它。它的想法出人意料地朴素：<strong style="color:#2b2a26;">处理当前这个词时，回过头去看整句话，按相关度加权取回信息。</strong>
+      </p>
+
+      <!-- 图11：QKV -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 6px;font-size:13px;font-weight:700;color:#2f6b5a;text-align:center;">图 11 · 注意力 = 查字典：拿着问题找关键词，再取回对应的内容</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 20px 18px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:26%;background:#f7f0e4;border:1px solid #e6d7b4;border-radius:8px;padding:11px;text-align:center;font-size:12.5px;color:#4a5560;">
+                  <strong style="color:#bb8a1f;">查询 Q</strong><br>我现在要查什么<br><span style="font-size:11px;color:#8a8578;">（当前这个词）</span>
+                </td>
+                <td style="width:6%;text-align:center;font-size:16px;color:#2f6b5a;">×</td>
+                <td style="width:26%;background:#f0ece0;border:1px solid #ddd6c4;border-radius:8px;padding:11px;text-align:center;font-size:12.5px;color:#4a5560;">
+                  <strong style="color:#2b2a26;">键 K</strong><br>各处内容的标签<br><span style="font-size:11px;color:#8a8578;">（用来比对相关度）</span>
+                </td>
+                <td style="width:8%;text-align:center;font-size:16px;color:#2f6b5a;">=</td>
+                <td style="width:34%;background:#2f6b5a;border-radius:8px;padding:11px;text-align:center;font-size:12.5px;color:#ffffff;">
+                  <strong>权重 × 值 V</strong><br>相关度高的内容取回得多<br><span style="font-size:11px;color:#c9e0d6;">加权求和即为输出</span>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        深度学习带来的真正变化，是把「特征工程」这笔人力成本，换成了「数据与算力」这项资本开支。这笔账划算不划算，取决于下面这张表。
+      </p>
+
+      <table style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;overflow:hidden;" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="background:#2b2a26;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:24%;">维度</th>
+            <th style="background:#2b2a26;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:38%;">传统机器学习</th>
+            <th style="background:#2b2a26;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:38%;">深度学习</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">数据量</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">几千到几十万就够</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">通常要海量，少了不如树模型</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">特征工程</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">靠人，是主要工作量</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">靠网络自己学</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">可解释性</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">较高，系数与规则可读</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">低，需事后解释工具补位</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">算力</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">一台笔记本</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">常需图形处理器，成本显著</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;">表格数据表现</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#2f6b5a;"><strong>梯度提升树仍是首选</strong></td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;">未必占优，别为了用而用</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table style="width:100%;background:#fdf8ec;border:1px solid #e6d7b4;border-left:4px solid #bb8a1f;border-radius:10px;margin:0 0 22px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:16px 20px;font-size:14.5px;color:#4a5560;line-height:1.8;">
+            <strong style="color:#bb8a1f;">特别提醒：</strong>在精算最常面对的<strong style="color:#2b2a26;">结构化表格数据</strong>上，梯度提升树至今仍是性价比最高的选择。深度学习的优势集中在图像、文本、语音这类「人很难手工造特征」的领域。<strong style="color:#2b2a26;">先问数据长什么样，再选工具，不要倒过来。</strong>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 七、强化学习 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:46px 0 8px 0;padding-left:16px;border-left:4px solid #b53d2e;">七、从机器学习到强化学习：把「策略」这一格换掉</p>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;padding-left:20px;">前六章都假设有一份标准答案。如果答案要很久以后才揭晓，甚至根本没有答案呢？</p>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        先看三种学习范式的分野，这是理解强化学习最快的入口。
+      </p>
+
+      <table style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;overflow:hidden;" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="background:#2b2a26;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:17%;">范式</th>
+            <th style="background:#2b2a26;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:27%;">拿到的是什么</th>
+            <th style="background:#2b2a26;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:28%;">学的是什么</th>
+            <th style="background:#2b2a26;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:28%;">保险里的例子</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2f6b5a;border-bottom:1px solid #f0ece0;">监督学习</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">输入 + 正确答案</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">从 x 到 y 的映射</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">用历史赔款预测明年成本</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2f6b5a;border-bottom:1px solid #f0ece0;">无监督学习</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">只有输入，没有答案</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">数据里藏着的结构</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">客户分群、异常赔案发现</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#b53d2e;">强化学习</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;">没有答案，只有<strong>迟到的奖励</strong></td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;">一套「在什么局面下做什么」的策略</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;">动态调价、续保干预时机、资产配置</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        强化学习和监督学习有两处根本不同，缺一不可：<strong style="color:#2b2a26;">一是奖励迟到</strong>——今天做的一个决定，好坏可能三年后才看得出来；<strong style="color:#2b2a26;">二是数据会动</strong>——你做的动作会改变你接下来看到的世界，涨价会赶走客户，客户走了就再也看不到他的数据。
+      </p>
+
+      <!-- 图12：RL 循环 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 6px;font-size:13px;font-weight:700;color:#b53d2e;text-align:center;">图 12 · 强化学习的循环：智能体与环境不断对招</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 20px 18px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:44%;background:#f7f0e4;border:1px solid #e6d7b4;border-radius:8px;padding:12px;text-align:center;font-size:12.5px;color:#4a5560;">
+                  <strong style="color:#bb8a1f;font-size:13.5px;">智能体（做决策的一方）</strong><br>
+                  看到当前局面 <strong>状态 s</strong><br>
+                  按<strong style="color:#b53d2e;">策略 π</strong> 选一个 <strong>动作 a</strong>
+                </td>
+                <td style="width:12%;text-align:center;font-size:22px;color:#b53d2e;font-weight:700;">⇄</td>
+                <td style="width:44%;background:#fbf0ec;border:1px solid #eecfc5;border-radius:8px;padding:12px;text-align:center;font-size:12.5px;color:#4a5560;">
+                  <strong style="color:#b53d2e;font-size:13.5px;">环境（市场、客户）</strong><br>
+                  给出 <strong>奖励 r</strong>（可能很久以后）<br>
+                  变成新的<strong> 状态 s′</strong>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3" style="padding:12px 0 2px;text-align:center;font-size:13px;color:#4a5560;">
+                  目标不是赢一次，而是<strong style="color:#2b2a26;">把一辈子的总奖励加起来最大</strong>——所以要给远期奖励打折
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        这里有个绕不开的两难，叫<strong style="color:#2b2a26;">探索与利用</strong>：是继续用已知的稳妥做法（利用），还是试一试没试过的（探索）？全利用，可能永远不知道有更好的；全探索，眼前业绩就砸了。
+      </p>
+
+      <!-- 图13：探索利用 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 6px;font-size:13px;font-weight:700;color:#b53d2e;text-align:center;">图 13 · 探索与利用：十家餐厅，是每次都去已确认好吃的那家，还是试试新的？</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 20px 18px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="width:50%;padding:5px;">
+                  <table style="width:100%;background:#fbf0ec;border:1px solid #eecfc5;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:8px;text-align:center;font-size:12.5px;font-weight:700;color:#b53d2e;">纯利用</td></tr>
+                    <tr><td style="padding:6px 10px;text-align:center;font-size:13px;color:#4a5560;">每次都去同一家<br>评分稳定，但可能错过更好的</td></tr>
+                    <tr><td style="padding:0 10px 10px;text-align:center;font-size:12px;color:#8a8578;">短期最优，长期停滞</td></tr>
+                  </table>
+                </td>
+                <td style="width:50%;padding:5px;">
+                  <table style="width:100%;background:#f2f7f3;border:1px solid #cfe0d6;" cellpadding="0" cellspacing="0">
+                    <tr><td style="padding:8px;text-align:center;font-size:12.5px;font-weight:700;color:#2f6b5a;">带折扣的探索</td></tr>
+                    <tr><td style="padding:6px 10px;text-align:center;font-size:13px;color:#4a5560;">大部分去老地方<br>留出小部分试新的</td></tr>
+                    <tr><td style="padding:0 10px 10px;text-align:center;font-size:12px;color:#2f6b5a;">既保住当期，又不断发现</td></tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        实现上有两条主流路线：<strong style="color:#2b2a26;">基于价值的方法</strong>先把「在某个局面做某个动作，长期值多少分」这张表估出来，然后每次选分最高的（Q 学习、深度 Q 网络）；<strong style="color:#2b2a26;">基于策略的方法</strong>直接学一个「看到局面就输出动作」的函数，用实际拿到的总奖励去调整它（策略梯度）。前者稳、后者灵活，现在主流是把两者拧在一起用。
+      </p>
+
+      <table style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;overflow:hidden;" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="background:#b53d2e;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:24%;">业务问题</th>
+            <th style="background:#b53d2e;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:26%;">状态 / 动作 / 奖励</th>
+            <th style="background:#b53d2e;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:26%;">与监督学习的关键差别</th>
+            <th style="background:#b53d2e;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:24%;">落地难度</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">续保期动态调价</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">客户画像 / 折扣幅度 / 留住后的长期价值</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">报价本身会改变客户是否留下</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">中，需小流量实验</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">理赔干预时机</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">案件进展 / 是否介入 / 结案成本与时效</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">干预会改变案件走向</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">中，历史数据有偏</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">资产负债与再投资</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">久期缺口与利率 / 买卖与期限 / 长期收益与偿付能力</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">交易本身影响市场与自身头寸</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">高，需仿真环境</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;">营销触达节奏</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;">触达历史 / 联系还是等等 / 转化减去打扰成本</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">频繁触达会招致反感</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;">中，见效快</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table style="width:100%;background:#fdf8ec;border:1px solid #e6d7b4;border-left:4px solid #bb8a1f;border-radius:10px;margin:0 0 22px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:16px 20px;font-size:14.5px;color:#4a5560;line-height:1.8;">
+            <strong style="color:#bb8a1f;">特别提醒：</strong>强化学习在现实业务里落地，难点往往不在算法，而在<strong style="color:#2b2a26;">没有可供试错的仿真环境</strong>。它能在游戏里大胜，是因为游戏可以无限重开；保险业务一年只能过一次，试错的学费很贵。<strong style="color:#2b2a26;">因此更现实的用法是：先用监督学习做预测，把「会发生什么」弄清楚，再谈「该做什么」。</strong>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 八、AI 全景 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:46px 0 8px 0;padding-left:16px;border-left:4px solid #2f6b5a;">八、人工智能全景：这些词到底谁包含谁</p>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;padding-left:20px;">最后把这些名词放回同一张地图，从此不再被它们绕晕。</p>
+
+      <!-- 图14：AI 层级 -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 10px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:18px 20px 6px;font-size:13px;font-weight:700;color:#2f6b5a;text-align:center;">图 14 · 包含关系：越往里越具体</td>
+        </tr>
+        <tr>
+          <td style="padding:6px 20px 18px;">
+            <table style="width:100%;" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="background:#2b2a26;border-radius:8px;padding:12px;text-align:center;">
+                  <strong style="color:#ffffff;font-size:14px;">人工智能</strong><br>
+                  <span style="color:#a9a294;font-size:12px;">让机器做需要智能才能做的事</span>
+                </td>
+              </tr>
+              <tr><td style="height:6px;font-size:0;"></td></tr>
+              <tr>
+                <td style="background:#3a3831;border-radius:8px;padding:12px;">
+                  <table style="width:100%;" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td style="width:50%;padding:3px;">
+                        <table style="width:100%;background:#2f6b5a;border-radius:6px;" cellpadding="0" cellspacing="0">
+                          <tr><td style="padding:10px;text-align:center;"><strong style="color:#ffffff;font-size:13px;">机器学习</strong><br><span style="color:#c9e0d6;font-size:11.5px;">从数据中归纳规律</span></td></tr>
+                        </table>
+                      </td>
+                      <td style="width:50%;padding:3px;">
+                        <table style="width:100%;background:#b53d2e;border-radius:6px;" cellpadding="0" cellspacing="0">
+                          <tr><td style="padding:10px;text-align:center;"><strong style="color:#ffffff;font-size:13px;">强化学习</strong><br><span style="color:#f0d3cc;font-size:11.5px;">从试错与奖励中学习</span></td></tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr><td colspan="2" style="height:6px;font-size:0;"></td></tr>
+                    <tr>
+                      <td colspan="2" style="padding:3px;">
+                        <table style="width:100%;background:#e8e2d2;border-radius:6px;" cellpadding="0" cellspacing="0">
+                          <tr><td style="padding:10px;text-align:center;"><strong style="color:#2b2a26;font-size:13px;">深度学习</strong><br><span style="color:#6b665a;font-size:11.5px;">用多层神经网络实现的机器学习</span></td></tr>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr><td colspan="2" style="height:6px;font-size:0;"></td></tr>
+                    <tr>
+                      <td colspan="2" style="padding:3px;">
+                        <table style="width:100%;background:#bb8a1f;border-radius:6px;" cellpadding="0" cellspacing="0">
+                          <tr><td style="padding:10px;text-align:center;"><strong style="color:#ffffff;font-size:13px;">大模型</strong><br><span style="color:#f7e9c8;font-size:11.5px;">深度学习 + 自监督 + 海量数据 + 巨量算力</span></td></tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        这张图里最容易被误解的是<strong style="color:#2b2a26;">深度学习与强化学习的关系</strong>：它们不是并列的两块。深度学习讲的是「模型长什么样」，强化学习讲的是「目标怎么定」——两者可以叠加，AlphaGo 就是<strong style="color:#2f6b5a;">用深度网络做模型、用强化学习做策略</strong>的产物。
+      </p>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        至于这两年最热的大模型，它在三要素框架里的位置也很清楚：<strong style="color:#2b2a26;">模型</strong>是超大规模的 Transformer；<strong style="color:#2b2a26;">策略</strong>很特别——不给标准答案，而是让模型「预测下一个词」，用海量文本自己给自己出题，这叫<strong style="color:#2f6b5a;">自监督学习</strong>；<strong style="color:#2b2a26;">算法</strong>仍是反向传播与自适应优化器，只是规模大了几个数量级。
+      </p>
+
+      <table style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;overflow:hidden;" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:18%;">名词</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:44%;">一句话解释</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:38%;">与三要素的对应</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">人工智能</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">最大的筐，目标是让机器做智能的事</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#8a8578;border-bottom:1px solid #f0ece0;">目标层，不特指技术</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">机器学习</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">不写死规则，从数据里归纳</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">模型 + 策略 + 算法</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">深度学习</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">多层神经网络，自己学特征</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#2f6b5a;border-bottom:1px solid #f0ece0;"><strong>换了「模型」这一格</strong></td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">强化学习</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">在试错与延迟奖励中优化长期收益</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#b53d2e;border-bottom:1px solid #f0ece0;"><strong>换了「策略」这一格</strong></td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;border-bottom:1px solid #f0ece0;">自监督学习</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">把数据的一部分藏起来当答案</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">省了标注，策略仍是误差最小</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2b2a26;">大模型</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;">参数千亿级、用海量文本预训练的 Transformer</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#bb8a1f;"><strong>三格都被放大到极致</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ===== 九、上手路径 ===== -->
+      <p style="font-size:20px;font-weight:800;color:#2b2a26;margin:46px 0 8px 0;padding-left:16px;border-left:4px solid #2f6b5a;">九、回到手头的问题：该用什么</p>
+      <p style="font-size:14px;color:#8a8578;margin:0 0 22px 0;padding-left:20px;">技术选型没有万能答案，只有「答案跟着问题走」。</p>
+
+      <table style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;overflow:hidden;" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="background:#2b2a26;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:30%;">如果问题是……</th>
+            <th style="background:#2b2a26;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:28%;">先试这个</th>
+            <th style="background:#2b2a26;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:42%;">为什么</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">要一个能解释、能报备、能写进条款的定价模型</td>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2f6b5a;border-bottom:1px solid #f0ece0;">广义线性模型</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">系数可读、可加约束、监管熟悉</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">要纯预测精度，解释可以事后补</td>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2f6b5a;border-bottom:1px solid #f0ece0;">梯度提升树</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">表格数据上长期使用的最优选，配合事后解释工具</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">要处理照片、扫描件、病历文本</td>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2f6b5a;border-bottom:1px solid #f0ece0;">深度学习</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">手工造特征在这里行不通</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">要发现「谁不太对劲」但没有标签</td>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2f6b5a;border-bottom:1px solid #f0ece0;">无监督：聚类 / 孤立森林</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">不需要先知道答案长什么样</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">要在连续决策中优化长期结果</td>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#b53d2e;border-bottom:1px solid #f0ece0;">先做预测，再考虑强化学习</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">没有可靠的预测与仿真环境，强化学习很难收敛</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;">数据量很小（几百条）</td>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#bb8a1f;">带强正则的线性模型</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;">复杂模型在小样本上只会背住噪声</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        如果要把这套东西真正用起来，顺序建议是这样，每一步都比上一步贵：
+      </p>
+
+      <table style="width:100%;border-collapse:separate;border-spacing:0;border:1px solid #e5dfd0;border-radius:12px;margin-bottom:20px;overflow:hidden;" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:14%;">阶段</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:44%;">做什么</th>
+            <th style="background:#2f6b5a;color:#ffffff;font-size:12.5px;font-weight:700;padding:10px 12px;text-align:left;width:42%;">这一步要拿到的东西</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2f6b5a;border-bottom:1px solid #f0ece0;">第一步</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">把手上那张表整理干净，先跑一个最笨的基准</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">一条可以比较的底线，之后所有「提升」才有意义</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2f6b5a;border-bottom:1px solid #f0ece0;">第二步</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">上广义线性模型，把系数讲清楚</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">一个业务方听得懂、监管看得过的结果</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2f6b5a;border-bottom:1px solid #f0ece0;">第三步</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">上梯度提升树，看增量有多大</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;">精度的真实天花板，以及它与可解释性的差价</td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2f6b5a;border-bottom:1px solid #f0ece0;">第四步</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;border-bottom:1px solid #f0ece0;">把树模型发现的交互，回填进线性模型</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;border-bottom:1px solid #f0ece0;"><strong style="color:#2f6b5a;">既保留大部分精度，又保留全部可解释性</strong></td>
+          </tr>
+          <tr>
+            <td style="padding:10px 12px;font-size:13.5px;font-weight:700;color:#2f6b5a;">第五步</td>
+            <td style="padding:10px 12px;font-size:13.5px;color:#4a5560;">上线、留对照组、持续监控稳定性</td>
+            <td style="padding:10px 12px;font-size:13px;color:#4a5560;">把一次性的建模，变成可复用的能力</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="font-size:15px;line-height:1.9;color:#4a5560;margin:0 0 18px 0;">
+        第四步是这套方法论里最实用的一步：<strong style="color:#2b2a26;">用复杂的模型去发现规律，用简单的模型去落地执行。</strong>复杂模型负责告诉你「哪里藏着交互」，简单模型负责把这件事讲给所有人听、并且写进流程。
+      </p>
+
+      <!-- ===== 收尾 ===== -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-top:3px solid #2f6b5a;border-radius:12px;margin:34px 0 20px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:26px 28px;font-size:15px;color:#4a5560;line-height:1.9;">
+            <p style="margin:0 0 14px 0;">写到这里，可以把全文收成一句话：</p>
+            <p style="margin:0 0 14px 0;font-size:16px;font-weight:700;color:#2b2a26;">机器学习的核心只有三件事——<strong style="color:#2f6b5a;">模型划范围，策略定尺子，算法动手搜</strong>。深度学习换的是第一格，强化学习换的是第二格，人工智能则是把这三格一起放大之后的总称。</p>
+            <p style="margin:0 0 14px 0;">再往上追一层，这三件事要解决的其实是同一个古老的问题：<strong style="color:#2b2a26;">面对不确定的未来，怎么用已知的信息，做出一个不那么差的判断。</strong></p>
+            <p style="margin:0;">一百年前，精算师用信度公式回答它；今天，工程师用梯度下降回答它。<strong style="color:#2f6b5a;">工具在换，问题没变。</strong>而保险从头到尾都在做同一件事——<strong style="color:#b53d2e;">用确定的小钱，换不确定的大钱</strong>。风险可以被理解，安全感可以被计算。</p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 作者卡片 ===== -->
+      <table style="width:100%;background:#2b2a26;border-radius:12px;margin:0 0 18px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:24px 28px;">
+            <p style="margin:0 0 8px 0;font-size:16px;font-weight:800;color:#ffffff;">西红精算师</p>
+            <p style="margin:0 0 14px 0;font-size:13.5px;color:#a9a294;line-height:1.8;">中小保险公司精算师。用数据讲保险，用真心做科普。<br>不卖焦虑，不推销，不讲术语——先把数字摊开，再说话。</p>
+            <p style="margin:0;font-size:13.5px;color:#a9a294;line-height:1.8;">
+              更多精算模型、机器学习与数据分析的拆解，在知识星球持续更新：<br>
+              <strong style="color:#c9c3b4;">https://wx.zsxq.com/</strong>
+            </p>
+          </td>
+        </tr>
+      </table>
+
+      <!-- ===== 系列回顾 ===== -->
+      <table style="width:100%;background:#ffffff;border:1px solid #e5dfd0;border-radius:12px;margin:0 0 18px;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding:20px 24px;">
+            <p style="margin:0 0 12px 0;font-size:14px;font-weight:700;color:#2f6b5a;">机器学习系列（同系列三篇，可对照阅读）</p>
+            <p style="margin:0 0 8px 0;font-size:13.5px;color:#4a5560;line-height:1.8;">① 《一文读懂机器学习》——完整版，含评估方法与落地战场</p>
+            <p style="margin:0 0 8px 0;font-size:13.5px;color:#4a5560;line-height:1.8;">② 《机器学习，管理层也能看懂的四个故事》——决策视角，讲钱、时间与责任</p>
+            <p style="margin:0;font-size:13.5px;color:#4a5560;line-height:1.8;">③ 《机器学习核心只有三件事》——本篇，从三要素一路讲到人工智能</p>
+          </td>
+        </tr>
+      </table>
+
+      <p style="font-size:12.5px;color:#8a8578;margin:0;text-align:center;line-height:1.8;">
+        本文为个人学习与方法论整理，不代表任何机构观点。文中数据均为示意。
+      </p>
+
+
+    </td>
+  </tr>
+</table>
+
+
+  </div>
+
+  <div class="pager">
+    <a href="onepage.html">← ③ 一文读懂</a>
+    <a href="oneday.html">⑤ 一小时精读 →</a>
+  </div>
+</main>
+
+<script src="js/kb.js"></script>
+</body>
+</html>

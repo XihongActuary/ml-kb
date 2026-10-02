@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>机器学习 · 一小时精读｜机器学习知识库 · 西红精算</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+:root{
+  --bg:#f5f1e6; --ink:#2a2a2a; --mute:#7a6f5d; --line:#d8cfb8;
+  --red:#b53d2e; --red-soft:#d97565; --gold:#c98a2b; --teal:#3a6e6f;
+}
+*{box-sizing:border-box}
+.art-wrap{font-family:"PingFang SC","Microsoft YaHei",serif;color:var(--ink);
+  max-width:720px;margin:0 auto;padding:6px 0 40px;line-height:1.8;font-size:15.5px}
+header{text-align:center;border-bottom:2px solid var(--line);padding-bottom:20px;margin-bottom:32px}
+header h1{font-size:26px;margin:0 0 6px;color:var(--ink);font-weight:700}
+header .sub{color:var(--mute);font-size:13px;margin:0}
+header .meta{color:var(--red);font-size:12px;margin-top:8px;letter-spacing:1px}
+nav.toc{background:#fff;padding:14px 18px;border:1px solid var(--line);border-radius:6px;margin-bottom:28px}
+nav.toc strong{color:var(--red)}
+nav.toc ol{margin:6px 0 0;padding-left:22px}
+nav.toc li{margin:3px 0;font-size:14px}
+section{margin-bottom:36px;scroll-margin-top:20px}
+section h2{font-size:20px;color:var(--red);border-left:4px solid var(--red);padding-left:12px;
+  margin:0 0 6px;font-weight:700}
+section .time{color:var(--mute);font-size:12px;margin:0 0 14px;padding-left:16px}
+section h3{font-size:16px;color:var(--ink);margin:18px 0 8px;font-weight:600}
+section h3 .en{color:var(--mute);font-weight:400;font-size:13px;margin-left:6px}
+p{margin:8px 0}
+strong.k{color:var(--red);font-weight:700}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#ebe3cc;font-weight:600}
+.fig{margin:14px 0;padding:14px;background:#fff;border:1px solid var(--line);border-radius:6px;text-align:center}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:12px;color:var(--mute);margin-top:6px}
+.callout{padding:12px 14px;border-left:3px solid var(--gold);background:#faf6e9;margin:12px 0;font-size:14px}
+.box3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+@media(max-width:640px){.box3{grid-template-columns:1fr}}
+.box3 .b{background:#fff;border:1px solid var(--line);border-radius:6px;padding:12px;text-align:center}
+.box3 .b .n{font-size:20px;color:var(--red);font-weight:700}
+.box3 .b .l{font-size:12px;color:var(--mute);margin-top:4px}
+
+/* ─── §3-§5 内嵌 1 分钟分屏（三联屏卡块）─── */
+.sub-frames{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0 6px}
+@media(max-width:640px){.sub-frames{grid-template-columns:1fr}}
+.sub{background:#fff;border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:6px;padding:12px;font-size:13px}
+.sub .sno{color:var(--red);font-weight:700;font-size:11px;letter-spacing:1px;margin-bottom:4px}
+.sub .sq{color:var(--ink);font-weight:600;margin-bottom:6px}
+.sub .sa{color:var(--mute);font-size:12px;line-height:1.6}
+.sub .st{color:var(--teal);font-size:11px;margin-top:6px;font-style:italic}
+
+/* ─── §6 线性陈述（公众号发表格式）─── */
+.frame{padding:16px 0;border-bottom:1px dashed var(--line);
+  scroll-margin-top:20px;margin:0}
+.frame:last-of-type{border-bottom:none}
+.frame .q{font-size:14px;color:var(--mute);margin:0 0 8px;letter-spacing:.5px}
+.frame .a{font-size:17px;color:var(--ink);font-weight:600;margin:0 0 12px;line-height:1.7}
+.frame .think{font-size:13px;color:var(--teal);background:#eef0ed;padding:10px 14px;
+  border-radius:0 4px 4px 0;border-left:3px solid var(--teal);margin:0}
+.frame .think::before{content:"一点思考 · ";font-weight:600;color:var(--teal)}
+/* 暂停回顾段（金色高亮） */
+.frame.review{background:#fbf6e6;border:1px solid var(--gold);border-radius:6px;
+  padding:14px 18px;margin:18px 0}
+.frame.review .a{color:var(--red)}
+
+footer{text-align:center;color:var(--mute);font-size:12px;border-top:1px solid var(--line);
+  padding-top:16px;margin-top:48px}
+a{color:var(--red);text-decoration:none}
+a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<aside class="side">
+  <div class="brand"><b>机器学习知识库</b><span>从零基础到能上手 · 西红精算</span></div>
+  <nav>
+    <a href="index.html">首页 · 怎么读这套库</a>
+    <div class="grp">第一层 · 零基础</div>
+    <a href="overview.html">① 机器学习到底在干什么</a>
+    <a href="mgmt.html">② 给管理层看的通俗版</a>
+    <div class="grp">第二层 · 系统学</div>
+    <a href="onepage.html">③ 一文读懂机器学习</a>
+    <a href="core.html">④ 核心三要素与 AI 全景</a>
+    <a href="oneday.html" class="on">⑤ 一小时精读</a>
+    <div class="grp">第三层 · 深钻</div>
+    <a href="notes.html">⑥ 西瓜书十七章 + 拓展</a>
+    <div class="grp">关于</div>
+    <a href="resources.html">外部资源 · 素材来源</a>
+    <a href="amkb.html">姊妹库 · 精算模型与数据分析</a>
+    <a href="xihong.html">关于 · 西红精算</a>
+  </nav>
+  <div class="prog-mini">学习进度 <b>0 / 7</b></div>
+</aside>
+
+<main class="main">
+  <div class="ch-head">
+    <div class="no">读物 ⑤</div>
+    <h1>机器学习 · 一小时精读</h1>
+    <div class="sub">30 段「提问 → 回答 → 一点思考」，5 个暂停回顾点</div>
+    <div class="meta"><span>4 300 字 · 30 段</span><span>3 张自绘图</span><span>适合转发自学</span></div>
+  </div>
+
+  <button class="done-btn" data-id="oneday">○ 标记本页已完成</button>
+
+  <div class="tip" style="max-width:780px"><b>这一篇可以一口气读完。</b>全篇用「备考」做贯穿比喻：题海即训练集，模拟卷即验证集，过拟合就是把答案连同印刷瑕疵一起背下来。读到第 8 段，你自己就能说出什么叫过拟合。</div>
+
+  <div class="art-wrap">
+
+
+<header>
+  <h1>机器学习 一小时精读</h1>
+  <p class="sub">把机器学习当成一次备考：题海、错题本与那张没人见过的卷子</p>
+  <p class="meta">30 段一问一答 · 零基础读到能用</p>
+</header>
+
+<nav class="toc" id="toc">
+  <strong>本篇看点</strong>
+  <ol>
+    <li>为什么要读：它是保险的下一道工序</li>
+    <li>一图看懂 ML（泛化 · 取舍 · 收缩）</li>
+    <li>图 1 · 算法全景地图（三大家族）</li>
+    <li>图 2 · 建模六步流程（含翻车点）</li>
+    <li>图 3 · 偏差-方差窘境（唯一的取舍）</li>
+    <li>线性陈述：30 段一问一答</li>
+  </ol>
+</nav>
+
+<!-- ════════════════════════ §1 为什么要读 ════════════════════════ -->
+<section id="why">
+  <h2>一、为什么要读</h2>
+  <p class="time">背景</p>
+
+  <h3>1.1 一句话回答</h3>
+  <p>精算师这一行，一百多年来只做一件事：<strong class="k">用过去的经验，估算未来的不确定</strong>。机器学习做的事情一模一样，只不过它手里多了几十倍的算力，能同时摆弄几千个变量。</p>
+
+  <h3>1.2 三个不应该再陌生的地方</h3>
+  <table>
+    <tr><th>环节</th><th>原来的做法</th><th>机器学习补上了什么</th></tr>
+    <tr><td>定价</td><td>把客户切成有限几个格子，每格一个费率</td><td><strong class="k">自动找出高阶交叉组合</strong>——「新能源车 × 年里程低于五千 × 某个年龄段」这类人类看不到的组合</td></tr>
+    <tr><td>理赔</td><td>随机抽检，或靠老师傅的经验</td><td><strong class="k">给案子排可疑度</strong>，同样的人力，检出率可以差出好几倍</td></tr>
+    <tr><td>客户经营</td><td>给"看起来要流失"的人打电话</td><td><strong class="k">区分"会走的人"与"能留住的人"</strong>——这两拨人并不重合</td></tr>
+  </table>
+
+  <div class="callout">先说结论：机器学习不会替精算师做决定。它只是把原本藏在个人经验里、散落在几千个变量之间的规律，<strong class="k">翻到了桌面上</strong>。看见之后怎么选，仍然是人的工作。</div>
+
+  <h3>1.3 全篇用的一套比方</h3>
+  <p>为了不堆术语，下面用同一件事打比方——<strong class="k">备考</strong>。  题目刷得完的那部分叫训练集，用来查漏的模拟卷叫验证集，最后那张谁都没见过的正式考卷叫测试集。，最后那张谁都没见过的正式考卷叫测试集。做过的题全对、正式考试不及格，就叫<strong class="k">过拟合</strong>。</p>
+</section>
+
+<!-- ════════════════════════ §2 一图看懂 ════════════════════════ -->
+<section id="overview">
+  <h2>二、一图看懂 ML</h2>
+  <p class="time">量 · 取舍 · 手段</p>
+
+  <p>整个机器学习，其实只围着三件事转：<strong class="k">要达成什么目标、必须放弃什么、靠什么手段去平衡</strong>。</p>
+
+  <div class="box3">
+    <div class="b">
+      <div class="n">泛化</div>
+      <div class="l">唯一的目标。不追求把做过的题做对，追求<strong>没见过的题也能做对</strong>。</div>
+    </div>
+    <div class="b">
+      <div class="n">偏差与方差</div>
+      <div class="l">唯一的取舍。模型复杂了，「学不会」变少、「学歪了」变多，反过来也一样。</div>
+    </div>
+    <div class="b">
+      <div class="n">收缩</div>
+      <div class="l">唯一的手段。不管叫什么名字，都是在<strong>把对数据的信任往回收一点</strong>。</div>
+    </div>
+  </div>
+
+  <h3>2.1 三个名字，同一件事</h3>
+  <table>
+    <tr><th>你熟悉的说法</th><th>机器学习的说法</th><th>共同的本质</th></tr>
+    <tr><td><strong class="k">Bühlmann 信度</strong></td><td>岭回归 / L2 正则</td><td>数据量少的时候，向"大家都一样"收缩</td></tr>
+    <tr><td><strong class="k">手册费率</strong></td><td>先验分布</td><td>不信单个个体的数据，先信集体经验</td></tr>
+    <tr><td><strong class="k">修匀（Smoothing）</strong></td><td>正则化</td><td>不允许曲线抖得太厉害</td></tr>
+    <tr><td><strong class="k">Z = n / (n + K)</strong></td><td>正则系数 λ</td><td>同一个角色：数据到底值几分信任</td></tr>
+  </table>
+
+  <div class="callout">这一行对照，是本篇最重要的一句话：<strong class="k">信度理论是上世纪初的机器学习，机器学习是今天的信度理论。</strong>它不是新物种，是同一套思想在新算力下的展开。</div>
+</section>
+
+<!-- ════════════════════════ §3 图 1 算法全景 ════════════════════════ -->
+<section id="fig1">
+  <h2>三、图 1 · 算法全景地图</h2>
+  <p class="time">三大族（主释 + 3 分屏）</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg">
+      <!-- 顶端 -->
+      <rect x="255" y="16" width="170" height="38" rx="5" fill="#faf6e9" stroke="#2a2a2a" stroke-width="2"/>
+      <text x="340" y="40" text-anchor="middle" font-size="14" font-weight="700" fill="#2a2a2a">机器在学习什么</text>
+      <!-- 连线 -->
+      <line x1="340" y1="54" x2="135" y2="80" stroke="#d8cfb8" stroke-width="1.5"/>
+      <line x1="340" y1="54" x2="340" y2="80" stroke="#d8cfb8" stroke-width="1.5"/>
+      <line x1="340" y1="54" x2="545" y2="80" stroke="#d8cfb8" stroke-width="1.5"/>
+      <!-- 三个家族 -->
+      <rect x="35" y="80" width="200" height="42" rx="5" fill="#fff" stroke="#b53d2e" stroke-width="2"/>
+      <text x="135" y="102" text-anchor="middle" font-size="13" font-weight="700" fill="#b53d2e">监督学习 · 有标答</text>
+      <text x="135" y="118" text-anchor="middle" font-size="10" fill="#7a6f5d">每道题都给了正确答案</text>
+      <rect x="240" y="80" width="200" height="42" rx="5" fill="#fff" stroke="#c98a2b" stroke-width="2"/>
+      <text x="340" y="102" text-anchor="middle" font-size="13" font-weight="700" fill="#c98a2b">无监督学习 · 自己找</text>
+      <text x="340" y="118" text-anchor="middle" font-size="10" fill="#7a6f5d">没人告诉答案，只见一堆题</text>
+      <rect x="445" y="80" width="200" height="42" rx="5" fill="#fff" stroke="#3a6e6f" stroke-width="2"/>
+      <text x="545" y="102" text-anchor="middle" font-size="13" font-weight="700" fill="#3a6e6f">强化学习 · 试错学</text>
+      <text x="545" y="118" text-anchor="middle" font-size="10" fill="#7a6f5d">只有对了才给糖</text>
+      <!-- 第二层 -->
+      <rect x="35" y="150" width="94" height="34" rx="4" fill="#faf6e9" stroke="#b53d2e" stroke-width="1.5"/>
+      <text x="82" y="171" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2a2a2a">分类</text>
+      <rect x="141" y="150" width="94" height="34" rx="4" fill="#faf6e9" stroke="#b53d2e" stroke-width="1.5"/>
+      <text x="188" y="171" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2a2a2a">回归</text>
+      <rect x="240" y="150" width="94" height="34" rx="4" fill="#fdf8ec" stroke="#c98a2b" stroke-width="1.5"/>
+      <text x="287" y="171" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2a2a2a">聚类</text>
+      <rect x="346" y="150" width="94" height="34" rx="4" fill="#fdf8ec" stroke="#c98a2b" stroke-width="1.5"/>
+      <text x="393" y="171" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2a2a2a">降维</text>
+      <rect x="445" y="150" width="200" height="34" rx="4" fill="#eef0ed" stroke="#3a6e6f" stroke-width="1.5"/>
+      <text x="545" y="171" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2a2a2a">策略 · 奖励 · 马尔可夫决策</text>
+      <!-- 第三层 代表算法 -->
+      <rect x="20" y="204" width="205" height="34" rx="4" fill="#fff" stroke="#d8cfb8" stroke-width="1.2"/>
+      <text x="122" y="225" text-anchor="middle" font-size="10.5" fill="#2a2a2a">线性回归 · Logistic · 决策树 · SVM · GBM</text>
+      <rect x="235" y="204" width="210" height="34" rx="4" fill="#fff" stroke="#d8cfb8" stroke-width="1.2"/>
+      <text x="340" y="225" text-anchor="middle" font-size="10.5" fill="#2a2a2a">k-means · DBSCAN · 层次聚类 · PCA</text>
+      <rect x="455" y="204" width="180" height="34" rx="4" fill="#fff" stroke="#d8cfb8" stroke-width="1.2"/>
+      <text x="545" y="225" text-anchor="middle" font-size="10.5" fill="#2a2a2a">Q-learning · 策略梯度</text>
+      <!-- 底部保险场景 -->
+      <line x1="122" y1="238" x2="122" y2="262" stroke="#d8cfb8" stroke-width="1.5"/>
+      <line x1="340" y1="238" x2="340" y2="262" stroke="#d8cfb8" stroke-width="1.5"/>
+      <line x1="545" y1="238" x2="545" y2="262" stroke="#d8cfb8" stroke-width="1.5"/>
+      <rect x="20" y="262" width="205" height="40" rx="5" fill="#f7f5f0" stroke="#b53d2e" stroke-width="1.5"/>
+      <text x="122" y="281" text-anchor="middle" font-size="11" font-weight="700" fill="#b53d2e">定价 · 理赔 · 准备金</text>
+      <text x="122" y="295" text-anchor="middle" font-size="10" fill="#7a6f5d">有历史赔款做标答</text>
+      <rect x="235" y="262" width="210" height="40" rx="5" fill="#f7f5f0" stroke="#c98a2b" stroke-width="1.5"/>
+      <text x="340" y="281" text-anchor="middle" font-size="11" font-weight="700" fill="#c98a2b">客户分群 · 变量压缩</text>
+      <text x="340" y="295" text-anchor="middle" font-size="10" fill="#7a6f5d">不知道该分成几群</text>
+      <rect x="455" y="262" width="180" height="40" rx="5" fill="#f7f5f0" stroke="#3a6e6f" stroke-width="1.5"/>
+      <text x="545" y="281" text-anchor="middle" font-size="11" font-weight="700" fill="#3a6e6f">动态决策 · 续保策略</text>
+      <text x="545" y="295" text-anchor="middle" font-size="10" fill="#7a6f5d">每一步都影响下一步</text>
+      <text x="340" y="326" text-anchor="middle" font-size="10.5" fill="#7a6f5d">多数保险场景落在左侧——因为历史赔款本身就是标答</text>
+    </svg>
+    <p class="cap">图 1 · 算法全景：三大族、代表算法与保险落点</p>
+  </div>
+
+  <h3>3.1 三分钟主释</h3>
+  <table>
+    <tr><th>家族</th><th>关键差别：有没有标准答案</th><th>在保险里用在哪</th></tr>
+    <tr><td>监督学习</td><td>有。每条历史数据都带着「后来赔了 / 没赔」「赔了多少」</td><td><strong class="k">主力</strong>：定价、欺诈识别、准备金</td></tr>
+    <tr><td>无监督学习</td><td>没有。只有一堆数据，让它自己找结构</td><td>客户分群、把几百个变量压成十几个</td></tr>
+    <tr><td>强化学习</td><td>晚给。做完一个动作才告诉你这次好不好</td><td>动态策略、长期最优决策，目前用得最少</td></tr>
+  </table>
+
+  <h3>3.2 一分钟分屏释义</h3>
+  <div class="sub-frames">
+    <div class="sub">
+      <div class="sq">分类 · 判断是与否</div>
+      <div class="sa">输出离散类别：这笔赔案可疑与否？这个客户会否流失？</div>
+      <div class="st">一点儿思考：赔或不赔是二元答案，但模型给的是"可疑程度"——中间的排序才是真正的用处。</div>
+    </div>
+    <div class="sub">
+      <div class="sq">回归 · 估算是多少</div>
+      <div class="sa">输出连续数值：这辆车明年大概赔多少钱？</div>
+      <div class="st">一点儿思考：定价要的不是单点预测，是整个分布的形状。</div>
+    </div>
+    <div class="sub">
+      <div class="sq">聚类 · 先不问答案</div>
+      <div class="sa">把相似的样本归到一堆，事先不告诉它有几堆。</div>
+      <div class="st">一点儿思考：分群没有"标准答案"，所以结果好不好，只能回到业务里去检验。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ §4 图 2 建模流程 ════════════════════════ -->
+<section id="fig2">
+  <h2>四、图 2 · 建模六步流程</h2>
+  <p class="time">从一条数据到上线运行（主释 + 3 分屏）</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- 六步 -->
+      <rect x="24" y="24" width="196" height="52" rx="5" fill="#fff" stroke="#3a6e6f" stroke-width="1.8"/>
+      <text x="122" y="45" text-anchor="middle" font-size="12.5" font-weight="700" fill="#3a6e6f">① 定义问题与口径</text>
+      <text x="122" y="62" text-anchor="middle" font-size="10" fill="#7a6f5d">把业务问题翻译成可计算的变量</text>
+      <rect x="242" y="24" width="196" height="52" rx="5" fill="#fff" stroke="#3a6e6f" stroke-width="1.8"/>
+      <text x="340" y="45" text-anchor="middle" font-size="12.5" font-weight="700" fill="#3a6e6f">② 数据消毒与切分</text>
+      <text x="340" y="62" text-anchor="middle" font-size="10" fill="#7a6f5d">先切分，再做一切预处理</text>
+      <rect x="460" y="24" width="196" height="52" rx="5" fill="#fff" stroke="#3a6e6f" stroke-width="1.8"/>
+      <text x="558" y="45" text-anchor="middle" font-size="12.5" font-weight="700" fill="#3a6e6f">③ 建立基准模型</text>
+      <text x="558" y="62" text-anchor="middle" font-size="10" fill="#7a6f5d">先立一条最笨的线</text>
+
+      <rect x="460" y="118" width="196" height="52" rx="5" fill="#fff" stroke="#b53d2e" stroke-width="1.8"/>
+      <text x="558" y="139" text-anchor="middle" font-size="12.5" font-weight="700" fill="#b53d2e">④ 训练与调参</text>
+      <text x="558" y="156" text-anchor="middle" font-size="10" fill="#7a6f5d">用验证集挑，不用测试集挑</text>
+      <rect x="242" y="118" width="196" height="52" rx="5" fill="#fff" stroke="#b53d2e" stroke-width="1.8"/>
+      <text x="340" y="139" text-anchor="middle" font-size="12.5" font-weight="700" fill="#b53d2e">⑤ 用测试集评估</text>
+      <text x="340" y="156" text-anchor="middle" font-size="10" fill="#7a6f5d">这张卷子谁都没见过</text>
+      <rect x="24" y="118" width="196" height="52" rx="5" fill="#fff" stroke="#c98a2b" stroke-width="1.8"/>
+      <text x="122" y="139" text-anchor="middle" font-size="12.5" font-weight="700" fill="#c98a2b">⑥ 上线与监控</text>
+      <text x="122" y="156" text-anchor="middle" font-size="10" fill="#7a6f5d">留对照组 · 盯分布漂移</text>
+
+      <!-- 箭头 -->
+      <path d="M220 50 L242 50" stroke="#3a6e6f" stroke-width="1.6" fill="none" marker-end="url(#ar2)"/>
+      <path d="M438 50 L460 50" stroke="#3a6e6f" stroke-width="1.6" fill="none" marker-end="url(#ar2)"/>
+      <path d="M558 76 L558 118" stroke="#d8cfb8" stroke-width="1.6" fill="none" marker-end="url(#ar2)"/>
+      <path d="M460 144 L438 144" stroke="#b53d2e" stroke-width="1.6" fill="none" marker-end="url(#ar2)"/>
+      <path d="M242 144 L220 144" stroke="#c98a2b" stroke-width="1.6" fill="none" marker-end="url(#ar2)"/>
+      <defs>
+        <marker id="ar2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6" fill="#7a6f5d"/>
+        </marker>
+      </defs>
+
+      <!-- 三个翻车点 -->
+      <rect x="24" y="200" width="196" height="46" rx="5" fill="#fdf3f1" stroke="#b53d2e" stroke-width="1.5"/>
+      <text x="122" y="220" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b53d2e">翻车点一 · 数据泄漏</text>
+      <text x="122" y="236" text-anchor="middle" font-size="10" fill="#7a6f5d">偷用了只有事后才知道的字段</text>
+      <rect x="242" y="200" width="196" height="46" rx="5" fill="#fdf3f1" stroke="#b53d2e" stroke-width="1.5"/>
+      <text x="340" y="220" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b53d2e">翻车点二 · 调参泄漏</text>
+      <text x="340" y="236" text-anchor="middle" font-size="10" fill="#7a6f5d">用测试集反复挑，等于提前看卷</text>
+      <rect x="460" y="200" width="196" height="46" rx="5" fill="#fdf3f1" stroke="#b53d2e" stroke-width="1.5"/>
+      <text x="558" y="220" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b53d2e">翻车点三 · 分布漂移</text>
+      <text x="558" y="236" text-anchor="middle" font-size="10" fill="#7a6f5d">客户在变，模型慢慢失效</text>
+
+      <text x="340" y="276" text-anchor="middle" font-size="11" fill="#7a6f5d">模型上线不是终点 —— 上线之后失效只是时间问题，区别在于有没有人盯着</text>
+      <text x="340" y="292" text-anchor="middle" font-size="10" fill="#b53d2e">≈ 留下 10% 不干预做对照组，是整个项目里最便宜的一份保险</text>
+    </svg>
+    <p class="cap">图 2 · 建模六步与三个翻车点</p>
+  </div>
+
+  <h3>4.1 数据怎么分</h3>
+  <table>
+    <tr><th>说法</th><th>在备考比方里</th><th>规矩</th></tr>
+    <tr><td><strong class="k">训练集</strong></td><td>平时做的题海</td><td>用它把参数学好</td></tr>
+    <tr><td><strong class="k">验证集</strong></td><td>月考模拟卷</td><td>用它挑学习方法（调参），可以反复用</td></tr>
+    <tr><td><strong class="k">测试集</strong></td><td>正式考卷</td><td><strong class="k">只许用一次</strong>。反复用就等于提前看了答案</td></tr>
+    <tr><td><strong class="k">k 折交叉验证</strong></td><td>轮换着抽题当模拟卷</td><td>常用 10 折，数据少时尤其合适</td></tr>
+    <tr><td><strong class="k">自助法</strong></td><td>有放回抽题</td><td>约 36.8% 的样本从未被抽中，天然形成"包外估计"</td></tr>
+  </table>
+
+  <div class="callout">时间序列数据<strong class="k">不能随机切</strong>。跨年数据若随机打乱，等于用明年的经验去预测今年的事——这是一眼看不出、但一定会吃亏的错误。</div>
+
+  <h3>4.2 一分钟分屏释义</h3>
+  <div class="sub-frames">
+    <div class="sub">
+      <div class="sq">先切分，后预处理</div>
+      <div class="sa">标准化、缺失值填充、特征筛选，都只能在训练集上做，再把拟合好的参数拿去套测试集。</div>
+      <div class="st">一点儿思考：顺序反了，测试集的分数就是幻觉，上线必崩。</div>
+    </div>
+    <div class="sub">
+      <div class="sq">先立基准</div>
+      <div class="sa">复杂模型上场前，先让最简单的那个跑一遍。</div>
+      <div class="st">一点儿思考：连老办法都比不过的"新模型"，只是在给旧问题换包装。</div>
+    </div>
+    <div class="sub">
+      <div class="sq">留对照组</div>
+      <div class="sa">随机留出 10% 不做干预，作为效果测量的尺子。</div>
+      <div class="st">一点儿思考：没有尺子，所有效果都是自我感觉。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ §5 图 3 偏差方差 ════════════════════════ -->
+<section id="fig3">
+  <h2>五、图 3 · 偏差-方差窘境</h2>
+  <p class="time">唯一的取舍（主释 + 3 分屏）</p>
+
+  <div class="fig">
+    <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+      <!-- 坐标轴 -->
+      <line x1="80" y1="40" x2="80" y2="240" stroke="#7a6f5d" stroke-width="1.5"/>
+      <line x1="80" y1="240" x2="640" y2="240" stroke="#7a6f5d" stroke-width="1.5"/>
+      <text x="640" y="258" text-anchor="end" font-size="11" fill="#7a6f5d">模型复杂度 →</text>
+      <text x="72" y="34" text-anchor="end" font-size="11" fill="#7a6f5d">误差 ↑</text>
+
+      <!-- 最优区 -->
+      <rect x="300" y="40" width="90" height="200" fill="#fbf6e6" opacity="0.85"/>
+      <line x1="345" y1="45" x2="345" y2="240" stroke="#c98a2b" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+      <!-- 噪声 -->
+      <line x1="80" y1="228" x2="640" y2="228" stroke="#9a927f" stroke-width="1.4" stroke-dasharray="6 4"/>
+      <text x="632" y="224" text-anchor="end" font-size="10.5" fill="#9a927f">噪声（不可约）</text>
+
+      <!-- 偏差² -->
+      <polyline points="84,66 164,74 244,90 324,114 404,144 484,176 564,204 636,224"
+        fill="none" stroke="#b53d2e" stroke-width="2.4"/>
+      <text x="86" y="60" font-size="11.5" font-weight="700" fill="#b53d2e">偏差²</text>
+
+      <!-- 方差 -->
+      <polyline points="84,232 164,226 244,216 324,198 404,168 484,136 564,102 636,72"
+        fill="none" stroke="#3a6e6f" stroke-width="2.4"/>
+      <text x="600" y="66" text-anchor="end" font-size="11.5" font-weight="700" fill="#3a6e6f">方差</text>
+
+      <!-- 总误差 U 形 -->
+      <path d="M84 44 Q 345 232 636 46" fill="none" stroke="#2a2a2a" stroke-width="3"/>
+      <text x="345" y="150" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2a2a2a">泛化总误差</text>
+
+      <!-- 最优点 -->
+      <circle cx="345" cy="168" r="5" fill="#c98a2b"/>
+      <text x="345" y="196" text-anchor="middle" font-size="10.5" fill="#c98a2b">最优点：两者之和最小</text>
+
+      <!-- 两端标注 -->
+      <text x="120" y="278" text-anchor="middle" font-size="11" fill="#b53d2e">这边欠拟合 — 学不会</text>
+      <text x="570" y="278" text-anchor="middle" font-size="11" fill="#3a6e6f">这边过拟合 — 学歪了</text>
+      <text x="345" y="292" text-anchor="middle" font-size="10.5" fill="#7a6f5d">所有正则化，都是用一点点偏差去换一大截方差</text>
+    </svg>
+    <p class="cap">图 3 · 泛化误差 = 偏差² + 方差 + 噪声</p>
+  </div>
+
+  <h3>5.1 三个词，讲清为什么会错</h3>
+  <table>
+    <tr><th>名称</th><th>大白话</th><th>典型表现</th></tr>
+    <tr><td><strong class="k">偏差</strong></td><td>学不会</td><td>模型太简陋，连基本规律都没抓住；训练集和测试集都差</td></tr>
+    <tr><td><strong class="k">方差</strong></td><td>学歪了</td><td>换个批次数据，结果就大变；训练集极好、测试集崩盘</td></tr>
+    <tr><td><strong class="k">噪声</strong></td><td>本来就猜不到</td><td>数据自身的不确定性，任何模型都消不掉</td></tr>
+  </table>
+
+  <h3>5.2 一分钟分屏释义</h3>
+  <div class="sub-frames">
+    <div class="sub">
+      <div class="sq">欠拟合这一端</div>
+      <div class="sa">题都没读完就开始猜规律。</div>
+      <div class="st">一点儿思考：解法不是换模型，是把变量补齐、把关系表达对。</div>
+    </div>
+    <div class="sub">
+      <div class="sq">过拟合这一端</div>
+      <div class="sa">把每道题的答案连同印刷瑕疵一起背下来了。</div>
+      <div class="st">一点儿思考：解法不是加数据就完事，很多时候要靠"收缩"——也就是正则化。</div>
+    </div>
+    <div class="sub">
+      <div class="sq">中间那个点</div>
+      <div class="sa">偏差与方差之和最小的地方，才是要去的终点。</div>
+      <div class="st">一点儿思考：追求极限精度，往往是从最优点往右搬家。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════ §6 30 段一问一答 ════════════════════════ -->
+<section id="micro">
+  <h2>六、30 段一问一答</h2>
+  <p class="time">线性陈述 · 一问一答一思考</p>
+
+  <p>每段同构：<strong class="k">一句提问 → 一句回答 → 一点思考</strong>。暂停回顾段以金色背景标注，便于放慢阅读节奏。</p>
+
+
+  <div class="frame" id="f01">
+    <div class="q">机器学习到底在学什么？</div>
+    <div class="a">规律。从见过的样本里归纳出一套规则，再拿去对付没见过的情况。</div>
+    <div class="think">关键从来不是"记住看过的"，而是"对付没看过的"——后者才叫本事。</div></div>
+
+
+  <div class="frame" id="f02">
+    <div class="q">那什么是机器学习？</div>
+    <div class="a">一个程序凭<strong class="k">经验 E</strong>，在<strong class="k">任务 T</strong> 上让<strong class="k">性能 P</strong> 改善了，就称它对 E 进行了学习。</div>
+    <div class="think">换成备考：你刷了三千道题（E），都是为了在正式考卷（T）上把分数提高（P）——这就叫学习。</div></div>
+
+
+  <div class="frame" id="f03">
+    <div class="q">它和统计学什么关系？</div>
+    <div class="a">同一套概率与数学，侧重不同。统计重"推断这个世界的样子"，机器学习重"预测下一个会怎样"。</div>
+    <div class="think">精算师天天在做的事——用历史赔款估未来赔款——站在机器学习的地盘上。</div></div>
+
+
+  <div class="frame" id="f04">
+    <div class="q">训练集、测试集是什么意思？</div>
+    <div class="a">前者是题海，用来学；后者是正式考卷，用来验。<strong class="k">两者必须互不相见。</strong></div>
+    <div class="think">很多项目最贵的教训，都出在"其实它们早就见过面了"。</div></div>
+
+
+  <div class="frame review" id="f05">
+    <div class="q">前 4 屏一句话</div>
+    <div class="a">学习的目标不是记住题，是对付没见过的题。训练集当题海，测试集当考卷，两者不许打照面。</div>
+    <div class="think">后面所有术语，基本都是这条原则的不同侧面。</div></div>
+
+
+  <div class="frame" id="f06">
+    <div class="q">什么叫模型？</div>
+    <div class="a">一堆候选函数（假设空间）里选出来的那一个，用来把输入变成输出。</div>
+    <div class="think">选线性模型，就是赌"变量之间是加法关系"；选树，就是赌"规则是层层 if-else"。</div></div>
+
+
+  <div class="frame" id="f07">
+    <div class="q">什么叫训练？</div>
+    <div class="a">拿训练数据把模型的参数调出来让损失最小的过程。</div>
+    <div class="think">本质是搜索——在一个由人为设定的空间里，按人为定的目标找最优。</div></div>
+
+
+  <div class="frame" id="f08">
+    <div class="q">学好什么是"过拟合"？</div>
+    <div class="a">把训练数据的噪声也当成规律背下来，导致在新的数据上表现很差。</div>
+    <div class="think">典型特征：训练集上表现很好，测试集上差距明显。看到这个组合，第一反应就该怀疑它。</div></div>
+
+
+  <div class="frame" id="f09">
+    <div class="q">统计学习三要素是什么？</div>
+    <div class="a"><strong class="k">模型、策略、算法</strong>——也就是：候选什么函数、以什么为标准、怎么把它算出来。</div>
+    <div class="think">多数争论其实错在这三件事被混着谈：说的是算法好不好，实际比的是策略。</div></div>
+
+
+  <div class="frame" id="f10">
+    <div class="q">什么是正则化？</div>
+    <div class="a">在目标里加一个"惩罚复杂"的项，逼模型不要那么相信眼前的这批数据。</div>
+    <div class="think">换个熟的说法：这就是"修匀"，也是"Bühlmann 信度向手册费率收缩"。</div></div>
+
+
+  <div class="frame" id="f11">
+    <div class="q">那超参数调参是什么意思？</div>
+    <div class="a">调整那些不是从数据里学出来的设置，比如树的深度、正则的强度。</div>
+    <div class="think">调用的必须是验证集——用测试集反复调，等于把考卷当练习册。</div></div>
+
+
+  <div class="frame review" id="f12">
+    <div class="q">一趟下来记住这句</div>
+    <div class="a">模型决定能搜到的最好答案有多好，策略决定往哪搜，算法只是搜的那条路。</div>
+    <div class="think">正则化这一招，和一百年前精算师的信度公式是同一个数学想法。</div></div>
+
+
+  <div class="frame" id="f13">
+    <div class="q">为什么要交叉验证？</div>
+    <div class="a">数据不够分时，把样本轮流当一次测试集，最后取平均，评得更稳。</div>
+    <div class="think">常用 10 折。"一张卷定终身"的风险在于：运气。</div></div>
+
+
+  <div class="frame" id="f14">
+    <div class="q">什么是最致命的错误？</div>
+    <div class="a"><strong class="k">数据泄漏</strong>——用了只有事后才能知道的字段，或先处理再切分。</div>
+    <div class="think">它的可怕在于：离线成绩高得离谱，绩效看着很漂亮，上线才露馅。</div></div>
+
+
+  <div class="frame" id="f15">
+    <div class="q">准确率高，模型就好吗？</div>
+    <div class="a">不一定。如果正例只占千分之五，"全判正常"的准确率就有 99.5%。</div>
+    <div class="think">遇上这种极不平衡的情形，准确率这个数本身就失去了意义。</div></div>
+
+
+  <div class="frame" id="f16">
+    <div class="q">查准率和查全率？</div>
+    <div class="a">前者是"报出来的有多少真"，后者是"真的抓到了多少"；两者此消彼长。</div>
+    <div class="think">F1 是两者的调和平均。但真做决策时，永远要看两个数，不要只看合成的那个。</div></div>
+
+
+  <div class="frame" id="f17">
+    <div class="q">AUC 到底在说什么？</div>
+    <div class="a">随机抽一个正例和一个负例，模型把"正例排得更靠前"的概率。</div>
+    <div class="think">它衡量的不是"判得准不准"，而是"排得对不对"。很多业务真正需要的恰恰是排序。</div></div>
+
+
+  <div class="frame" id="f18">
+    <div class="q">KS 和 Gini 又是什么？</div>
+    <div class="a">KS 是正负样本累积分布的最大差距；Gini 与 AUC 同源，等于 2×AUC−1。</div>
+    <div class="think">风控和信用评分偏爱 KS，定价实践偏爱 Gini——口径不同，说的是同一件事。</div></div>
+
+
+  <div class="frame review" id="f19">
+    <div class="q">指标这一段的核心</div>
+    <div class="a">先看任务的分布是什么样，再决定配什么指标。不平衡时不看准确率，看查全率与 PR 曲线。</div>
+    <div class="think">选错指标的代价，比选错模型大得多——因为它会让你在错误的方向上一直优化。</div></div>
+
+
+  <div class="frame" id="f20">
+    <div class="q">集成学习的思路是什么？</div>
+    <div class="a">把若干个弱模型合起来，条件是<strong class="k">每个都不差、彼此还不一样</strong>——所谓"好而不同"。</div>
+    <div class="think">十个一模一样的专家开会，等于一个专家说了十遍。</div></div>
+
+
+  <div class="frame" id="f21">
+    <div class="q">Bagging 和 Boosting 的差别？</div>
+    <div class="a">前者并行投<strong class="k">票降方差</strong>（随机森林），后者串行<strong class="k">补残差降偏差</strong>（GBDT、XGBoost）。</div>
+    <div class="think">一个治"学歪"，一个治"学不会"——对症才有效。</div></div>
+
+
+  <div class="frame" id="f22">
+    <div class="q">XGBoost 为什么厉害？</div>
+    <div class="a">目标函数做二阶展开、显式加正则、分位数近似找切点、对缺失值自动定方向。</div>
+    <div class="think">它并没有发明新理论，而是把工程细节做到了位——这是工程胜过算法的典型例子。</div></div>
+
+
+  <div class="frame" id="f23">
+    <div class="q">深度学习什么时候才必要？</div>
+    <div class="a">数据是非结构化的时候：图像看 CNN，序列看 RNN 或 Transformer，全局关系看自注意力。</div>
+    <div class="think">如果手上是规规矩矩的一张表，先上梯度提升树，通常就够了。</div></div>
+
+
+  <div class="frame review" id="f24">
+    <div class="q">模型这一段的核心</div>
+    <div class="a">表格数据先试 GBM，非结构化数据才上深度模型；两者之间不存在谁取代谁。</div>
+    <div class="think">这句话背后是 NFL 定理：脱离具体问题谈"哪个算法更强"，在数学上没有意义。</div></div>
+
+
+  <div class="frame" id="f25">
+    <div class="q">定价上怎么用才稳妥？</div>
+    <div class="a">GLM 打底做基准，GBM 去找隐藏的交叉组合，再把有价值的交互<strong class="k">回填进 GLM</strong>。</div>
+    <div class="think">既拿到预测力，又保住能申报、能解释、能答复客户的那份体面。</div></div>
+
+
+  <div class="frame" id="f26">
+    <div class="q">反欺诈的门道在哪？</div>
+    <div class="a">别让它判，让它<strong class="k">排</strong>。把有限的人力投向分数最高的那一段。</div>
+    <div class="think">收益的来源不是替代了谁，而是同样一份工资买到了不一样的产出。</div></div>
+
+
+  <div class="frame" id="f27">
+    <div class="q">客户经营最常见的失手？</div>
+    <div class="a">把<strong class="k">"谁会流失"</strong>当成了<strong class="k">"谁能留住"</strong>，于是预算多半花在了本来就不会走的人身上。</div>
+    <div class="think">留 10% 不做干预当对照组，事后一比就知道这一通电话到底值不值。</div></div>
+
+
+  <div class="frame" id="f28">
+    <div class="q">模型为什么要解释？</div>
+    <div class="a">SHAP 借博弈论的思路，把一次预测拆成每个特征各自贡献了多少。</div>
+    <div class="think">保险卖的是承诺。一个答不上"为什么给他这个价"的模型，走不到客户面前。</div></div>
+
+
+  <div class="frame" id="f29">
+    <div class="q">最后一个坑是什么？</div>
+    <div class="a">模型发现的是<strong class="k">稳定的相关</strong>，从来不是因果。</div>
+    <div class="think">一旦某个因子被用于费率，客户行为会变，那条相关系数也可能随之崩塌。</div></div>
+
+
+  <div class="frame review" id="f30">
+    <div class="q">一句话总结</div>
+    <div class="a">机器学习 = 从经验中找规律（泛化）+ 在偏差与方差之间做取舍 + 用收缩来达成平衡。</div>
+    <div class="think">半个世纪换了无数名词，精算师手里的那件事没变：用过去的经验，估算未来的不确定。</div></div>
+</section>
+
+<footer>
+  <p>机器学习 一小时精读 · 西红精算<br>
+  延伸阅读：<a href="https://xihongactuary.github.io/ca-am-kb/ml.html">精算模型科目四知识库 · 机器学习</a>（7 部分 24 节 · 含 5 台演算器）<br>
+  同业交流：<a href="https://wx.zsxq.com/">知识星球 · 西红精算</a><br>
+  不替代教材原文与考试大纲要求</p>
+</footer>
+
+
+  </div>
+
+  <div class="pager">
+    <a href="core.html">← ④ 三要素与 AI 全景</a>
+    <a href="notes.html">⑥ 十七章笔记 →</a>
+  </div>
+</main>
+
+<script src="js/kb.js"></script>
+</body>
+</html>
